@@ -261,10 +261,5 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Error al abrir el formulario: " + ex.Message);
             }
         }
-
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
