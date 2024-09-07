@@ -88,40 +88,6 @@ namespace FarmaciaElPorvenir
             }
         }
 
-        private void btnRol_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            try
-            {
-                // Verifica si el formulario ya está abierto
-                frmRol formularioExistente = null;
-                foreach (Form form in this.MdiChildren)
-                {
-                    if (form is frmRol)
-                    {
-                        formularioExistente = (frmRol)form;
-                        break;
-                    }
-                }
-
-                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
-                if (formularioExistente == null)
-                {
-                    frmRol nuevoFormulario = new frmRol();
-                    nuevoFormulario.MdiParent = this;
-                    nuevoFormulario.Show();
-                }
-                else
-                {
-                    // Si el formulario ya está abierto, lo traemos al frente
-                    formularioExistente.BringToFront();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
-            }
-        }
-
         private void btnAgregarEmpleado_ItemClick(object sender, ItemClickEventArgs e)
         {
             try
@@ -246,6 +212,151 @@ namespace FarmaciaElPorvenir
                 if (formularioExistente == null)
                 {
                     frmProveedor nuevoFormulario = new frmProveedor();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void barButtonItemVentas_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                formFacturasVentas formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is formFacturasVentas)
+                    {
+                        formularioExistente = (formFacturasVentas)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    formFacturasVentas nuevoFormulario = new formFacturasVentas();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
+
+        private void barButtonItemCompras_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                formFacturasCompras formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is formFacturasCompras)
+                    {
+                        formularioExistente = (formFacturasCompras)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    formFacturasCompras nuevoFormulario = new formFacturasCompras();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
+
+        private void btnAgregarUsuario_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                formUsuario formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is formUsuario)
+                    {
+                        formularioExistente = (formUsuario)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    formUsuario nuevoFormulario = new formUsuario();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
+
+        private void btnAgregarR_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                frmRol formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is frmRol)
+                    {
+                        formularioExistente = (frmRol)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    frmRol nuevoFormulario = new frmRol();
                     nuevoFormulario.MdiParent = this;
                     nuevoFormulario.Show();
                 }
