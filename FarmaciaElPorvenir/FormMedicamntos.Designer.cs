@@ -35,19 +35,17 @@
             this.xpLab = new DevExpress.Xpo.XPCollection(this.components);
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.searchLookUpEditLab = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colNombre1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDireccion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTelefono = new DevExpress.XtraGrid.Columns.GridColumn();
             this.seCategoria = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.xpCat = new DevExpress.Xpo.XPCollection(this.components);
             this.searchLookUpEditCat = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colCategorias = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.xpMedicamento = new DevExpress.Xpo.XPCollection(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPrecio = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
@@ -69,11 +67,15 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colNombre1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDireccion = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTelefono = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCategorias = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPrecio = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.catcol = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labcol = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seLab.Properties)).BeginInit();
@@ -156,6 +158,27 @@
             this.searchLookUpEditLab.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEditLab.OptionsView.ShowGroupPanel = false;
             // 
+            // colNombre1
+            // 
+            this.colNombre1.FieldName = "Nombre";
+            this.colNombre1.Name = "colNombre1";
+            this.colNombre1.Visible = true;
+            this.colNombre1.VisibleIndex = 0;
+            // 
+            // colDireccion
+            // 
+            this.colDireccion.FieldName = "Direccion";
+            this.colDireccion.Name = "colDireccion";
+            this.colDireccion.Visible = true;
+            this.colDireccion.VisibleIndex = 1;
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.FieldName = "Telefono";
+            this.colTelefono.Name = "colTelefono";
+            this.colTelefono.Visible = true;
+            this.colTelefono.VisibleIndex = 2;
+            // 
             // seCategoria
             // 
             this.seCategoria.Location = new System.Drawing.Point(83, 198);
@@ -185,6 +208,20 @@
             this.searchLookUpEditCat.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEditCat.OptionsView.ShowGroupPanel = false;
             // 
+            // colCategorias
+            // 
+            this.colCategorias.FieldName = "Categorias";
+            this.colCategorias.Name = "colCategorias";
+            this.colCategorias.Visible = true;
+            this.colCategorias.VisibleIndex = 0;
+            // 
+            // colDescripcion
+            // 
+            this.colDescripcion.FieldName = "Descripcion";
+            this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.Visible = true;
+            this.colDescripcion.VisibleIndex = 1;
+            // 
             // gridControl1
             // 
             this.gridControl1.DataSource = this.xpMedicamento;
@@ -207,10 +244,12 @@
             this.colId,
             this.colNombre,
             this.colPrecio,
-            this.gridColumn1,
+            this.catcol,
             this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4});
+            this.labcol,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6});
             this.gridView1.CustomizationFormBounds = new System.Drawing.Rectangle(957, 338, 259, 272);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
@@ -219,55 +258,6 @@
             this.gridView1.OptionsView.RowAutoHeight = true;
             this.gridView1.OptionsView.ShowDetailButtons = false;
             this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
-            // 
-            // colId
-            // 
-            this.colId.FieldName = "Id";
-            this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
-            // 
-            // colNombre
-            // 
-            this.colNombre.FieldName = "Nombre";
-            this.colNombre.Name = "colNombre";
-            this.colNombre.Visible = true;
-            this.colNombre.VisibleIndex = 1;
-            // 
-            // colPrecio
-            // 
-            this.colPrecio.FieldName = "Precio";
-            this.colPrecio.Name = "colPrecio";
-            this.colPrecio.Visible = true;
-            this.colPrecio.VisibleIndex = 2;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.FieldName = "Id_Categoria!";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.FieldName = "Id_Categoria!Key";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.FieldName = "Id_Laboratorio!";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 5;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.FieldName = "Id_Laboratorio!Key";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 6;
             // 
             // btnCancelar
             // 
@@ -484,40 +474,62 @@
             this.layoutControlItem10.Text = "Laboratorio:";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(59, 13);
             // 
-            // colNombre1
+            // colId
             // 
-            this.colNombre1.FieldName = "Nombre";
-            this.colNombre1.Name = "colNombre1";
-            this.colNombre1.Visible = true;
-            this.colNombre1.VisibleIndex = 1;
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            this.colId.Visible = true;
+            this.colId.VisibleIndex = 0;
             // 
-            // colDireccion
+            // colNombre
             // 
-            this.colDireccion.FieldName = "Direccion";
-            this.colDireccion.Name = "colDireccion";
-            this.colDireccion.Visible = true;
-            this.colDireccion.VisibleIndex = 2;
+            this.colNombre.FieldName = "Nombre";
+            this.colNombre.Name = "colNombre";
+            this.colNombre.Visible = true;
+            this.colNombre.VisibleIndex = 1;
             // 
-            // colTelefono
+            // colPrecio
             // 
-            this.colTelefono.FieldName = "Telefono";
-            this.colTelefono.Name = "colTelefono";
-            this.colTelefono.Visible = true;
-            this.colTelefono.VisibleIndex = 3;
+            this.colPrecio.FieldName = "Precio";
+            this.colPrecio.Name = "colPrecio";
+            this.colPrecio.Visible = true;
+            this.colPrecio.VisibleIndex = 2;
             // 
-            // colCategorias
+            // catcol
             // 
-            this.colCategorias.FieldName = "Categorias";
-            this.colCategorias.Name = "colCategorias";
-            this.colCategorias.Visible = true;
-            this.colCategorias.VisibleIndex = 0;
+            this.catcol.Caption = "Categoria";
+            this.catcol.FieldName = "Id_Categoria.Categorias";
+            this.catcol.Name = "catcol";
+            this.catcol.Visible = true;
+            this.catcol.VisibleIndex = 3;
             // 
-            // colDescripcion
+            // gridColumn2
             // 
-            this.colDescripcion.FieldName = "Descripcion";
-            this.colDescripcion.Name = "colDescripcion";
-            this.colDescripcion.Visible = true;
-            this.colDescripcion.VisibleIndex = 1;
+            this.gridColumn2.FieldName = "Id_Categoria!Key";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // labcol
+            // 
+            this.labcol.Caption = "Laboratorio";
+            this.labcol.FieldName = "Id_Laboratorio.Nombre";
+            this.labcol.Name = "labcol";
+            this.labcol.Visible = true;
+            this.labcol.VisibleIndex = 4;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.FieldName = "Id_Laboratorio!Key";
+            this.gridColumn4.Name = "gridColumn4";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.FieldName = "Id_Categoria.Categorias";
+            this.gridColumn5.Name = "gridColumn5";
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.FieldName = "Id_Laboratorio.Nombre";
+            this.gridColumn6.Name = "gridColumn6";
             // 
             // FormMedicamntos
             // 
@@ -594,17 +606,19 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.Xpo.XPCollection xpCat;
         private DevExpress.Xpo.XPCollection xpLab;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colNombre;
-        private DevExpress.XtraGrid.Columns.GridColumn colPrecio;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn colNombre1;
         private DevExpress.XtraGrid.Columns.GridColumn colDireccion;
         private DevExpress.XtraGrid.Columns.GridColumn colTelefono;
         private DevExpress.XtraGrid.Columns.GridColumn colCategorias;
         private DevExpress.XtraGrid.Columns.GridColumn colDescripcion;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colNombre;
+        private DevExpress.XtraGrid.Columns.GridColumn colPrecio;
+        private DevExpress.XtraGrid.Columns.GridColumn catcol;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn labcol;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }

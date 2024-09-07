@@ -12,12 +12,13 @@ using System.Windows.Forms;
 
 namespace FarmaciaElPorvenir
 {
-    public partial class FormMedicamntos : Form
+    public partial class formUsuario : Form
     {
-        public FormMedicamntos()
+        public formUsuario()
         {
             InitializeComponent();
         }
+
         private void ActualizarEstadoBotones(bool nuevo, bool guardar, bool eliminar, bool cancelar, bool actualizar, bool camposHabilitados)
         {
             btnNuevo.Enabled = nuevo;
@@ -27,61 +28,60 @@ namespace FarmaciaElPorvenir
             btnActualizar.Enabled = actualizar;
 
             // Habilitar o deshabilitar los campos
-            txtNombre.Enabled = camposHabilitados;
-            txtPrecio.Enabled = camposHabilitados;
-            seCategoria.Enabled = camposHabilitados;
-            seLab.Enabled = camposHabilitados;
+            txtUsuario.Enabled = camposHabilitados;
+            txtPass.Enabled = camposHabilitados;
+            cmbRol.Enabled = camposHabilitados;
+            cmbEmpleado.Enabled = camposHabilitados;
         }
         private void Limpiar()
         {
-            txtNombre.Clear();
-            txtPrecio.Clear();
-            seCategoria.Clear();
-            seLab.Clear();  
-            txtNombre.Focus();
+            txtUsuario.Clear();
+            txtPass.Clear();
+            cmbRol.SelectedIndex = -1;
+            cmbEmpleado.SelectedIndex =-1;
         }
+
+        private void CargarCombos()
+        {
+            List<Empleado> lista = unitOfWork1.Query<Empleado>().ToList();            
+            List<Rol> listaRol = unitOfWork1.Query<Rol>().ToList();
+
+            cmbEmpleado.DataSource = lista;
+            cmbEmpleado.DisplayMember = "Nombre_Completo";
+            cmbEmpleado.ValueMember = "Id";
+            cmbEmpleado.SelectedIndex = -1;
+
+            cmbRol.DataSource = listaRol;
+            cmbRol.DisplayMember = "Nombre_Rol";
+            cmbRol.ValueMember = "Id";
+            cmbRol.SelectedIndex = -1;
+
+        }
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
 
             ActualizarEstadoBotones(false, true, true, true, false, true);
             Limpiar();
         }
-
-        private void formMedicamentos_Load(object sender, EventArgs e)
+        private void formUsuario_Load(object sender, EventArgs e)
         {
+            CargarCombos();
             ActualizarEstadoBotones(true, false, false, false, false, false);
-
-        }
-
-        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-            {
-                ActualizarEstadoBotones(false, false, true, true, true, true);
-                string nombre = gridView1.GetRowCellValue(e.RowHandle, "Nombre").ToString();
-                string precio = gridView1.GetRowCellValue(e.RowHandle,"Precio").ToString();
-                string lab= searchLookUpEditLab.GetRowCellValue(e.RowHandle,"Laboratorio").ToString() ;
-                string Cat = searchLookUpEditCat.GetRowCellValue(e.RowHandle, "Categoria").ToString();
-                txtNombre.Text = nombre;
-                txtPrecio.Text = precio;
-                seLab.Text = lab;
-                seCategoria.Text = Cat;
-
-            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Medicamento m = (Medicamento)gridView1.GetFocusedRow();
-            if (m != null)
+            Usuario c = (Usuario)gridView1.GetFocusedRow();
+            if (c != null)
             {
                 DialogResult r = MessageBox.Show("¿Desea Eliminar Registro?", "Información del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (r == DialogResult.Yes)
                 {
-                    unitOfWork1.Delete(m);
+                    unitOfWork1.Delete(c);
                     unitOfWork1.CommitChanges();
-                    xpMedicamento.Reload();
+                    xpUsuario.Reload();
                     Limpiar();
                     ActualizarEstadoBotones(true, false, false, false, false, false);
 
@@ -96,8 +96,7 @@ namespace FarmaciaElPorvenir
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Verificar si los campos obligatorios están vacíos
-            if (string.IsNullOrEmpty(txtNombre.Text)|| string.IsNullOrEmpty(txtPrecio.Text)|| string.IsNullOrEmpty(seLab.Text)|| string.IsNullOrEmpty(seCategoria.Text))
-
+            if (string.IsNullOrEmpty(txtUsuario.Text)|| string.IsNullOrEmpty(txtPass.Text)||string.IsNullOrEmpty(cmbEmpleado.Text)|| string.IsNullOrEmpty(cmbRol.Text))
             {
                 MessageBox.Show("Campos Requeridos", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -105,16 +104,17 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Crear o buscar el rol en la base de datos
-                Medicamento m = new Medicamento(unitOfWork1);
+                Usuario c = new Usuario(unitOfWork1);
 
-
+                
                 // Asignar los valores a las propiedades del rol
-                m.Nombre = txtNombre.Text;
-                m.Precio = float.Parse(txtPrecio.Text);
-                m.Id_Laboratorio =(Laboratorio)searchLookUpEditLab.GetFocusedRow();
-                m.Id_Categoria =(Categoria)searchLookUpEditCat.GetFocusedRow();
+                c.Usuario1 = txtUsuario.Text;
+                c.Pass = txtPass.Text;
+                c.Id_Empleado = (Empleado)cmbEmpleado.SelectedItem;
+                c.Id_Rol = (Rol)cmbRol.SelectedItem;    
+
                 // Guardar los cambios
-                m.Save();
+                c.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -124,7 +124,7 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Guardado Exitoso", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Recargar la colección de roles para reflejar los cambios
-                xpMedicamento.Reload();
+                xpUsuario.Reload();
                 ActualizarEstadoBotones(true, false, false, false, false, false);
 
             }
@@ -146,7 +146,7 @@ namespace FarmaciaElPorvenir
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             // Verificar si los campos obligatorios están vacíos
-            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtPrecio.Text) || string.IsNullOrEmpty(seLab.Text) || string.IsNullOrEmpty(seCategoria.Text))
+            if (string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtPass.Text) || string.IsNullOrEmpty(cmbEmpleado.Text) || string.IsNullOrEmpty(cmbRol.Text))
             {
                 MessageBox.Show("Campos Requeridos", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -163,21 +163,20 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Medicamento m = unitOfWork1.GetObjectByKey<Medicamento>(id);
-                if (m == null)
+                Usuario c = unitOfWork1.GetObjectByKey<Usuario>(id);
+                if (c == null)
                 {
                     MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Asignar los valores a las propiedades del rol
-                m.Nombre = txtNombre.Text;
-                m.Precio = float.Parse(txtPrecio.Text);
-                m.Id_Laboratorio = (Laboratorio)searchLookUpEditLab.GetFocusedRow();
-                m.Id_Categoria = (Categoria)searchLookUpEditCat.GetFocusedRow();
-
+                c.Usuario1 = txtUsuario.Text;
+                c.Pass = txtPass.Text;
+                c.Id_Empleado = (Empleado)cmbEmpleado.SelectedItem;
+                c.Id_Rol = (Rol)cmbRol.SelectedItem;
                 // Guardar los cambios
-                m.Save();
+                c.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -187,7 +186,7 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Actualización Exitosa", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Recargar la colección de roles para reflejar los cambios
-               xpMedicamento.Reload();
+                xpUsuario.Reload();
                 ActualizarEstadoBotones(true, false, false, false, false, false);
 
             }
@@ -198,6 +197,16 @@ namespace FarmaciaElPorvenir
 
         }
 
-        
+        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            if (e.RowHandle>=0)
+            {
+                ActualizarEstadoBotones(false, false, true, true, true, true);
+                txtUsuario.Text = gridView1.GetRowCellValue(e.RowHandle,"Usuario1").ToString();
+                txtPass.Text = gridView1.GetRowCellValue(e.RowHandle,"Pass").ToString();
+                cmbEmpleado.Text = gridView1.GetRowCellValue(e.RowHandle,"Id_Empleado.Nombre_Completo").ToString();
+                cmbRol.Text = gridView1.GetRowCellValue(e.RowHandle, "Id_Rol.Nombre_Rol").ToString();
+            }
+        }
     }
 }

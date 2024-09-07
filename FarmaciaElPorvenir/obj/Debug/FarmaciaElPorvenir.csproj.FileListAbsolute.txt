@@ -281,3 +281,4 @@ D:\github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.csproj
 D:\github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.exe
 D:\github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.pdb
 D:\github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.FormMedicamntos.resources
+D:\github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.formUsuario.resources
