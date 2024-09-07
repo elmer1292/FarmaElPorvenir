@@ -56,6 +56,8 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageInventario = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemListarClientes = new DevExpress.XtraBars.BarButtonItem();
             this.btnAgregarRol = new DevExpress.XtraBars.BarButtonItem();
             this.btnListarRol = new DevExpress.XtraBars.BarButtonItem();
@@ -65,8 +67,8 @@
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -106,7 +108,8 @@
             this.ribbonPageCategoria,
             this.ribbonPageProveedor,
             this.ribbonPageInventario,
-            this.ribbonPage1});
+            this.ribbonPage1,
+            this.ribbonPage3});
             this.ribbon.Size = new System.Drawing.Size(1033, 158);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
@@ -276,6 +279,18 @@
             this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItemInventario);
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup9});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "ribbonPage1";
+            // 
+            // ribbonPageGroup9
+            // 
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
+            // 
             // barButtonItemListarClientes
             // 
             this.barButtonItemListarClientes.Caption = "Listar";
@@ -325,17 +340,17 @@
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             this.ribbonPageGroup7.Text = "ribbonPageGroup7";
             // 
-            // ribbonPage1
+            // ribbonPage3
             // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup9});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "ribbonPage1";
+            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup10});
+            this.ribbonPage3.Name = "ribbonPage3";
+            this.ribbonPage3.Text = "ribbonPage3";
             // 
-            // ribbonPageGroup9
+            // ribbonPageGroup10
             // 
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.Text = "ribbonPageGroup10";
             // 
             // Dashboard
             // 
@@ -396,5 +411,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
     }
 }
