@@ -168,7 +168,7 @@
             this.txtPrecioVenta.Properties.Appearance.Options.UseFont = true;
             this.txtPrecioVenta.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txtPrecioVenta.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txtPrecioVenta.Properties.MaskSettings.Set("mask", "0.00");
+            this.txtPrecioVenta.Properties.MaskSettings.Set("mask", "");
             this.txtPrecioVenta.Properties.UseMaskAsDisplayFormat = true;
             this.txtPrecioVenta.Size = new System.Drawing.Size(1016, 30);
             this.txtPrecioVenta.StyleController = this.layoutControl1;
@@ -326,7 +326,7 @@
             this.txtPrecioCompra.Properties.Appearance.Options.UseFont = true;
             this.txtPrecioCompra.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txtPrecioCompra.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txtPrecioCompra.Properties.MaskSettings.Set("mask", "0.00");
+            this.txtPrecioCompra.Properties.MaskSettings.Set("mask", "");
             this.txtPrecioCompra.Size = new System.Drawing.Size(1016, 30);
             this.txtPrecioCompra.StyleController = this.layoutControl1;
             this.txtPrecioCompra.TabIndex = 2;
@@ -358,7 +358,7 @@
             this.txtStock.Name = "txtStock";
             this.txtStock.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txtStock.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txtStock.Properties.MaskSettings.Set("mask", "0");
+            this.txtStock.Properties.MaskSettings.Set("mask", "");
             this.txtStock.Size = new System.Drawing.Size(1016, 20);
             this.txtStock.StyleController = this.layoutControl1;
             this.txtStock.TabIndex = 12;

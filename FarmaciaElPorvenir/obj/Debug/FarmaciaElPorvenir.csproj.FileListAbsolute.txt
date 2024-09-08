@@ -286,3 +286,5 @@ C:\Users\Admin\Documents\Github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\Far
 C:\Users\Admin\Documents\Github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\Farmacia.455E1174.Up2Date
 C:\Users\Admin\Documents\Github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.exe
 C:\Users\Admin\Documents\Github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.pdb
+D:\github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.formFacturasCompras.resources
+D:\github\FarmaElPorvenir\FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.formFacturasVentas.resources
