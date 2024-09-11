@@ -1,7 +1,7 @@
 ﻿using DevExpress.Office.Utils;
 using DevExpress.Xpo;
 using DevExpress.XtraLayout.Filtering.Templates;
-using FarmaciaElPorvenir.el_porvenirdb;
+using FarmaciaElPorvenir.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

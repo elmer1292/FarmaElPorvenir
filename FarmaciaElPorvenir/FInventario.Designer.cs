@@ -32,13 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FInventario));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.searchLookUpEditMedicamento = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.xpCollection2 = new DevExpress.Xpo.XPCollection(this.components);
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.searchLookUpEditViewMedicamento = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtPrecioVenta = new DevExpress.XtraEditors.TextEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,15 +66,14 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
+            this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditMedicamento.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditViewMedicamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
@@ -99,6 +95,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -128,23 +126,14 @@
             this.searchLookUpEditMedicamento.EditValue = "Seleccione un Medicamento";
             this.searchLookUpEditMedicamento.Location = new System.Drawing.Point(156, 309);
             this.searchLookUpEditMedicamento.Name = "searchLookUpEditMedicamento";
-            // 
-            // 
-            // 
             this.searchLookUpEditMedicamento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpEditMedicamento.Properties.DataSource = this.xpCollection2;
             this.searchLookUpEditMedicamento.Properties.DisplayMember = "Nombre";
             this.searchLookUpEditMedicamento.Properties.PopupView = this.searchLookUpEditViewMedicamento;
             this.searchLookUpEditMedicamento.Properties.ValueMember = "Id";
             this.searchLookUpEditMedicamento.Size = new System.Drawing.Size(1016, 20);
             this.searchLookUpEditMedicamento.StyleController = this.layoutControl1;
             this.searchLookUpEditMedicamento.TabIndex = 13;
-            // 
-            // xpCollection2
-            // 
-            this.xpCollection2.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Medicamento);
-            this.xpCollection2.Session = this.unitOfWork1;
             // 
             // searchLookUpEditViewMedicamento
             // 
@@ -167,9 +156,6 @@
             this.txtPrecioVenta.Location = new System.Drawing.Point(156, 391);
             this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
-            // 
-            // 
-            // 
             this.txtPrecioVenta.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtPrecioVenta.Properties.Appearance.Options.UseFont = true;
             this.txtPrecioVenta.Properties.UseMaskAsDisplayFormat = true;
@@ -179,7 +165,6 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.DataSource = this.xpCollection1;
             this.gridControl1.Location = new System.Drawing.Point(12, 30);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
@@ -189,11 +174,6 @@
             this.gridControl1.TabIndex = 9;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            // 
-            // xpCollection1
-            // 
-            this.xpCollection1.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Inventario);
-            this.xpCollection1.Session = this.unitOfWork1;
             // 
             // gridView1
             // 
@@ -265,9 +245,6 @@
             this.repositoryItemDateEdit1.AutoHeight = false;
             this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            // 
-            // 
-            // 
             this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
@@ -328,9 +305,6 @@
             this.txtPrecioCompra.Location = new System.Drawing.Point(156, 357);
             this.txtPrecioCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
-            // 
-            // 
-            // 
             this.txtPrecioCompra.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtPrecioCompra.Properties.Appearance.Options.UseFont = true;
             this.txtPrecioCompra.Size = new System.Drawing.Size(1016, 30);
@@ -339,19 +313,14 @@
             // 
             // txtVencimiento
             // 
+            this.txtVencimiento.EditValue = new System.DateTime(2024, 9, 11, 0, 0, 0, 0);
             this.txtVencimiento.Location = new System.Drawing.Point(156, 425);
             this.txtVencimiento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtVencimiento.Name = "txtVencimiento";
-            // 
-            // 
-            // 
             this.txtVencimiento.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtVencimiento.Properties.Appearance.Options.UseFont = true;
             this.txtVencimiento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            // 
-            // 
-            // 
             this.txtVencimiento.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtVencimiento.Properties.DisplayFormat.FormatString = "";
@@ -517,6 +486,10 @@
             this.layoutControlItem6.Text = "Medicamento";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(132, 13);
             // 
+            // xpCollection1
+            // 
+            this.xpCollection1.Session = this.unitOfWork1;
+            // 
             // FInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,12 +502,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditMedicamento.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditViewMedicamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
@@ -556,6 +526,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -578,8 +550,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.Xpo.XPCollection xpCollection1;
-        private DevExpress.Xpo.UnitOfWork unitOfWork1;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
@@ -597,9 +567,10 @@
         private DevExpress.XtraEditors.TextEdit txtStock;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEditMedicamento;
-        private DevExpress.Xpo.XPCollection xpCollection2;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditViewMedicamento;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraGrid.Columns.GridColumn colNombre;
+        private DevExpress.Xpo.UnitOfWork unitOfWork1;
+        private DevExpress.Xpo.XPCollection xpCollection1;
     }
 }

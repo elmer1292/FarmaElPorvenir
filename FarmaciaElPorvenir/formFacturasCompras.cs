@@ -1,6 +1,6 @@
 ﻿using DevExpress.Xpo;
 using DevExpress.XtraEditors;
-using FarmaciaElPorvenir.el_porvenirdb;
+using FarmaciaElPorvenir.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

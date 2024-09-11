@@ -1,7 +1,7 @@
 ﻿using DevExpress.Xpo;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Forms;
-using FarmaciaElPorvenir.el_porvenirdb;
+using FarmaciaElPorvenir.Database;
 using FarmaciaElPorvenir.Reportes;
 using System;
 using System.Collections.Generic;

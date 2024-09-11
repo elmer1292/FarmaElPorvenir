@@ -1,5 +1,5 @@
 ﻿using DevExpress.Utils.DirectXPaint;
-using FarmaciaElPorvenir.el_porvenirdb;
+using FarmaciaElPorvenir.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
