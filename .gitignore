@@ -598,3 +598,4 @@ FodyWeavers.xsd
 FarmaciaElPorvenir/FarmaciaElPorvenir.csproj.bak
 FarmaciaElPorvenir/Properties/licenses.licx
 FarmaciaElPorvenir/Properties/licenses.licx.bak
+*.licx
