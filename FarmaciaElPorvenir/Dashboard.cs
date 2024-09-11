@@ -1,11 +1,15 @@
-﻿using DevExpress.XtraBars;
+﻿using DevExpress.Xpo;
+using DevExpress.XtraBars;
 using DevExpress.XtraBars.Forms;
+using FarmaciaElPorvenir.el_porvenirdb;
 using FarmaciaElPorvenir.Reportes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +19,10 @@ namespace FarmaciaElPorvenir
 {
     public partial class Dashboard : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public Dashboard()
+        Usuario us;
+        public Dashboard(Usuario us)
         {
+            us = new Usuario(unitOfWork1);
             InitializeComponent();
         }
 
@@ -376,5 +382,116 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Error al abrir el formulario: " + ex.Message);
             }
         }
+
+        private void barButtonItemRespaldo_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "SQL Files (*.sql)|*.sql";
+                saveFileDialog.Title = "Save Backup File";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string backupFilePath = saveFileDialog.FileName;
+                    BackupDatabase("localhost", "root", "root123", "el_porvenirdb", backupFilePath);
+                }
+            }
+        }
+
+        private void barButtonItemRestaurar_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "SQL Files (*.sql)|*.sql";
+                openFileDialog.Title = "Open Backup File";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string backupFilePath = openFileDialog.FileName;
+                    RestoreDatabase("localhost", "root", "root123", "el_porvenirdb", backupFilePath);
+                }
+            }
+        }
+
+        private void BackupDatabase(string server, string user, string password, string database, string backupFilePath)
+        {
+            string mysqldumpPath = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe";
+            string arguments = $"-h{server} -u{user} -p{password} {database}";
+
+            ExecuteProcess(mysqldumpPath, arguments, backupFilePath);
+        }
+
+        private void RestoreDatabase(string server, string user, string password, string database, string backupFilePath)
+        {
+            string mysqlPath = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe";
+            string arguments = $"-h{server} -u{user} -p{password} {database}";
+
+            ExecuteProcess(mysqlPath, arguments, backupFilePath, isRestore: true);
+        }
+
+        private void ExecuteProcess(string fileName, string arguments, string outputFilePath = null, bool isRestore = false)
+        {
+            ProcessStartInfo processInfo = new ProcessStartInfo
+            {
+                FileName = fileName,
+                Arguments = arguments,
+                RedirectStandardError = true,
+                RedirectStandardOutput = !isRestore,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            if (!isRestore && outputFilePath != null) // Handle output file for backup
+            {
+                using (Process process = new Process())
+                {
+                    process.StartInfo = processInfo;
+                    process.Start();
+
+                    using (var fileStream = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write))
+                    using (var streamWriter = new StreamWriter(fileStream))
+                    {
+                        process.StandardOutput.BaseStream.CopyTo(streamWriter.BaseStream);
+                    }
+
+                    process.WaitForExit();
+                    if (process.ExitCode == 0)
+                    {
+                        MessageBox.Show("Respaldo Completo.");
+                    }
+                    else
+                    {
+                        string error = process.StandardError.ReadToEnd();
+                        MessageBox.Show($"Error: {error}");
+                    }
+                }
+            }
+            else // Handle input file for restore
+            {
+                processInfo.Arguments = $"{arguments} < \"{outputFilePath}\"";
+
+                try
+                {
+                    using (Process process = Process.Start(processInfo))
+                    {
+                        process.WaitForExit();
+                        if (process.ExitCode == 0)
+                        {
+                            MessageBox.Show("Restauracion completa.");
+                        }
+                        else
+                        {
+                            string error = process.StandardError.ReadToEnd();
+                            MessageBox.Show($"Error: {error}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error during operation: {ex.Message}");
+                }
+            }
+        }
+
     }
 }

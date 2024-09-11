@@ -156,8 +156,6 @@
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
             // 
             // gridColumn1
             // 
@@ -166,24 +164,25 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.Caption = "Empleado";
             this.gridColumn2.FieldName = "Id_Empleado.Nombre_Completo";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 0;
             // 
             // colFecha
             // 
             this.colFecha.FieldName = "Fecha";
             this.colFecha.Name = "colFecha";
             this.colFecha.Visible = true;
-            this.colFecha.VisibleIndex = 2;
+            this.colFecha.VisibleIndex = 1;
             // 
             // colNo_Factura
             // 
             this.colNo_Factura.FieldName = "No_Factura";
             this.colNo_Factura.Name = "colNo_Factura";
             this.colNo_Factura.Visible = true;
-            this.colNo_Factura.VisibleIndex = 3;
+            this.colNo_Factura.VisibleIndex = 2;
             // 
             // gridColumn4
             // 
@@ -196,49 +195,45 @@
             this.gcProducto.FieldName = "Id_Inventario.Id_Medicamento.Nombre";
             this.gcProducto.Name = "gcProducto";
             this.gcProducto.Visible = true;
-            this.gcProducto.VisibleIndex = 4;
+            this.gcProducto.VisibleIndex = 3;
             // 
             // colCantidad
             // 
             this.colCantidad.FieldName = "Cantidad";
             this.colCantidad.Name = "colCantidad";
             this.colCantidad.Visible = true;
-            this.colCantidad.VisibleIndex = 5;
+            this.colCantidad.VisibleIndex = 4;
             // 
             // colPrecio
             // 
             this.colPrecio.FieldName = "Precio";
             this.colPrecio.Name = "colPrecio";
             this.colPrecio.Visible = true;
-            this.colPrecio.VisibleIndex = 6;
+            this.colPrecio.VisibleIndex = 5;
             // 
             // colIVA
             // 
             this.colIVA.FieldName = "IVA";
             this.colIVA.Name = "colIVA";
             this.colIVA.Visible = true;
-            this.colIVA.VisibleIndex = 7;
+            this.colIVA.VisibleIndex = 6;
             // 
             // colTotal
             // 
             this.colTotal.FieldName = "Total";
             this.colTotal.Name = "colTotal";
             this.colTotal.Visible = true;
-            this.colTotal.VisibleIndex = 8;
+            this.colTotal.VisibleIndex = 7;
             // 
             // gridColumn7
             // 
             this.gridColumn7.FieldName = "Id_Empleado.Nombre_Completo";
             this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 9;
             // 
             // gridColumn8
             // 
             this.gridColumn8.FieldName = "Id_Inventario.Id_Medicamento.Nombre";
             this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 10;
             // 
             // btnNuevo
             // 
@@ -424,11 +419,8 @@
             // 
             // txtIVA
             // 
-            this.txtIVA.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
+            this.txtIVA.EditValue = "15";
+            this.txtIVA.Enabled = false;
             this.txtIVA.Location = new System.Drawing.Point(81, 132);
             this.txtIVA.Name = "txtIVA";
             this.txtIVA.Size = new System.Drawing.Size(707, 20);
@@ -461,13 +453,22 @@
             // 
             // deFechaVenta
             // 
-            this.deFechaVenta.EditValue = null;
+            this.deFechaVenta.EditValue = new System.DateTime(2024, 9, 11, 13, 16, 44, 0);
+            this.deFechaVenta.Enabled = false;
             this.deFechaVenta.Location = new System.Drawing.Point(81, 12);
             this.deFechaVenta.Name = "deFechaVenta";
             this.deFechaVenta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deFechaVenta.Properties.CalendarDateEditing = false;
             this.deFechaVenta.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deFechaVenta.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.deFechaVenta.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.deFechaVenta.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+            this.deFechaVenta.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.deFechaVenta.Properties.MaskSettings.Set("mask", "d");
+            this.deFechaVenta.Properties.MaxValue = new System.DateTime(4000, 9, 30, 0, 0, 0, 0);
+            this.deFechaVenta.Properties.TodayDate = new System.DateTime(2024, 9, 11, 0, 0, 0, 0);
             this.deFechaVenta.Size = new System.Drawing.Size(707, 20);
             this.deFechaVenta.StyleController = this.layoutControl1;
             this.deFechaVenta.TabIndex = 28;

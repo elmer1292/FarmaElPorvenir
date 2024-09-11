@@ -128,6 +128,9 @@
             this.searchLookUpEditMedicamento.EditValue = "Seleccione un Medicamento";
             this.searchLookUpEditMedicamento.Location = new System.Drawing.Point(156, 309);
             this.searchLookUpEditMedicamento.Name = "searchLookUpEditMedicamento";
+            // 
+            // 
+            // 
             this.searchLookUpEditMedicamento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpEditMedicamento.Properties.DataSource = this.xpCollection2;
@@ -164,11 +167,11 @@
             this.txtPrecioVenta.Location = new System.Drawing.Point(156, 391);
             this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
+            // 
+            // 
+            // 
             this.txtPrecioVenta.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtPrecioVenta.Properties.Appearance.Options.UseFont = true;
-            this.txtPrecioVenta.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txtPrecioVenta.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txtPrecioVenta.Properties.MaskSettings.Set("mask", "");
             this.txtPrecioVenta.Properties.UseMaskAsDisplayFormat = true;
             this.txtPrecioVenta.Size = new System.Drawing.Size(1016, 30);
             this.txtPrecioVenta.StyleController = this.layoutControl1;
@@ -262,6 +265,9 @@
             this.repositoryItemDateEdit1.AutoHeight = false;
             this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            // 
+            // 
+            // 
             this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
@@ -322,32 +328,36 @@
             this.txtPrecioCompra.Location = new System.Drawing.Point(156, 357);
             this.txtPrecioCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
+            // 
+            // 
+            // 
             this.txtPrecioCompra.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtPrecioCompra.Properties.Appearance.Options.UseFont = true;
-            this.txtPrecioCompra.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txtPrecioCompra.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txtPrecioCompra.Properties.MaskSettings.Set("mask", "");
             this.txtPrecioCompra.Size = new System.Drawing.Size(1016, 30);
             this.txtPrecioCompra.StyleController = this.layoutControl1;
             this.txtPrecioCompra.TabIndex = 2;
             // 
             // txtVencimiento
             // 
-            this.txtVencimiento.EditValue = null;
             this.txtVencimiento.Location = new System.Drawing.Point(156, 425);
             this.txtVencimiento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtVencimiento.Name = "txtVencimiento";
+            // 
+            // 
+            // 
             this.txtVencimiento.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtVencimiento.Properties.Appearance.Options.UseFont = true;
             this.txtVencimiento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            // 
+            // 
+            // 
             this.txtVencimiento.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtVencimiento.Properties.DisplayFormat.FormatString = "";
             this.txtVencimiento.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtVencimiento.Properties.EditFormat.FormatString = "";
             this.txtVencimiento.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtVencimiento.Properties.MaskSettings.Set("mask", "d");
             this.txtVencimiento.Size = new System.Drawing.Size(1016, 30);
             this.txtVencimiento.StyleController = this.layoutControl1;
             this.txtVencimiento.TabIndex = 2;
@@ -356,9 +366,6 @@
             // 
             this.txtStock.Location = new System.Drawing.Point(156, 333);
             this.txtStock.Name = "txtStock";
-            this.txtStock.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txtStock.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txtStock.Properties.MaskSettings.Set("mask", "");
             this.txtStock.Size = new System.Drawing.Size(1016, 20);
             this.txtStock.StyleController = this.layoutControl1;
             this.txtStock.TabIndex = 12;
@@ -517,6 +524,7 @@
             this.ClientSize = new System.Drawing.Size(1184, 582);
             this.Controls.Add(this.layoutControl1);
             this.Name = "FInventario";
+            this.Text = "Inventario";
             this.Load += new System.EventHandler(this.Inventario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

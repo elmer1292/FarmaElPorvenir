@@ -1,4 +1,5 @@
 ﻿using DevExpress.Xpo;
+using DevExpress.XtraEditors;
 using FarmaciaElPorvenir.el_porvenirdb;
 using System;
 using System.Collections.Generic;
@@ -163,7 +164,36 @@ namespace FarmaciaElPorvenir
 
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            ActualizarEstadoBotones(true, false, true, true, false);
+            if (e.RowHandle > 0)
+            {
+                object medicamentoId = gridView1.GetRowCellValue(e.RowHandle, "Id_Medicamento!Key");
+                object labid = gridView1.GetRowCellValue(e.RowHandle, "Id_Proveedor!Key");
+
+                if (medicamentoId != null)
+                {
+                    cmbProducto.EditValue = medicamentoId;
+                }
+                else
+                {
+                    // Opcional: Manejar el caso donde el ítem no se encuentra o es nulo.
+                    MessageBox.Show("El medicamento no está en la lista.");
+                }
+                if (labid != null)
+                {
+                    cmbProveedor.EditValue = labid;
+                }
+                else
+                {
+                    // Opcional: Manejar el caso donde el ítem no se encuentra o es nulo.
+                    MessageBox.Show("El Laboratorio no está en la lista.");
+                }
+                txtCantidad.Text = gridView1.GetRowCellValue(e.RowHandle,"Cantidad").ToString();
+                txtNoFac.Text = gridView1.GetRowCellValue(e.RowHandle, "No_Factura").ToString();
+                txtPrecio.Text = gridView1.GetRowCellValue(e.RowHandle, "Precio_Compra").ToString();
+                txtTotal.Text = gridView1.GetRowCellValue(e.RowHandle, "Total").ToString();
+                deFecha.Text = gridView1.GetRowCellValue(e.RowHandle,"Fecha").ToString();
+                ActualizarEstadoBotones(true, false, true, true, false);
+            }
         }
     }
 }

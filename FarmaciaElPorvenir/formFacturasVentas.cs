@@ -1,5 +1,6 @@
 ﻿using DevExpress.Office.Utils;
 using DevExpress.Xpo;
+using DevExpress.XtraLayout.Filtering.Templates;
 using FarmaciaElPorvenir.el_porvenirdb;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,13 @@ namespace FarmaciaElPorvenir
 {
     public partial class formFacturasVentas :Form
     {
+        private const decimal IVA_PERCENTAGE = 0.15m; // IVA del 15%
+
         public formFacturasVentas()
         {
             InitializeComponent();
+            txtCantidad.TextChanged += new EventHandler(CalcularTotal);
+            txtPrecio.TextChanged += new EventHandler(CalcularTotal);
         }
         private void ActualizarEstadoBotones(bool nuevo, bool guardar, bool eliminar, bool cancelar, bool camposHabilitados)
         {
@@ -30,10 +35,9 @@ namespace FarmaciaElPorvenir
             // Habilitar o deshabilitar los campos
             txtCantidad.Enabled = camposHabilitados;
             txtPrecio.Enabled = camposHabilitados;
-            deFechaVenta.Enabled = camposHabilitados;
+            //deFechaVenta.Enabled = camposHabilitados;
             cmbProducto.Enabled = camposHabilitados;
             txtTotal.Enabled = camposHabilitados;
-            txtIVA.Enabled = camposHabilitados;
             txtNoFac.Enabled = camposHabilitados;
         }
 
@@ -41,8 +45,8 @@ namespace FarmaciaElPorvenir
         {
             txtCantidad.Clear();
             txtPrecio.Clear();
-            txtIVA.Clear();
-            deFechaVenta.Clear();
+            //txtIVA.Clear();
+            //deFechaVenta.Clear();
             cmbProducto.Clear();
             txtTotal.Clear();
             txtCantidad.Clear();
@@ -59,6 +63,7 @@ namespace FarmaciaElPorvenir
         private void formFacturasVentas_Load(object sender, EventArgs e)
         {
             ActualizarEstadoBotones(true, false, false, false,  false);
+            deFechaVenta.EditValue = DateTime.Now;
         }
 
 
@@ -83,7 +88,7 @@ namespace FarmaciaElPorvenir
             {
                 // Crear o buscar la factura en la base de datos
                 Factura_venta c = new Factura_venta(unitOfWork1);
-                Empleado empleado = unitOfWork1.GetObjectByKey<Empleado>(2);
+                Empleado empleado = unitOfWork1.GetObjectByKey<Empleado>(3);
 
                 // Asignar los valores a las propiedades del objeto Factura_venta
                 c.Id_Empleado = empleado;
@@ -114,7 +119,7 @@ namespace FarmaciaElPorvenir
                 // Calcular el total
                 decimal ivaDecimal = decimal.Parse(txtIVA.Text);
                 decimal subtotalDecimal = (decimal)subtotal; // Convertir subtotal a decimal para precisión
-                decimal total = (subtotalDecimal * ivaDecimal) + subtotalDecimal;
+                decimal total = (subtotalDecimal * (ivaDecimal/100)) + subtotalDecimal;
 
                 // Asignar los valores calculados
                 txtTotal.Text = total.ToString("F2"); // Formatear como decimal con 2 decimales
@@ -179,6 +184,34 @@ namespace FarmaciaElPorvenir
         {
             ActualizarEstadoBotones(true, false, true, true, false);
 
+        }
+
+        private void CalcularTotal(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtén los valores de los TextBox
+                decimal cantidad = string.IsNullOrWhiteSpace(txtCantidad.Text) ? 0 : decimal.Parse(txtCantidad.Text);
+                decimal precio = string.IsNullOrWhiteSpace(txtPrecio.Text) ? 0 : decimal.Parse(txtPrecio.Text);
+
+                // Calcula el subtotal
+                decimal subtotal = cantidad * precio;
+
+                // Calcula el IVA
+                decimal iva = subtotal * IVA_PERCENTAGE;   
+
+                // Calcula el total
+                decimal total = subtotal + iva;
+
+                // Muestra el total en el TextBox de total
+                txtTotal.Text = total.ToString("F2"); // Muestra el total con 2 decimales
+            }
+            catch (Exception ex)
+            {
+                // Muestra un mensaje de error o maneja la excepción si ocurre
+                MessageBox.Show($"Error al calcular el total: {ex.Message}");
+                txtTotal.Text = "0.00";
+            }
         }
     }
 }

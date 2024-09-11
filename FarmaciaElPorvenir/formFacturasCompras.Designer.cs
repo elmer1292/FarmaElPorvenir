@@ -84,12 +84,14 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCantidad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrecio_Compra1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProducto.Properties)).BeginInit();
@@ -581,12 +583,13 @@
             this.gridColumn4,
             this.gridColumn6,
             this.gridColumn7,
-            this.gridColumn8,
+            this.gridColumn9,
             this.colCantidad,
             this.colPrecio_Compra1,
             this.colTotal,
-            this.gridColumn9,
-            this.gridColumn10});
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn12});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -597,8 +600,6 @@
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
             // 
             // gridColumn1
             // 
@@ -611,14 +612,14 @@
             this.gridColumn2.FieldName = "Id_Empleado.Nombre_Completo";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 0;
             // 
             // colFecha
             // 
             this.colFecha.FieldName = "Fecha";
             this.colFecha.Name = "colFecha";
             this.colFecha.Visible = true;
-            this.colFecha.VisibleIndex = 2;
+            this.colFecha.VisibleIndex = 1;
             // 
             // colNo_Factura
             // 
@@ -634,16 +635,60 @@
             // 
             // gridColumn6
             // 
-            this.gridColumn6.Caption = "Laboratorio";
+            this.gridColumn6.Caption = "Proveedor";
             this.gridColumn6.FieldName = "Id_Proveedor.Nombre";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 2;
             // 
             // gridColumn7
             // 
             this.gridColumn7.FieldName = "Id_Medicamento!";
             this.gridColumn7.Name = "gridColumn7";
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Medicamento";
+            this.gridColumn9.FieldName = "Id_Medicamento.Nombre";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 4;
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.FieldName = "Cantidad";
+            this.colCantidad.Name = "colCantidad";
+            this.colCantidad.Visible = true;
+            this.colCantidad.VisibleIndex = 5;
+            // 
+            // colPrecio_Compra1
+            // 
+            this.colPrecio_Compra1.FieldName = "Precio_Compra";
+            this.colPrecio_Compra1.Name = "colPrecio_Compra1";
+            this.colPrecio_Compra1.Visible = true;
+            this.colPrecio_Compra1.VisibleIndex = 6;
+            // 
+            // colTotal
+            // 
+            this.colTotal.FieldName = "Total";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.Visible = true;
+            this.colTotal.VisibleIndex = 7;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.FieldName = "Id_Empleado.Nombre_Completo";
+            this.gridColumn10.Name = "gridColumn10";
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.FieldName = "Id_Proveedor.Nombre";
+            this.gridColumn11.Name = "gridColumn11";
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.FieldName = "Id_Inventario.Id_Medicamento.Nombre";
+            this.gridColumn12.Name = "gridColumn12";
             // 
             // gridColumn8
             // 
@@ -652,37 +697,6 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 5;
-            // 
-            // colCantidad
-            // 
-            this.colCantidad.FieldName = "Cantidad";
-            this.colCantidad.Name = "colCantidad";
-            this.colCantidad.Visible = true;
-            this.colCantidad.VisibleIndex = 6;
-            // 
-            // colPrecio_Compra1
-            // 
-            this.colPrecio_Compra1.FieldName = "Precio_Compra";
-            this.colPrecio_Compra1.Name = "colPrecio_Compra1";
-            this.colPrecio_Compra1.Visible = true;
-            this.colPrecio_Compra1.VisibleIndex = 7;
-            // 
-            // colTotal
-            // 
-            this.colTotal.FieldName = "Total";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.Visible = true;
-            this.colTotal.VisibleIndex = 8;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.FieldName = "Id_Empleado.Nombre_Completo";
-            this.gridColumn9.Name = "gridColumn9";
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.FieldName = "Id_Inventario.Id_Medicamento.Nombre";
-            this.gridColumn10.Name = "gridColumn10";
             // 
             // formFacturasCompras
             // 
@@ -778,6 +792,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTelefono;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
@@ -786,11 +801,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn colCantidad;
         private DevExpress.XtraGrid.Columns.GridColumn colPrecio_Compra1;
         private DevExpress.XtraGrid.Columns.GridColumn colTotal;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
     }
 }
