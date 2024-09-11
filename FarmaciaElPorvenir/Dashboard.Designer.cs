@@ -52,8 +52,6 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageEmpleado = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupEmpleados = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageProveedor = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageInventario = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -72,6 +70,10 @@
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnAgregarProducto = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnProveedor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -103,15 +105,16 @@
             this.barButtonItemVentas,
             this.barButtonItemCompras,
             this.btnAgregarUsuario,
-            this.btnAgregarR});
+            this.btnAgregarR,
+            this.btnAgregarProducto,
+            this.btnProveedor});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 24;
+            this.ribbon.MaxItemId = 26;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageHome,
             this.ribbonPageGroupCliente,
             this.ribbonPageEmpleado,
-            this.ribbonPageProveedor,
             this.ribbonPageInventario,
             this.ribbonPage1,
             this.ribbonPage3});
@@ -176,7 +179,6 @@
             this.btnAgregarProveedor.Id = 16;
             this.btnAgregarProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarProveedor.ImageOptions.LargeImage")));
             this.btnAgregarProveedor.Name = "btnAgregarProveedor";
-            this.btnAgregarProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgregarProveedor_ItemClick);
             // 
             // btnListarProveedor
             // 
@@ -264,24 +266,13 @@
             this.ribbonPageGroupEmpleados.ItemLinks.Add(this.btnListarEmpleado);
             this.ribbonPageGroupEmpleados.Name = "ribbonPageGroupEmpleados";
             // 
-            // ribbonPageProveedor
-            // 
-            this.ribbonPageProveedor.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup6});
-            this.ribbonPageProveedor.Name = "ribbonPageProveedor";
-            this.ribbonPageProveedor.Text = "Proveedor";
-            // 
-            // ribbonPageGroup6
-            // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnAgregarProveedor);
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnListarProveedor);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            // 
             // ribbonPageInventario
             // 
             this.ribbonPageInventario.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup8,
-            this.ribbonPageGroup9});
+            this.ribbonPageGroup9,
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3});
             this.ribbonPageInventario.Name = "ribbonPageInventario";
             this.ribbonPageInventario.Text = "Inventario";
             // 
@@ -381,6 +372,32 @@
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
             this.barButtonItem3.Name = "barButtonItem3";
             // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnAgregarProducto);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            // 
+            // btnAgregarProducto
+            // 
+            this.btnAgregarProducto.Caption = "Agregar Producto";
+            this.btnAgregarProducto.Id = 24;
+            this.btnAgregarProducto.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
+            this.btnAgregarProducto.Name = "btnAgregarProducto";
+            this.btnAgregarProducto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgregarProducto_ItemClick);
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnProveedor);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            // 
+            // btnProveedor
+            // 
+            this.btnProveedor.Caption = "Proveedor";
+            this.btnProveedor.Id = 25;
+            this.btnProveedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage1")));
+            this.btnProveedor.Name = "btnProveedor";
+            this.btnProveedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgregarProveedor_ItemClick);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,8 +443,6 @@
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private DevExpress.XtraBars.BarButtonItem barButtonCategoria;
         private DevExpress.XtraBars.BarButtonItem barButtonItemListarCategorias;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageProveedor;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem btnAgregarProveedor;
         private DevExpress.XtraBars.BarButtonItem btnListarProveedor;
         private DevExpress.XtraBars.BarButtonItem barButtonItemInventario;
@@ -448,5 +463,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem btnAgregarProducto;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem btnProveedor;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }

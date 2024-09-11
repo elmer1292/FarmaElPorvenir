@@ -128,9 +128,9 @@ namespace FarmaciaElPorvenir
                 ActualizarEstadoBotones(true, false, false, false, false, false);
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                MessageBox.Show("Error " + ex, "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error registro duplicado" , "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
