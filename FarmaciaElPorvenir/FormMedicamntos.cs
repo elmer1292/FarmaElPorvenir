@@ -72,25 +72,25 @@ namespace FarmaciaElPorvenir
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Medicamento m = (Medicamento)gridView1.GetFocusedRow();
-            if (m != null)
-            {
-                DialogResult r = MessageBox.Show("¿Desea Eliminar Registro?", "Información del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //Medicamento m = (Medicamento)gridView1.GetFocusedRow();
+            //if (m != null)
+            //{
+            //    DialogResult r = MessageBox.Show("¿Desea Eliminar Registro?", "Información del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (r == DialogResult.Yes)
-                {
-                    unitOfWork1.Delete(m);
-                    unitOfWork1.CommitChanges();
-                    xpMedicamento.Reload();
-                    Limpiar();
-                    ActualizarEstadoBotones(true, false, false, false, false, false);
+            //    if (r == DialogResult.Yes)
+            //    {
+            //        unitOfWork1.Delete(m);
+            //        unitOfWork1.CommitChanges();
+            //        xpMedicamento.Reload();
+            //        Limpiar();
+            //        ActualizarEstadoBotones(true, false, false, false, false, false);
 
-                }
-            }
-            else
-            {
-                MessageBox.Show("Seleccionar un Registro", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Seleccionar un Registro", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -104,17 +104,17 @@ namespace FarmaciaElPorvenir
             }
             try
             {
-                // Crear o buscar el rol en la base de datos
-                Medicamento m = new Medicamento(unitOfWork1);
+                //// Crear o buscar el rol en la base de datos
+                //Medicamento m = new Medicamento(unitOfWork1);
 
 
                 // Asignar los valores a las propiedades del rol
-                m.Nombre = txtNombre.Text;
-                m.Precio = float.Parse(txtPrecio.Text);
-                m.Id_Laboratorio =(Laboratorio)searchLookUpEditLab.GetFocusedRow();
-                m.Id_Categoria =(Categoria)searchLookUpEditCat.GetFocusedRow();
-                // Guardar los cambios
-                m.Save();
+                //m.Nombre = txtNombre.Text;
+                //m.Precio = float.Parse(txtPrecio.Text);
+                //m.Id_Laboratorio =(Laboratorio)searchLookUpEditLab.GetFocusedRow();
+                //m.Id_Categoria =(Categoria)searchLookUpEditCat.GetFocusedRow();
+                //// Guardar los cambios
+                //m.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -163,21 +163,21 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Medicamento m = unitOfWork1.GetObjectByKey<Medicamento>(id);
-                if (m == null)
-                {
-                    MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                ////Medicamento m = unitOfWork1.GetObjectByKey<Medicamento>(id);
+                //if (m == null)
+                //{
+                //    MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
 
-                // Asignar los valores a las propiedades del rol
-                m.Nombre = txtNombre.Text;
-                m.Precio = float.Parse(txtPrecio.Text);
-                m.Id_Laboratorio = (Laboratorio)searchLookUpEditLab.GetFocusedRow();
-                m.Id_Categoria = (Categoria)searchLookUpEditCat.GetFocusedRow();
+                //// Asignar los valores a las propiedades del rol
+                //m.Nombre = txtNombre.Text;
+                //m.Precio = float.Parse(txtPrecio.Text);
+                //m.Id_Laboratorio = (Laboratorio)searchLookUpEditLab.GetFocusedRow();
+                //m.Id_Categoria = (Categoria)searchLookUpEditCat.GetFocusedRow();
 
-                // Guardar los cambios
-                m.Save();
+                //// Guardar los cambios
+                //m.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario

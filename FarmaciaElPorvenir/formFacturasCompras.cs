@@ -89,47 +89,47 @@ namespace FarmaciaElPorvenir
                 c.No_Factura = txtNoFac.Text;
 
                 // Asignar el objeto Inventario a la propiedad en
-                Proveedor la = unitOfWork1.GetObjectByKey<Proveedor>(cmbProveedor.EditValue);
-                c.Id_Proveedor = la;
+                //Proveedor la = unitOfWork1.GetObjectByKey<Proveedor>(cmbProveedor.EditValue);
+                //c.Id_Proveedor = la;
 
                 // Verificar si el inventario es nulo
-                if (la == null)
-                {
-                    MessageBox.Show("Inventario no encontrado para el producto seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                Inventario a = unitOfWork1.GetObjectByKey<Inventario>(cmbProducto.EditValue);
-                c.Id_Medicamento = a.Id_Medicamento;
+                //if (la == null)
+                //{
+                //    MessageBox.Show("Inventario no encontrado para el producto seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
+                //Inventario a = unitOfWork1.GetObjectByKey<Inventario>(cmbProducto.EditValue);
+                //c.Id_Medicamento = a.Id_Medicamento;
 
                 // Obtener y asignar los valores de cantidad, precio e IVA
-                int cantidad = int.Parse(txtCantidad.Text);
-                c.Cantidad = cantidad;
-                c.Precio_Compra = float.Parse(txtPrecio.Text);
+                //int cantidad = int.Parse(txtCantidad.Text);
+                //c.Cantidad = cantidad;
+                //c.Precio_Compra = float.Parse(txtPrecio.Text);
 
-                float precio = float.Parse(txtPrecio.Text);
-                float total = cantidad * precio;
+                //float precio = float.Parse(txtPrecio.Text);
+                //float total = cantidad * precio;
 
-                // Asignar los valores calculados
-                txtTotal.Text = total.ToString(); // Formatear como decimal con 2 decimales
-                c.Total = (float)total; // Convertir el total a float
+                //// Asignar los valores calculados
+                //txtTotal.Text = total.ToString(); // Formatear como decimal con 2 decimales
+                //c.Total = (float)total; // Convertir el total a float
 
-                // Restar la cantidad del inventario
-                Inventario inventario = unitOfWork1.GetObjectByKey<Inventario>(cmbProducto.EditValue); inventario.Stock += cantidad;
+                //// Restar la cantidad del inventario
+                //Inventario inventario = unitOfWork1.GetObjectByKey<Inventario>(cmbProducto.EditValue); inventario.Stock += cantidad;
 
-                // Guardar los cambios en el inventario
-                unitOfWork1.Save(inventario);
+                //// Guardar los cambios en el inventario
+                //unitOfWork1.Save(inventario);
 
-                // Guardar la factura
-                c.Save();
-                unitOfWork1.CommitChanges();
+                //// Guardar la factura
+                //c.Save();
+                //unitOfWork1.CommitChanges();
 
-                // Limpiar los controles del formulario
-                Limpiar();
+                //// Limpiar los controles del formulario
+                //Limpiar();
 
-                // Mostrar un mensaje de éxito
-                MessageBox.Show("Guardado Exitoso", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //// Mostrar un mensaje de éxito
+                //MessageBox.Show("Guardado Exitoso", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Recargar la colección de facturas para reflejar los cambios
+                //// Recargar la colección de facturas para reflejar los cambios
                 xpCollectionCompras.Reload();
                 ActualizarEstadoBotones(true, false, false, false, false);
             }

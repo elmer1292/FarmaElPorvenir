@@ -101,7 +101,7 @@
             // 
             // xpCollectionCliente
             // 
-            this.xpCollectionCliente.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Cliente);
+            this.xpCollectionCliente.ObjectType = typeof(FarmaciaElPorvenir.Database.Cliente);
             this.xpCollectionCliente.Session = this.unitOfWorkCliente;
             // 
             // layoutControl1
