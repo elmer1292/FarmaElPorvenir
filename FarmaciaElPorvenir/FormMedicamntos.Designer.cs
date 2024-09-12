@@ -144,7 +144,7 @@
             // 
             // xpLab
             // 
-            this.xpLab.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Laboratorio);
+            this.xpLab.ObjectType = typeof(FarmaciaElPorvenir.Database.Laboratorio);
             this.xpLab.Session = this.unitOfWork1;
             // 
             // searchLookUpEditLab
@@ -195,7 +195,7 @@
             // 
             // xpCat
             // 
-            this.xpCat.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Categoria);
+            this.xpCat.ObjectType = typeof(FarmaciaElPorvenir.Database.Categoria);
             this.xpCat.Session = this.unitOfWork1;
             // 
             // searchLookUpEditCat
@@ -235,7 +235,7 @@
             // 
             // xpMedicamento
             // 
-            this.xpMedicamento.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Medicamento);
+            this.xpMedicamento.ObjectType = typeof(FarmaciaElPorvenir.Database.Producto);
             this.xpMedicamento.Session = this.unitOfWork1;
             // 
             // gridView1

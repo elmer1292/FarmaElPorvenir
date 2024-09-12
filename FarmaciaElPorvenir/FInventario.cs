@@ -1,6 +1,6 @@
 ﻿using DevExpress.Office.Utils;
 using DevExpress.XtraGrid.Accessibility;
-using FarmaciaElPorvenir.el_porvenirdb;
+using FarmaciaElPorvenir.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,10 +19,11 @@ namespace FarmaciaElPorvenir
         {
             InitializeComponent();
         }
-        private void ActualizarEstadoBotones(bool nuevo, bool guardar, bool eliminar, bool cancelar, bool camposHabilitados)
+        private void ActualizarEstadoBotones(bool nuevo, bool guardar, bool eliminar,bool actualizar, bool cancelar, bool camposHabilitados)
         {
             btnNuevo.Enabled = nuevo;
             btnGuardar.Enabled = guardar;
+            btnActualizar.Enabled = actualizar;
             btnEliminar.Enabled = eliminar;
             btnCancelar.Enabled = cancelar;
 
@@ -32,20 +33,19 @@ namespace FarmaciaElPorvenir
             txtPrecioCompra.Enabled = camposHabilitados;
             txtPrecioVenta.Enabled = camposHabilitados;
             txtVencimiento.Enabled = camposHabilitados;
+           
+            txtDescuento.Enabled = camposHabilitados;
+            cmbCategorias.Enabled = camposHabilitados;
+            cmbProveedor.Enabled = camposHabilitados;
         }
 
-        private void CargarMedicamentos()
-        {
-            Medicamento m = new Medicamento(unitOfWork1);
-
-            if (m != null)
-            {
-                List<Medicamento> med = new List<Medicamento>();
-                med.Append(m);
-            }
-        }
+       
         private void Limpiar()
         {
+            
+            txtDescuento.Clear();
+            cmbCategorias.Clear();
+            cmbProveedor.Clear();  
             searchLookUpEditMedicamento.Clear();
             txtStock.Clear();
             txtPrecioCompra.Clear();
@@ -56,14 +56,14 @@ namespace FarmaciaElPorvenir
         private void btnNuevo_Click(object sender, EventArgs e)
         {
 
-            ActualizarEstadoBotones(false, true, true, true, true);
+            ActualizarEstadoBotones(false, true, false, false, true,true);
             Limpiar();
         }
 
         private void Inventario_Load(object sender, EventArgs e)
         {
-            ActualizarEstadoBotones(true, false, false, false, false);
-            CargarMedicamentos();
+            ActualizarEstadoBotones(true, false, false, false, false, false);
+            
         }
 
         private void gridViewRoles_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -78,7 +78,7 @@ namespace FarmaciaElPorvenir
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            FInventario c = (FInventario)gridView1.GetFocusedRow();
+            Producto c = (Producto)gridViewProducto.GetFocusedRow();
             if (c != null)
             {
                 DialogResult r = MessageBox.Show("¿Desea Eliminar Registro?", "Información del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -89,7 +89,7 @@ namespace FarmaciaElPorvenir
                     unitOfWork1.CommitChanges();
                     xpCollection1.Reload();
                     Limpiar();
-                    ActualizarEstadoBotones(true, false, false, false, false);
+                    ActualizarEstadoBotones(true, false, false, false, false, false);
 
                 }
             }
@@ -102,24 +102,30 @@ namespace FarmaciaElPorvenir
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Verificar si los campos obligatorios están vacíos
-            if (string.IsNullOrEmpty(txtPrecioCompra.Text)|| string.IsNullOrEmpty(txtPrecioVenta.Text)||string.IsNullOrEmpty(txtStock.Text)||string.IsNullOrEmpty(searchLookUpEditMedicamento.Text))
+            if (string.IsNullOrEmpty(txtPrecioCompra.Text)|| 
+                string.IsNullOrEmpty(txtPrecioVenta.Text)||
+                string.IsNullOrEmpty(txtStock.Text)||
+                string.IsNullOrEmpty(searchLookUpEditMedicamento.Text)||
+                string.IsNullOrEmpty(txtDescuento.Text)||
+                string.IsNullOrEmpty(cmbCategorias.Text)||
+                string.IsNullOrEmpty(cmbProveedor.Text))
             {
                 MessageBox.Show("Campos Requeridos", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             try
-            {
-        
-                // Crear o buscar el rol en la base de datos
-                Inventario c = new Inventario(unitOfWork1);
+            {        
+                Producto c = new Producto(unitOfWork1);
 
                 // Asignar los valores a las propiedades del rol
-                c.Fecha_Vencimiento =txtVencimiento.DateTime;
+                c.Vencimiento =txtVencimiento.DateTime;
                 c.Precio_Compra = float.Parse(txtPrecioCompra.Text);
                 c.Precio_Venta = float.Parse(txtPrecioVenta.Text);
                 c.Stock = int.Parse(txtStock.Text);
-                c.Id_Medicamento = (Medicamento)searchLookUpEditViewMedicamento.GetFocusedRow();
-
+                c.Medicamento = searchLookUpEditMedicamento.Text;
+                c.Descuento = float.Parse(txtDescuento.Text);
+                c.Id_Categoria = (Categoria)gridViewCategoria.GetFocusedRow();
+                c.Id_Proveedor = (Proveedor)searchLookUpEdit1ViewProveedor.GetFocusedRow();
                 // Guardar los cambios
                 c.Save();
                 unitOfWork1.CommitChanges();
@@ -132,7 +138,7 @@ namespace FarmaciaElPorvenir
 
                 // Recargar la colección de roles para reflejar los cambios
                 xpCollection1.Reload();
-                ActualizarEstadoBotones(true, false, false, false,  false);
+                ActualizarEstadoBotones(true, false, false, false,  false,false);
 
             }
             catch (Exception ex)
@@ -140,6 +146,93 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Error " + ex, "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void gridViewProducto_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+            {
+                searchLookUpEditMedicamento.Text = gridViewProducto.GetRowCellValue(e.RowHandle,"Medicamento").ToString();
+                txtDescuento.Text=gridViewProducto.GetRowCellValue(e.RowHandle,"Descuento").ToString();
+                txtStock.Text= gridViewProducto.GetRowCellValue(e.RowHandle, "Stock").ToString();
+                txtPrecioCompra.Text = gridViewProducto.GetRowCellValue(e.RowHandle, "Precio_Compra").ToString();
+                txtPrecioVenta.Text = gridViewProducto.GetRowCellValue(e.RowHandle, "Precio_Venta").ToString();
+                txtVencimiento.Text = gridViewProducto.GetRowCellValue(e.RowHandle, "Vencimiento").ToString();
+                cmbCategorias.EditValue = gridViewProducto.GetRowCellValue(e.RowHandle, "Id_Categoria!Key").ToString();
+                cmbProveedor.EditValue = gridViewProducto.GetRowCellValue(e.RowHandle, "Id_Proveedor!Key").ToString();
+
+                ActualizarEstadoBotones(false, false, true, true, true,true);
+
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            // Verificar si los campos obligatorios están vacíos
+            // Verificar si los campos obligatorios están vacíos
+            if (string.IsNullOrEmpty(txtPrecioCompra.Text) ||
+                string.IsNullOrEmpty(txtPrecioVenta.Text) ||
+                string.IsNullOrEmpty(txtStock.Text) ||
+                string.IsNullOrEmpty(searchLookUpEditMedicamento.Text) ||
+                string.IsNullOrEmpty(txtDescuento.Text) ||
+                string.IsNullOrEmpty(cmbCategorias.Text) ||
+                string.IsNullOrEmpty(cmbProveedor.Text))
+            {
+                MessageBox.Show("Campos Requeridos", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            // Verificar si se ha seleccionado una fila en el gridViewRoles
+            int id = (int)gridViewProducto.GetFocusedRowCellValue("Id");
+
+            if (id <= 0)
+            {
+                MessageBox.Show("Por favor, seleccione un producto para actualizar.", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Buscar el rol en la base de datos
+                Producto c = unitOfWork1.GetObjectByKey<Producto>(id);
+                if (c == null)
+                {
+                    MessageBox.Show("Producto no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Asignar los valores a las propiedades del rol
+                c.Vencimiento = txtVencimiento.DateTime;
+                c.Precio_Compra = float.Parse(txtPrecioCompra.Text);
+                c.Precio_Venta = float.Parse(txtPrecioVenta.Text);
+                c.Stock = int.Parse(txtStock.Text);
+                c.Medicamento = searchLookUpEditMedicamento.Text;
+                c.Descuento = float.Parse(txtDescuento.Text);
+                c.Id_Categoria = (Categoria)gridViewCategoria.GetFocusedRow();
+                c.Id_Proveedor = (Proveedor)searchLookUpEdit1ViewProveedor.GetFocusedRow();
+                // Guardar los cambios
+                c.Save();
+                unitOfWork1.CommitChanges();
+
+                // Limpiar los controles del formulario
+                Limpiar();
+
+                // Mostrar un mensaje de éxito
+                MessageBox.Show("Actualización Exitosa", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Recargar la colección de roles para reflejar los cambios
+                xpCollection1.Reload();
+                ActualizarEstadoBotones(true, false, false,false, false, false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ActualizarEstadoBotones(true, false, false, false, false, false);
+            Limpiar();
         }
     }
 }

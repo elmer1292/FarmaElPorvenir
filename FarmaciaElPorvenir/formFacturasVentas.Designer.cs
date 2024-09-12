@@ -127,7 +127,7 @@
             // 
             // xpCollectionFacturaVenta
             // 
-            this.xpCollectionFacturaVenta.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Factura_venta);
+            this.xpCollectionFacturaVenta.ObjectType = typeof(FarmaciaElPorvenir.Database.Factura_venta);
             this.xpCollectionFacturaVenta.Session = this.unitOfWork1;
             // 
             // gridView1
@@ -288,7 +288,7 @@
             // 
             // xpCollectionInventario
             // 
-            this.xpCollectionInventario.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Inventario);
+            this.xpCollectionInventario.ObjectType = typeof(FarmaciaElPorvenir.Database.Producto);
             this.xpCollectionInventario.Session = this.unitOfWork1;
             // 
             // searchLookUpEdit1View

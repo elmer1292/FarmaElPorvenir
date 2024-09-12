@@ -1,7 +1,7 @@
 ﻿using DevExpress.Xpo;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Forms;
-using FarmaciaElPorvenir.el_porvenirdb;
+using FarmaciaElPorvenir.Database;
 using FarmaciaElPorvenir.Reportes;
 using System;
 using System.Collections.Generic;
@@ -19,10 +19,9 @@ namespace FarmaciaElPorvenir
 {
     public partial class Dashboard : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        Usuario us;
-        public Dashboard(Usuario us)
+        
+        public Dashboard()
         {
-            us = new Usuario(unitOfWork1);
             InitializeComponent();
         }
 

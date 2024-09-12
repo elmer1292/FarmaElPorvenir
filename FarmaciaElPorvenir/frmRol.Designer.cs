@@ -106,7 +106,7 @@
             // 
             // xpCollection1
             // 
-            this.xpCollection1.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Rol);
+            this.xpCollection1.ObjectType = typeof(FarmaciaElPorvenir.Database.Rol);
             this.xpCollection1.Session = this.unitOfWork1;
             // 
             // gridViewRoles

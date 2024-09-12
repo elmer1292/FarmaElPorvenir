@@ -1,7 +1,7 @@
 ﻿using DevExpress.Office.Utils;
 using DevExpress.Xpo;
 using DevExpress.XtraLayout.Filtering.Templates;
-using FarmaciaElPorvenir.el_porvenirdb;
+using FarmaciaElPorvenir.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -96,58 +96,58 @@ namespace FarmaciaElPorvenir
                 c.No_Factura = txtNoFac.Text;
 
                 // Asignar el objeto Inventario a la propiedad en Factura_venta
-                Inventario inventario = unitOfWork1.GetObjectByKey<Inventario>(cmbProducto.EditValue);
-                c.Id_Inventario = inventario;
+                //Inventario inventario = unitOfWork1.GetObjectByKey<Inventario>(cmbProducto.EditValue);
+                //c.Id_Inventario = inventario;
 
-                // Verificar si el inventario es nulo
-                if (inventario == null)
-                {
-                    MessageBox.Show("Inventario no encontrado para el producto seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                //// Verificar si el inventario es nulo
+                //if (inventario == null)
+                //{
+                //    MessageBox.Show("Inventario no encontrado para el producto seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
 
-                // Obtener y asignar los valores de cantidad, precio e IVA
-                int cantidad = int.Parse(txtCantidad.Text);
-                c.Cantidad = cantidad;
-                c.Precio = float.Parse(txtPrecio.Text);
-                c.IVA = decimal.Parse(txtIVA.Text);
+                //// Obtener y asignar los valores de cantidad, precio e IVA
+                //int cantidad = int.Parse(txtCantidad.Text);
+                //c.Cantidad = cantidad;
+                //c.Precio = float.Parse(txtPrecio.Text);
+                //c.IVA = decimal.Parse(txtIVA.Text);
 
-                // Calcular el subtotal
-                float precio = float.Parse(txtPrecio.Text);
-                float subtotal = cantidad * precio;
+                //// Calcular el subtotal
+                //float precio = float.Parse(txtPrecio.Text);
+                //float subtotal = cantidad * precio;
 
-                // Calcular el total
-                decimal ivaDecimal = decimal.Parse(txtIVA.Text);
-                decimal subtotalDecimal = (decimal)subtotal; // Convertir subtotal a decimal para precisión
-                decimal total = (subtotalDecimal * (ivaDecimal/100)) + subtotalDecimal;
+                //// Calcular el total
+                //decimal ivaDecimal = decimal.Parse(txtIVA.Text);
+                //decimal subtotalDecimal = (decimal)subtotal; // Convertir subtotal a decimal para precisión
+                //decimal total = (subtotalDecimal * (ivaDecimal/100)) + subtotalDecimal;
 
-                // Asignar los valores calculados
-                txtTotal.Text = total.ToString("F2"); // Formatear como decimal con 2 decimales
-                c.Total = (float)total; // Convertir el total a float
+                //// Asignar los valores calculados
+                //txtTotal.Text = total.ToString("F2"); // Formatear como decimal con 2 decimales
+                //c.Total = (float)total; // Convertir el total a float
 
-                // Restar la cantidad del inventario
-                inventario.Stock -= cantidad;
-                if (inventario.Stock < 0)
-                {
-                    throw new Exception("La cantidad en inventario no puede ser negativa.");
-                }
+                //// Restar la cantidad del inventario
+                //inventario.Stock -= cantidad;
+                //if (inventario.Stock < 0)
+                //{
+                //    throw new Exception("La cantidad en inventario no puede ser negativa.");
+                //}
 
-                // Guardar los cambios en el inventario
-                unitOfWork1.Save(inventario);
+                //// Guardar los cambios en el inventario
+                //unitOfWork1.Save(inventario);
 
-                // Guardar la factura
-                c.Save();
-                unitOfWork1.CommitChanges();
+                //// Guardar la factura
+                //c.Save();
+                //unitOfWork1.CommitChanges();
 
-                // Limpiar los controles del formulario
-                Limpiar();
+                //// Limpiar los controles del formulario
+                //Limpiar();
 
-                // Mostrar un mensaje de éxito
-                MessageBox.Show("Guardado Exitoso", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //// Mostrar un mensaje de éxito
+                //MessageBox.Show("Guardado Exitoso", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Recargar la colección de facturas para reflejar los cambios
-                xpCollectionFacturaVenta.Reload();
-                ActualizarEstadoBotones(true, false, false, false, false);
+                //// Recargar la colección de facturas para reflejar los cambios
+                //xpCollectionFacturaVenta.Reload();
+                //ActualizarEstadoBotones(true, false, false, false, false);
             }
             catch (Exception ex)
             {

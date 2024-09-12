@@ -165,7 +165,7 @@
             // 
             // xpCollectionInventario
             // 
-            this.xpCollectionInventario.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Inventario);
+            this.xpCollectionInventario.ObjectType = typeof(FarmaciaElPorvenir.Database.Producto);
             this.xpCollectionInventario.Session = this.unitOfWork1;
             // 
             // searchLookUpEdit1View
@@ -361,7 +361,7 @@
             // 
             // xpCollectionLab
             // 
-            this.xpCollectionLab.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Laboratorio);
+            this.xpCollectionLab.ObjectType = typeof(FarmaciaElPorvenir.Database.Laboratorio);
             this.xpCollectionLab.Session = this.unitOfWork1;
             // 
             // searchLookUpEdit1View1
@@ -569,7 +569,7 @@
             // 
             // xpCollectionCompras
             // 
-            this.xpCollectionCompras.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Factura_compra);
+            this.xpCollectionCompras.ObjectType = typeof(FarmaciaElPorvenir.Database.Factura_compra);
             this.xpCollectionCompras.Session = this.unitOfWork1;
             // 
             // gridView1

@@ -60,7 +60,7 @@
             // 
             // xpUsuario
             // 
-            this.xpUsuario.ObjectType = typeof(FarmaciaElPorvenir.el_porvenirdb.Usuario);
+            this.xpUsuario.ObjectType = typeof(FarmaciaElPorvenir.Database.Usuario);
             this.xpUsuario.Session = this.unitOfWork1;
             // 
             // txtUsuario

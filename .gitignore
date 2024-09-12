@@ -48,6 +48,10 @@ FarmaciaElPorvenir\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
 FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.csproj.AssemblyReference.cache
 FarmaciaElPorvenir\Properties\licenses.licx
 FarmaciaElPorvenir\Properties\licenses.licx.bak
+FarmaciaElPorvenir\FarmaciaElPorvenir.csproj
+FarmaciaElPorvenir\FarmaciaElPorvenir.csproj.bak
+FarmaciaElPorvenir\Properties\licenses.licx
+FarmaciaElPorvenir\Properties\licenses.licx.bak
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
@@ -591,3 +595,7 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,csharp
+FarmaciaElPorvenir/FarmaciaElPorvenir.csproj.bak
+FarmaciaElPorvenir/Properties/licenses.licx
+FarmaciaElPorvenir/Properties/licenses.licx.bak
+*.licx

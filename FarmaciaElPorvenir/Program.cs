@@ -1,5 +1,5 @@
 ﻿using DevExpress.Xpo;
-using FarmaciaElPorvenir.el_porvenirdb;
+using FarmaciaElPorvenir.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace FarmaciaElPorvenir
                 ConnectionHelper.ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+            Application.Run(new FInventario());
 
         }
     }
