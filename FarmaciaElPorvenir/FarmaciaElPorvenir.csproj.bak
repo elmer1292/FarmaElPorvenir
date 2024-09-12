@@ -164,49 +164,53 @@
     <Compile Include="FInventario.Designer.cs">
       <DependentUpon>FInventario.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\Categoria.cs" />
-    <Compile Include="ORMDataModelEPCode\Categoria.Designer.cs">
+    <Compile Include="ORMDataModel1Code\Categoria.cs" />
+    <Compile Include="ORMDataModel1Code\Categoria.Designer.cs">
       <DependentUpon>Categoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\Cliente.cs" />
-    <Compile Include="ORMDataModelEPCode\Cliente.Designer.cs">
+    <Compile Include="ORMDataModel1Code\Cliente.cs" />
+    <Compile Include="ORMDataModel1Code\Cliente.Designer.cs">
       <DependentUpon>Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\ConnectionHelper.cs" />
-    <Compile Include="ORMDataModelEPCode\Empleado.cs" />
-    <Compile Include="ORMDataModelEPCode\Empleado.Designer.cs">
+    <Compile Include="ORMDataModel1Code\ConnectionHelper.cs" />
+    <Compile Include="ORMDataModel1Code\Detallecompra.cs" />
+    <Compile Include="ORMDataModel1Code\Detallecompra.Designer.cs">
+      <DependentUpon>Detallecompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel1Code\Detalleventa.cs" />
+    <Compile Include="ORMDataModel1Code\Detalleventa.Designer.cs">
+      <DependentUpon>Detalleventa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel1Code\Empleado.cs" />
+    <Compile Include="ORMDataModel1Code\Empleado.Designer.cs">
       <DependentUpon>Empleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\Factura_compra.cs" />
-    <Compile Include="ORMDataModelEPCode\Factura_compra.Designer.cs">
+    <Compile Include="ORMDataModel1Code\Factura_compra.cs" />
+    <Compile Include="ORMDataModel1Code\Factura_compra.Designer.cs">
       <DependentUpon>Factura_compra.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\Factura_venta.cs" />
-    <Compile Include="ORMDataModelEPCode\Factura_venta.Designer.cs">
+    <Compile Include="ORMDataModel1Code\Factura_venta.cs" />
+    <Compile Include="ORMDataModel1Code\Factura_venta.Designer.cs">
       <DependentUpon>Factura_venta.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\Inventario.cs" />
-    <Compile Include="ORMDataModelEPCode\Inventario.Designer.cs">
-      <DependentUpon>Inventario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ORMDataModelEPCode\Laboratorio.cs" />
-    <Compile Include="ORMDataModelEPCode\Laboratorio.Designer.cs">
+    <Compile Include="ORMDataModel1Code\Laboratorio.cs" />
+    <Compile Include="ORMDataModel1Code\Laboratorio.Designer.cs">
       <DependentUpon>Laboratorio.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\Medicamento.cs" />
-    <Compile Include="ORMDataModelEPCode\Medicamento.Designer.cs">
-      <DependentUpon>Medicamento.cs</DependentUpon>
+    <Compile Include="ORMDataModel1Code\Producto.cs" />
+    <Compile Include="ORMDataModel1Code\Producto.Designer.cs">
+      <DependentUpon>Producto.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\Proveedor.cs" />
-    <Compile Include="ORMDataModelEPCode\Proveedor.Designer.cs">
+    <Compile Include="ORMDataModel1Code\Proveedor.cs" />
+    <Compile Include="ORMDataModel1Code\Proveedor.Designer.cs">
       <DependentUpon>Proveedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\Rol.cs" />
-    <Compile Include="ORMDataModelEPCode\Rol.Designer.cs">
+    <Compile Include="ORMDataModel1Code\Rol.cs" />
+    <Compile Include="ORMDataModel1Code\Rol.Designer.cs">
       <DependentUpon>Rol.cs</DependentUpon>
     </Compile>
-    <Compile Include="ORMDataModelEPCode\Usuario.cs" />
-    <Compile Include="ORMDataModelEPCode\Usuario.Designer.cs">
+    <Compile Include="ORMDataModel1Code\Usuario.cs" />
+    <Compile Include="ORMDataModel1Code\Usuario.Designer.cs">
       <DependentUpon>Usuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -263,9 +267,9 @@
     <EmbeddedResource Include="Reportes\ListaClientes.resx">
       <DependentUpon>ListaClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ORMDataModelEP.xpo" />
-    <None Include="ORMDataModelEP.xpo.diagram">
-      <DependentUpon>ORMDataModelEP.xpo</DependentUpon>
+    <None Include="ORMDataModel1.xpo" />
+    <None Include="ORMDataModel1.xpo.diagram">
+      <DependentUpon>ORMDataModel1.xpo</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
