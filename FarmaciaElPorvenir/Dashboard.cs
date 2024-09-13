@@ -19,10 +19,12 @@ namespace FarmaciaElPorvenir
 {
     public partial class Dashboard : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        
-        public Dashboard()
+
+
+        public Dashboard(Usuario u, Rol id_Rol)
         {
             InitializeComponent();
+
         }
 
         private void btnAgregarCategoria_ItemClick(object sender, ItemClickEventArgs e)
