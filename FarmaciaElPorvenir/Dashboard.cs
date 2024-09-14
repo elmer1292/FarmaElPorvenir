@@ -215,12 +215,12 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Verifica si el formulario ya está abierto
-                formFacturasVentas formularioExistente = null;
+                frmFacturaVenta formularioExistente = null;
                 foreach (Form form in this.MdiChildren)
                 {
-                    if (form is formFacturasVentas)
+                    if (form is frmFacturaVenta)
                     {
-                        formularioExistente = (formFacturasVentas)form;
+                        formularioExistente = (frmFacturaVenta)form;
                         break;
                     }
                 }
@@ -228,7 +228,7 @@ namespace FarmaciaElPorvenir
                 // Si el formulario no está abierto, crea una nueva instancia y muéstrala
                 if (formularioExistente == null)
                 {
-                    formFacturasVentas nuevoFormulario = new formFacturasVentas();
+                    frmFacturaVenta nuevoFormulario = new frmFacturaVenta();
                     nuevoFormulario.MdiParent = this;
                     nuevoFormulario.Show();
                 }
