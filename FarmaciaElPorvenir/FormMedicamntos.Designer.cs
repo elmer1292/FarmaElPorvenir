@@ -68,11 +68,15 @@
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPrecio = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.catcol = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMedicamento = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labcol = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPrecio_Compra = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPrecio_Venta = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescuento = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStock = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colVencimiento = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -242,11 +246,15 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
-            this.colNombre,
-            this.colPrecio,
-            this.catcol,
+            this.colMedicamento,
+            this.gridColumn1,
             this.gridColumn2,
-            this.labcol,
+            this.colPrecio_Compra,
+            this.colPrecio_Venta,
+            this.colDescuento,
+            this.colStock,
+            this.colVencimiento,
+            this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6});
@@ -478,53 +486,77 @@
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
             // 
-            // colNombre
+            // colMedicamento
             // 
-            this.colNombre.FieldName = "Nombre";
-            this.colNombre.Name = "colNombre";
-            this.colNombre.Visible = true;
-            this.colNombre.VisibleIndex = 1;
+            this.colMedicamento.FieldName = "Medicamento";
+            this.colMedicamento.Name = "colMedicamento";
+            this.colMedicamento.Visible = true;
+            this.colMedicamento.VisibleIndex = 0;
             // 
-            // colPrecio
+            // gridColumn1
             // 
-            this.colPrecio.FieldName = "Precio";
-            this.colPrecio.Name = "colPrecio";
-            this.colPrecio.Visible = true;
-            this.colPrecio.VisibleIndex = 2;
-            // 
-            // catcol
-            // 
-            this.catcol.Caption = "Categoria";
-            this.catcol.FieldName = "Id_Categoria.Categorias";
-            this.catcol.Name = "catcol";
-            this.catcol.Visible = true;
-            this.catcol.VisibleIndex = 3;
+            this.gridColumn1.FieldName = "Id_Categoria!";
+            this.gridColumn1.Name = "gridColumn1";
             // 
             // gridColumn2
             // 
             this.gridColumn2.FieldName = "Id_Categoria!Key";
             this.gridColumn2.Name = "gridColumn2";
             // 
-            // labcol
+            // colPrecio_Compra
             // 
-            this.labcol.Caption = "Laboratorio";
-            this.labcol.FieldName = "Id_Laboratorio.Nombre";
-            this.labcol.Name = "labcol";
-            this.labcol.Visible = true;
-            this.labcol.VisibleIndex = 4;
+            this.colPrecio_Compra.FieldName = "Precio_Compra";
+            this.colPrecio_Compra.Name = "colPrecio_Compra";
+            this.colPrecio_Compra.Visible = true;
+            this.colPrecio_Compra.VisibleIndex = 1;
+            // 
+            // colPrecio_Venta
+            // 
+            this.colPrecio_Venta.FieldName = "Precio_Venta";
+            this.colPrecio_Venta.Name = "colPrecio_Venta";
+            this.colPrecio_Venta.Visible = true;
+            this.colPrecio_Venta.VisibleIndex = 2;
+            // 
+            // colDescuento
+            // 
+            this.colDescuento.FieldName = "Descuento";
+            this.colDescuento.Name = "colDescuento";
+            this.colDescuento.Visible = true;
+            this.colDescuento.VisibleIndex = 3;
+            // 
+            // colStock
+            // 
+            this.colStock.FieldName = "Stock";
+            this.colStock.Name = "colStock";
+            this.colStock.Visible = true;
+            this.colStock.VisibleIndex = 4;
+            // 
+            // colVencimiento
+            // 
+            this.colVencimiento.FieldName = "Vencimiento";
+            this.colVencimiento.Name = "colVencimiento";
+            this.colVencimiento.Visible = true;
+            this.colVencimiento.VisibleIndex = 5;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.FieldName = "Id_Proveedor!";
+            this.gridColumn3.Name = "gridColumn3";
             // 
             // gridColumn4
             // 
-            this.gridColumn4.FieldName = "Id_Laboratorio!Key";
+            this.gridColumn4.FieldName = "Id_Proveedor!Key";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 6;
             // 
             // gridColumn5
             // 
             this.gridColumn5.FieldName = "Id_Categoria.Categorias";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 7;
             // 
             // gridColumn6
             // 
@@ -538,7 +570,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.layoutControl1);
             this.Name = "FormMedicamntos";
-            this.Text = "FormMedicamntos";
+            this.Text = "Producto";
             this.Load += new System.EventHandler(this.formMedicamentos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -612,11 +644,15 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCategorias;
         private DevExpress.XtraGrid.Columns.GridColumn colDescripcion;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colNombre;
-        private DevExpress.XtraGrid.Columns.GridColumn colPrecio;
-        private DevExpress.XtraGrid.Columns.GridColumn catcol;
+        private DevExpress.XtraGrid.Columns.GridColumn colMedicamento;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn labcol;
+        private DevExpress.XtraGrid.Columns.GridColumn colPrecio_Compra;
+        private DevExpress.XtraGrid.Columns.GridColumn colPrecio_Venta;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescuento;
+        private DevExpress.XtraGrid.Columns.GridColumn colStock;
+        private DevExpress.XtraGrid.Columns.GridColumn colVencimiento;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
