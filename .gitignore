@@ -39,13 +39,8 @@ bld/
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 
-.vs\SolucionFarmaciaElPorvenir\FileContentIndex\5e3177c7-2af4-4df2-8c7a-8f31a5397fca.vsidx
-.vs\SolucionFarmaciaElPorvenir\FileContentIndex\ee373568-8bbf-43b6-819e-ab44b67fd42f.vsidx
-.vs\SolucionFarmaciaElPorvenir\v17\.suo
+
 FarmaciaElPorvenir\FarmaciaElPorvenir.csproj
-FarmaciaElPorvenir\obj\Debug\DesignTimeResolveAssemblyReferences.cache
-FarmaciaElPorvenir\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
-FarmaciaElPorvenir\obj\Debug\FarmaciaElPorvenir.csproj.AssemblyReference.cache
 FarmaciaElPorvenir\Properties\licenses.licx
 FarmaciaElPorvenir\Properties\licenses.licx.bak
 FarmaciaElPorvenir\FarmaciaElPorvenir.csproj
