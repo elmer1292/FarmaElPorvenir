@@ -41,6 +41,7 @@
     <Reference Include="DevExpress.DataAccess.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v24.1.UI, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Diagram.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dialogs.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Drawing.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Images.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Office.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -60,6 +61,7 @@
     <Reference Include="DevExpress.XtraCharts.v24.1.Extensions, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraCharts.v24.1.Wizard, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraDiagram.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraDialogs.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGauges.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -115,17 +117,17 @@
     <Compile Include="formFacturasCompras.Designer.cs">
       <DependentUpon>formFacturasCompras.cs</DependentUpon>
     </Compile>
-    <Compile Include="formFacturasVentas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formFacturasVentas.Designer.cs">
-      <DependentUpon>formFacturasVentas.cs</DependentUpon>
-    </Compile>
     <Compile Include="formUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formUsuario.Designer.cs">
       <DependentUpon>formUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturaVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturaVenta.Designer.cs">
+      <DependentUpon>frmFacturaVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -238,11 +240,11 @@
     <EmbeddedResource Include="formFacturasCompras.resx">
       <DependentUpon>formFacturasCompras.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formFacturasVentas.resx">
-      <DependentUpon>formFacturasVentas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="formUsuario.resx">
       <DependentUpon>formUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturaVenta.resx">
+      <DependentUpon>frmFacturaVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLaboratorio.resx">
       <DependentUpon>frmLaboratorio.cs</DependentUpon>
