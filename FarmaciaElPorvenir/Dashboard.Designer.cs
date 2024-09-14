@@ -60,7 +60,6 @@
             this.ribbonPageInventario = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupInventario = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupCategoria = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupProducto = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupProveedor = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageUsuario = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupUsuario = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -319,7 +318,6 @@
             this.ribbonPageInventario.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroupInventario,
             this.ribbonPageGroupCategoria,
-            this.ribbonPageGroupProducto,
             this.ribbonPageGroupProveedor});
             this.ribbonPageInventario.Name = "ribbonPageInventario";
             this.ribbonPageInventario.Text = "Inventario";
@@ -333,11 +331,6 @@
             // 
             this.ribbonPageGroupCategoria.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroupCategoria.Name = "ribbonPageGroupCategoria";
-            // 
-            // ribbonPageGroupProducto
-            // 
-            this.ribbonPageGroupProducto.ItemLinks.Add(this.btnAgregarProducto);
-            this.ribbonPageGroupProducto.Name = "ribbonPageGroupProducto";
             // 
             // ribbonPageGroupProveedor
             // 
@@ -372,7 +365,7 @@
             // 
             // ribbonPageGroupVenta
             // 
-            this.ribbonPageGroupVenta.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPageGroup11.ImageOptions.Image")));
+            this.ribbonPageGroupVenta.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPageGroupVenta.ImageOptions.Image")));
             this.ribbonPageGroupVenta.ItemLinks.Add(this.barButtonItemVentas);
             this.ribbonPageGroupVenta.Name = "ribbonPageGroupVenta";
             // 
@@ -496,7 +489,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem btnAgregarProducto;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupProducto;
         private DevExpress.XtraBars.BarButtonItem btnProveedor;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupProveedor;
         private DevExpress.XtraBars.BarButtonItem barButtonItemRespaldo;
