@@ -16,5 +16,10 @@ namespace FarmaciaElPorvenir
         {
             InitializeComponent();
         }
+
+        private void frmFacturaVenta_Load(object sender, EventArgs e)
+        {
+            deFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+        }
     }
 }
