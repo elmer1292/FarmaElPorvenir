@@ -12,3 +12,6 @@ obj/
 *.tmp
 
 # Otros archivos y carpetas que deseas ignorar
+FarmaciaElPorvenir/App.config
+FarmaciaElPorvenir/Properties/licenses.licx
+FarmaciaElPorvenir/Properties/licenses.licx
