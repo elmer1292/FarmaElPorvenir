@@ -20,7 +20,7 @@ namespace FarmaciaElPorvenir
                 ConnectionHelper.ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new FormMedicamntos());
 
         }
     }

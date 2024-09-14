@@ -350,40 +350,6 @@ namespace FarmaciaElPorvenir
             }
         }
 
-        private void btnAgregarProducto_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            try
-            {
-                // Verifica si el formulario ya está abierto
-                FormMedicamntos formularioExistente = null;
-                foreach (Form form in this.MdiChildren)
-                {
-                    if (form is FormMedicamntos)
-                    {
-                        formularioExistente = (FormMedicamntos)form;
-                        break;
-                    }
-                }
-
-                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
-                if (formularioExistente == null)
-                {
-                    FormMedicamntos nuevoFormulario = new FormMedicamntos();
-                    nuevoFormulario.MdiParent = this;
-                    nuevoFormulario.Show();
-                }
-                else
-                {
-                    // Si el formulario ya está abierto, lo traemos al frente
-                    formularioExistente.BringToFront();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
-            }
-        }
-
         private void barButtonItemRespaldo_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
