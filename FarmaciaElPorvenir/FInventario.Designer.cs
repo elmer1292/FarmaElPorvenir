@@ -164,13 +164,11 @@
             // 
             // txtPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(156, 286);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(156, 306);
             this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.txtPrecioVenta.Properties.Appearance.Options.UseFont = true;
             this.txtPrecioVenta.Properties.UseMaskAsDisplayFormat = true;
-            this.txtPrecioVenta.Size = new System.Drawing.Size(1016, 30);
+            this.txtPrecioVenta.Size = new System.Drawing.Size(1016, 20);
             this.txtPrecioVenta.StyleController = this.layoutControl1;
             this.txtPrecioVenta.TabIndex = 2;
             // 
@@ -182,7 +180,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1160, 146);
+            this.gridControl1.Size = new System.Drawing.Size(1160, 176);
             this.gridControl1.TabIndex = 9;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewProducto});
@@ -357,23 +355,19 @@
             // 
             // txtPrecioCompra
             // 
-            this.txtPrecioCompra.Location = new System.Drawing.Point(156, 252);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(156, 282);
             this.txtPrecioCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
-            this.txtPrecioCompra.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.txtPrecioCompra.Properties.Appearance.Options.UseFont = true;
-            this.txtPrecioCompra.Size = new System.Drawing.Size(1016, 30);
+            this.txtPrecioCompra.Size = new System.Drawing.Size(1016, 20);
             this.txtPrecioCompra.StyleController = this.layoutControl1;
             this.txtPrecioCompra.TabIndex = 2;
             // 
             // txtVencimiento
             // 
             this.txtVencimiento.EditValue = new System.DateTime(2024, 9, 11, 0, 0, 0, 0);
-            this.txtVencimiento.Location = new System.Drawing.Point(156, 344);
+            this.txtVencimiento.Location = new System.Drawing.Point(156, 354);
             this.txtVencimiento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtVencimiento.Name = "txtVencimiento";
-            this.txtVencimiento.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.txtVencimiento.Properties.Appearance.Options.UseFont = true;
             this.txtVencimiento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtVencimiento.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -382,13 +376,13 @@
             this.txtVencimiento.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtVencimiento.Properties.EditFormat.FormatString = "";
             this.txtVencimiento.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtVencimiento.Size = new System.Drawing.Size(1016, 30);
+            this.txtVencimiento.Size = new System.Drawing.Size(1016, 20);
             this.txtVencimiento.StyleController = this.layoutControl1;
             this.txtVencimiento.TabIndex = 2;
             // 
             // txtStock
             // 
-            this.txtStock.Location = new System.Drawing.Point(156, 228);
+            this.txtStock.Location = new System.Drawing.Point(156, 258);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(1016, 20);
             this.txtStock.StyleController = this.layoutControl1;
@@ -397,7 +391,7 @@
             // searchLookUpEditMedicamento
             // 
             this.searchLookUpEditMedicamento.EditValue = "";
-            this.searchLookUpEditMedicamento.Location = new System.Drawing.Point(156, 180);
+            this.searchLookUpEditMedicamento.Location = new System.Drawing.Point(156, 210);
             this.searchLookUpEditMedicamento.Name = "searchLookUpEditMedicamento";
             this.searchLookUpEditMedicamento.Properties.NullText = "[EditValue is null]";
             this.searchLookUpEditMedicamento.Size = new System.Drawing.Size(1016, 20);
@@ -406,7 +400,7 @@
             // 
             // txtDescuento
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(156, 320);
+            this.txtDescuento.Location = new System.Drawing.Point(156, 330);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(1016, 20);
             this.txtDescuento.StyleController = this.layoutControl1;
@@ -442,7 +436,7 @@
             // 
             // cmbCategorias
             // 
-            this.cmbCategorias.Location = new System.Drawing.Point(156, 204);
+            this.cmbCategorias.Location = new System.Drawing.Point(156, 234);
             this.cmbCategorias.Name = "cmbCategorias";
             this.cmbCategorias.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -522,7 +516,7 @@
             this.layoutControlItem5.Control = this.gridControl1;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 18);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1164, 150);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1164, 180);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -551,9 +545,9 @@
             this.layoutControlItem9.Control = this.txtPrecioCompra;
             this.layoutControlItem9.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem9.CustomizationFormText = "Stock:";
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 240);
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 270);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(1164, 34);
+            this.layoutControlItem9.Size = new System.Drawing.Size(1164, 24);
             this.layoutControlItem9.Text = "Precio de Compra:";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(132, 19);
             // 
@@ -564,9 +558,9 @@
             this.layoutControlItem10.Control = this.txtPrecioVenta;
             this.layoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem10.CustomizationFormText = "Stock:";
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 274);
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 294);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(1164, 34);
+            this.layoutControlItem10.Size = new System.Drawing.Size(1164, 24);
             this.layoutControlItem10.Text = "Precio de Venta:";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(132, 19);
             // 
@@ -577,16 +571,16 @@
             this.layoutControlItem11.Control = this.txtVencimiento;
             this.layoutControlItem11.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem11.CustomizationFormText = "Stock:";
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 332);
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 342);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(1164, 34);
+            this.layoutControlItem11.Size = new System.Drawing.Size(1164, 24);
             this.layoutControlItem11.Text = "Vencimiento:";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(132, 19);
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.txtStock;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 216);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 246);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(1164, 24);
             this.layoutControlItem8.Text = "Stock:";
@@ -595,7 +589,7 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.searchLookUpEditMedicamento;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 168);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 198);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(1164, 24);
             this.layoutControlItem6.Text = "Medicamento";
@@ -604,7 +598,7 @@
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.cmbCategorias;
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 192);
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 222);
             this.layoutControlItem12.Name = "layoutControlItem12";
             this.layoutControlItem12.Size = new System.Drawing.Size(1164, 24);
             this.layoutControlItem12.Text = "Categoria";
@@ -613,7 +607,7 @@
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.txtDescuento;
-            this.layoutControlItem13.Location = new System.Drawing.Point(0, 308);
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 318);
             this.layoutControlItem13.Name = "layoutControlItem13";
             this.layoutControlItem13.Size = new System.Drawing.Size(1164, 24);
             this.layoutControlItem13.Text = "Descuento";
