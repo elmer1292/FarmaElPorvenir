@@ -241,14 +241,7 @@
             this.btnAgregarRol.Name = "btnAgregarRol";
             this.btnAgregarRol.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgregarR_ItemClick);
             // 
-            // btnAgregarProducto
-            // 
-            this.btnAgregarProducto.Caption = "Agregar Producto";
-            this.btnAgregarProducto.Id = 24;
-            this.btnAgregarProducto.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarProducto.ImageOptions.LargeImage")));
-            this.btnAgregarProducto.Name = "btnAgregarProducto";
-            this.btnAgregarProducto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgregarProducto_ItemClick);
-            // 
+
             // btnProveedor
             // 
             this.btnProveedor.Caption = "Proveedor";

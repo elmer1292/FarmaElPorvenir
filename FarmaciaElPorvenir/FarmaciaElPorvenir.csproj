@@ -121,12 +121,6 @@
     <Compile Include="formFacturasVentas.Designer.cs">
       <DependentUpon>formFacturasVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMedicamntos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMedicamntos.Designer.cs">
-      <DependentUpon>FormMedicamntos.cs</DependentUpon>
-    </Compile>
     <Compile Include="formUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,9 +240,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formFacturasVentas.resx">
       <DependentUpon>formFacturasVentas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMedicamntos.resx">
-      <DependentUpon>FormMedicamntos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUsuario.resx">
       <DependentUpon>formUsuario.cs</DependentUpon>
