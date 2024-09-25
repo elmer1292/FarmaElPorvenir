@@ -147,9 +147,9 @@ namespace FarmaciaElPorvenir
                 // Asignar los totales calculados a la factura
                 factura.Total_Factura = totalFactura;
                 factura.Total_IVA = (float)ivaTotal;
-                factura.No_Factura = Convert.ToInt32(txtNoFactura.Text);
-                factura.Id = Convert.ToInt32( txtIdFactura.Text);
-                factura.Save();
+                factura.No_Factura = (txtNoFactura.Text);
+              //  factura.Id = Convert.ToInt32( txtIdFactura.Text);
+              //  factura.Save();
 
                 // Guardar los detalles de venta
                 for (int i = 0; i < gridViewDetalleVenta.RowCount; i++)
@@ -167,15 +167,18 @@ namespace FarmaciaElPorvenir
                             IVA = detallefactura.IVA,
                             SubTotal = detallefactura.SubTotal,
                             Total = detallefactura.Total,
-                            Id_FacturaVenta = factura,
+                            //Id_FacturaVenta = factura,
                         };
 
-                        // Guardar el nuevo detalle
+                        // Guardar el nuevo detalle                        
                         nuevoDetalle.Save();
+                        factura.Detalleventas.Add(nuevoDetalle);
+                       // factura.Save();
                     }
                 }
 
                 // Hacer commit de los cambios
+                factura.Save();
                 unitOfWork1.CommitChanges();
 
                 // Informar al usuario que la factura se guardó correctamente
@@ -246,6 +249,9 @@ namespace FarmaciaElPorvenir
             factura = null; // Reiniciar la factura
         }
 
+        private void gridControlProducto_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

@@ -480,6 +480,7 @@
             this.gridControlProducto.TabIndex = 2;
             this.gridControlProducto.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDetalleVenta});
+            this.gridControlProducto.Click += new System.EventHandler(this.gridControlProducto_Click);
             // 
             // xpCollectionDetalleVenta
             // 

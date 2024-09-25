@@ -39,11 +39,12 @@ namespace FarmaciaElPorvenir.Database
             get { return fFecha; }
             set { SetPropertyValue<DateTime>(nameof(Fecha), ref fFecha, value); }
         }
-        int fNo_Factura;
-        public int No_Factura
+        string fNo_Factura;
+        [Size(50)]
+        public string No_Factura
         {
             get { return fNo_Factura; }
-            set { SetPropertyValue<int>(nameof(No_Factura), ref fNo_Factura, value); }
+            set { SetPropertyValue<string>(nameof(No_Factura), ref fNo_Factura, value); }
         }
         Cliente fId_Cliente;
         [Association(@"Factura_ventaReferencesCliente")]
@@ -66,6 +67,8 @@ namespace FarmaciaElPorvenir.Database
         }
         [Association(@"DetalleventaReferencesFactura_venta")]
         public XPCollection<Detalleventa> Detalleventas { get { return GetCollection<Detalleventa>(nameof(Detalleventas)); } }
+        //[Association(@"DetalleventaReferencesFactura_venta1")]
+        //public XPCollection<Detalleventa> Detalleventas1 { get { return GetCollection<Detalleventa>(nameof(Detalleventas1)); } }
     }
 
 }
