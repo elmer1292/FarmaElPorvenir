@@ -104,17 +104,17 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Crear o buscar el rol en la base de datos
-                Usuario c = new Usuario(unitOfWork1);
+                Usuario usuario = new Usuario(unitOfWork1);
 
-                
+
                 // Asignar los valores a las propiedades del rol
-                c.Usuario1 = txtUsuario.Text;
-                c.Pass = txtPass.Text;
-                c.Id_Empleado = (Empleado)cmbEmpleado.SelectedItem;
-                c.Id_Rol = (Rol)cmbRol.SelectedItem;    
+                usuario.Usuario1 = txtUsuario.Text;
+                usuario.Pass = txtPass.Text;
+                usuario.Id_Empleado = (Empleado)cmbEmpleado.SelectedItem;
+                usuario.Id_Rol = (Rol)cmbRol.SelectedItem;
 
                 // Guardar los cambios
-                c.Save();
+                usuario.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -163,20 +163,20 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Usuario c = unitOfWork1.GetObjectByKey<Usuario>(id);
-                if (c == null)
+                Usuario usuario = unitOfWork1.GetObjectByKey<Usuario>(id);
+                if (usuario == null)
                 {
                     MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Asignar los valores a las propiedades del rol
-                c.Usuario1 = txtUsuario.Text;
-                c.Pass = txtPass.Text;
-                c.Id_Empleado = (Empleado)cmbEmpleado.SelectedItem;
-                c.Id_Rol = (Rol)cmbRol.SelectedItem;
+                usuario.Usuario1 = txtUsuario.Text;
+                usuario.Pass = txtPass.Text;
+                usuario.Id_Empleado = (Empleado)cmbEmpleado.SelectedItem;
+                usuario.Id_Rol = (Rol)cmbRol.SelectedItem;
                 // Guardar los cambios
-                c.Save();
+                usuario.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario

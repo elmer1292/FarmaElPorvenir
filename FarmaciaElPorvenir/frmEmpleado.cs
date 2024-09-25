@@ -32,8 +32,8 @@ namespace FarmaciaElPorvenir
         }
         private void Limpiar()
         {
-            txtNombre.Clear();
-            txtCargo.Clear();
+            txtNombre.Text = "";
+            txtCargo.Text="";
             txtNombre.Focus();
         }
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -93,15 +93,15 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Crear o buscar el rol en la base de datos
-                Empleado c = new Empleado(unitOfWork);
+                Empleado empleado = new Empleado(unitOfWork);
 
 
                 // Asignar los valores a las propiedades del rol
-                c.Nombre_Completo = txtNombre.Text;
-                c.Cargo = txtCargo.Text;
+                empleado.Nombre_Completo = txtNombre.Text;
+                empleado.Cargo = txtCargo.Text;
 
                 // Guardar los cambios
-                c.Save();
+                empleado.Save();
                 unitOfWork.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -149,19 +149,19 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Empleado c = unitOfWork.GetObjectByKey<Empleado>(id);
-                if (c == null)
+                Empleado empleado = unitOfWork.GetObjectByKey<Empleado>(id);
+                if (empleado == null)
                 {
                     MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Asignar los valores a las propiedades del rol
-                c.Nombre_Completo = txtNombre.Text;
-                c.Cargo = txtCargo.Text;
+                empleado.Nombre_Completo = txtNombre.Text;
+                empleado.Cargo = txtCargo.Text;
 
                 // Guardar los cambios
-                c.Save();
+                empleado.Save();
                 unitOfWork.CommitChanges();
 
                 // Limpiar los controles del formulario

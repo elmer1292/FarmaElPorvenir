@@ -40,10 +40,8 @@ namespace FarmaciaElPorvenir.Database
             get { return fDireccion; }
             set { SetPropertyValue<string>(nameof(Direccion), ref fDireccion, value); }
         }
-        [Association(@"LaboratorioReferencesProveedor")]
-        public XPCollection<Laboratorio> Laboratorios { get { return GetCollection<Laboratorio>(nameof(Laboratorios)); } }
         [Association(@"ProductoReferencesProveedor")]
-        public XPCollection<Producto> Productoes { get { return GetCollection<Producto>(nameof(Productoes)); } }
+        public XPCollection<Producto> Productos { get { return GetCollection<Producto>(nameof(Productos)); } }
     }
 
 }

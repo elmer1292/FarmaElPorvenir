@@ -34,8 +34,8 @@ namespace FarmaciaElPorvenir
 
         private void Limpiar()
         {
-            txtNombre.Clear();
-            txtDireccion.Clear();
+            txtNombre.Text = "";
+            txtDireccion.Text="";
             txtNombre.Focus();
         }
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -94,16 +94,16 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Crear o buscar el rol en la base de datos
-                Proveedor c = new Proveedor(unitOfWork1);
+                Proveedor proveedor = new Proveedor(unitOfWork1);
 
 
                 // Asignar los valores a las propiedades del rol
-                c.Nombre = txtNombre.Text;
-                c.Direccion = txtDireccion.Text;
+                proveedor.Nombre = txtNombre.Text;
+                proveedor.Direccion = txtDireccion.Text;
 
 
                 // Guardar los cambios
-                c.Save();
+                proveedor.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -151,8 +151,8 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Proveedor c = unitOfWork1.GetObjectByKey<Proveedor>(id);
-                if (c == null)
+                Proveedor proveedor = unitOfWork1.GetObjectByKey<Proveedor>(id);
+                if (proveedor == null)
                 {
                     MessageBox.Show("Proveedor" +
                         " no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -160,11 +160,11 @@ namespace FarmaciaElPorvenir
                 }
 
                 // Asignar los valores a las propiedades del rol
-                c.Nombre = txtNombre.Text;
-                c.Direccion = txtDireccion.Text;
+                proveedor.Nombre = txtNombre.Text;
+                proveedor.Direccion = txtDireccion.Text;
 
                 // Guardar los cambios
-                c.Save();
+                proveedor.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario

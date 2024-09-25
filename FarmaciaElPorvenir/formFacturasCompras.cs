@@ -39,13 +39,13 @@ namespace FarmaciaElPorvenir
 
         private void Limpiar()
         {
-            deFecha.Clear();
-            txtCantidad.Clear();
-            txtPrecio.Clear();
-            cmbProveedor.Clear();
-            cmbProducto.Clear();
-            txtTotal.Clear();
-            txtNoFac.Clear();
+            deFecha.Text = "";
+            txtCantidad.Text="";
+            txtPrecio.Text="";
+            cmbProveedor.Text="";
+            cmbProducto.Text="";
+            txtTotal.Text="";
+            txtNoFac.Text="";
             deFecha.Focus();
         }
 
@@ -80,13 +80,13 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Crear o buscar la factura en la base de datos
-                Factura_compra c = new Factura_compra(unitOfWork1);
+                Factura_compra factura_compra = new Factura_compra(unitOfWork1);
                 Empleado empleado = unitOfWork1.GetObjectByKey<Empleado>(2);
 
                 // Asignar los valores a las propiedades del objeto
-                c.Id_Empleado = empleado;
-                c.Fecha = deFecha.DateTime.Date;
-                c.No_Factura = txtNoFac.Text;
+                factura_compra.Id_Empleado = empleado;
+                factura_compra.Fecha = deFecha.DateTime.Date;
+                factura_compra.No_Factura = txtNoFac.Text;
 
                 // Asignar el objeto Inventario a la propiedad en
                 //Proveedor la = unitOfWork1.GetObjectByKey<Proveedor>(cmbProveedor.EditValue);

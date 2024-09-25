@@ -52,11 +52,11 @@ namespace FarmaciaElPorvenir.Database
             get { return fPrecio; }
             set { SetPropertyValue<float>(nameof(Precio), ref fPrecio, value); }
         }
-        int fDescuento;
-        public int Descuento
+        float fDescuento;
+        public float Descuento
         {
             get { return fDescuento; }
-            set { SetPropertyValue<int>(nameof(Descuento), ref fDescuento, value); }
+            set { SetPropertyValue<float>(nameof(Descuento), ref fDescuento, value); }
         }
         int fIVA;
         public int IVA
@@ -69,6 +69,12 @@ namespace FarmaciaElPorvenir.Database
         {
             get { return fTotal; }
             set { SetPropertyValue<float>(nameof(Total), ref fTotal, value); }
+        }
+        float fSubTotal;
+        public float SubTotal
+        {
+            get { return fSubTotal; }
+            set { SetPropertyValue<float>(nameof(SubTotal), ref fSubTotal, value); }
         }
     }
 

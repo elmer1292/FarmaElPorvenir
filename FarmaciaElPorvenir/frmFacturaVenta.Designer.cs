@@ -31,6 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFacturaVenta));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.searchLookUpEditEmpleado = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.xpCollectionEmpleado = new DevExpress.Xpo.XPCollection(this.components);
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
+            this.gridViewEmpleado = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colId1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNombre_Completo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCargo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnProcesar = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -42,42 +50,27 @@
             this.deFecha = new DevExpress.XtraEditors.DateEdit();
             this.txtTotalFactura = new DevExpress.XtraEditors.TextEdit();
             this.txtIVATotal = new DevExpress.XtraEditors.TextEdit();
-            this.txtEmpleado = new DevExpress.XtraEditors.TextEdit();
-            this.txtCliente = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.txtIdFactura = new DevExpress.XtraEditors.TextEdit();
+            this.SearchLookEditCliente = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.xpCollectionCliente = new DevExpress.Xpo.XPCollection(this.components);
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNombre_Completo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDireccion = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTelefono = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridViewCliente = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.IdCliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Cliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Direccion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Telefono = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.btnEliminarProducto = new DevExpress.XtraEditors.SimpleButton();
             this.btnAgregarProducto = new DevExpress.XtraEditors.SimpleButton();
-            this.txtIVA = new DevExpress.XtraEditors.TextEdit();
-            this.txtDescuento = new DevExpress.XtraEditors.TextEdit();
-            this.txtPrecio = new DevExpress.XtraEditors.TextEdit();
-            this.txtTotal = new DevExpress.XtraEditors.TextEdit();
-            this.txtCantidad = new DevExpress.XtraEditors.TextEdit();
             this.lookUpEditProducto = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.xpCollectionProducto = new DevExpress.Xpo.XPCollection(this.components);
-            this.searchLookUpEditProducto = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMedicamento = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPrecio_Compra = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPrecio_Venta = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDescuento1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStock = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colVencimiento = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.searchLookUpEditViewProducto = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Producto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Precio = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Descuento = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Stock = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Vencimiento = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Proveedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlProducto = new DevExpress.XtraGrid.GridControl();
             this.xpCollectionDetalleVenta = new DevExpress.Xpo.XPCollection(this.components);
             this.gridViewDetalleVenta = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -91,30 +84,31 @@
             this.colDescuento = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIVA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubTotal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditEmpleado.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionEmpleado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewEmpleado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoFactura.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFecha.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFecha.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalFactura.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIVATotal.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmpleado.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCliente.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdFactura.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchLookEditCliente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionCliente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIVA.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDescuento.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTotal.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCantidad.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditProducto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProducto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProducto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditViewProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalleVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleVenta)).BeginInit();
@@ -124,6 +118,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.labelControl11);
+            this.panelControl1.Controls.Add(this.searchLookUpEditEmpleado);
             this.panelControl1.Controls.Add(this.btnProcesar);
             this.panelControl1.Controls.Add(this.labelControl10);
             this.panelControl1.Controls.Add(this.labelControl9);
@@ -135,25 +131,85 @@
             this.panelControl1.Controls.Add(this.deFecha);
             this.panelControl1.Controls.Add(this.txtTotalFactura);
             this.panelControl1.Controls.Add(this.txtIVATotal);
-            this.panelControl1.Controls.Add(this.txtEmpleado);
-            this.panelControl1.Controls.Add(this.txtCliente);
+            this.panelControl1.Controls.Add(this.txtIdFactura);
+            this.panelControl1.Controls.Add(this.SearchLookEditCliente);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(212, 591);
             this.panelControl1.TabIndex = 0;
             // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(13, 208);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(50, 13);
+            this.labelControl11.TabIndex = 8;
+            this.labelControl11.Text = "Empleado:";
+            // 
+            // searchLookUpEditEmpleado
+            // 
+            this.searchLookUpEditEmpleado.Location = new System.Drawing.Point(12, 227);
+            this.searchLookUpEditEmpleado.Name = "searchLookUpEditEmpleado";
+            this.searchLookUpEditEmpleado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpEditEmpleado.Properties.DataSource = this.xpCollectionEmpleado;
+            this.searchLookUpEditEmpleado.Properties.DisplayMember = "Nombre_Completo";
+            this.searchLookUpEditEmpleado.Properties.NullText = "";
+            this.searchLookUpEditEmpleado.Properties.PopupView = this.gridViewEmpleado;
+            this.searchLookUpEditEmpleado.Properties.ValueMember = "This";
+            this.searchLookUpEditEmpleado.Size = new System.Drawing.Size(184, 20);
+            this.searchLookUpEditEmpleado.TabIndex = 7;
+            // 
+            // xpCollectionEmpleado
+            // 
+            this.xpCollectionEmpleado.ObjectType = typeof(FarmaciaElPorvenir.Database.Empleado);
+            this.xpCollectionEmpleado.Session = this.unitOfWork1;
+            // 
+            // gridViewEmpleado
+            // 
+            this.gridViewEmpleado.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colId1,
+            this.colNombre_Completo,
+            this.colCargo});
+            this.gridViewEmpleado.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridViewEmpleado.Name = "gridViewEmpleado";
+            this.gridViewEmpleado.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewEmpleado.OptionsView.ShowGroupPanel = false;
+            this.gridViewEmpleado.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colId1, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // colId1
+            // 
+            this.colId1.FieldName = "Id";
+            this.colId1.Name = "colId1";
+            // 
+            // colNombre_Completo
+            // 
+            this.colNombre_Completo.FieldName = "Nombre_Completo";
+            this.colNombre_Completo.Name = "colNombre_Completo";
+            this.colNombre_Completo.Visible = true;
+            this.colNombre_Completo.VisibleIndex = 0;
+            // 
+            // colCargo
+            // 
+            this.colCargo.FieldName = "Cargo";
+            this.colCargo.Name = "colCargo";
+            this.colCargo.Visible = true;
+            this.colCargo.VisibleIndex = 1;
+            // 
             // btnProcesar
             // 
-            this.btnProcesar.Location = new System.Drawing.Point(13, 305);
+            this.btnProcesar.Location = new System.Drawing.Point(14, 382);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(75, 23);
             this.btnProcesar.TabIndex = 6;
             this.btnProcesar.Text = "Procesar";
+            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(12, 249);
+            this.labelControl10.Location = new System.Drawing.Point(13, 326);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(68, 13);
             this.labelControl10.TabIndex = 5;
@@ -161,7 +217,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(12, 201);
+            this.labelControl9.Location = new System.Drawing.Point(14, 269);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(48, 13);
             this.labelControl9.TabIndex = 5;
@@ -187,7 +243,7 @@
             // 
             this.btnCancelarProducto.AutoSize = true;
             this.btnCancelarProducto.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarProducto.ImageOptions.Image")));
-            this.btnCancelarProducto.Location = new System.Drawing.Point(157, 299);
+            this.btnCancelarProducto.Location = new System.Drawing.Point(158, 376);
             this.btnCancelarProducto.Name = "btnCancelarProducto";
             this.btnCancelarProducto.Size = new System.Drawing.Size(38, 36);
             this.btnCancelarProducto.TabIndex = 3;
@@ -209,7 +265,7 @@
             // 
             // deFecha
             // 
-            this.deFecha.EditValue = null;
+            this.deFecha.EditValue = new System.DateTime(2024, 9, 15, 0, 0, 0, 0);
             this.deFecha.Enabled = false;
             this.deFecha.Location = new System.Drawing.Point(12, 64);
             this.deFecha.Name = "deFecha";
@@ -217,14 +273,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deFecha.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deFecha.Properties.MaskSettings.Set("mask", "d");
             this.deFecha.Size = new System.Drawing.Size(183, 20);
             this.deFecha.TabIndex = 1;
             // 
             // txtTotalFactura
             // 
             this.txtTotalFactura.Enabled = false;
-            this.txtTotalFactura.Location = new System.Drawing.Point(11, 268);
+            this.txtTotalFactura.Location = new System.Drawing.Point(12, 345);
             this.txtTotalFactura.Name = "txtTotalFactura";
             this.txtTotalFactura.Size = new System.Drawing.Size(184, 20);
             this.txtTotalFactura.TabIndex = 0;
@@ -232,137 +287,87 @@
             // txtIVATotal
             // 
             this.txtIVATotal.Enabled = false;
-            this.txtIVATotal.Location = new System.Drawing.Point(11, 220);
+            this.txtIVATotal.Location = new System.Drawing.Point(13, 288);
             this.txtIVATotal.Name = "txtIVATotal";
             this.txtIVATotal.Size = new System.Drawing.Size(184, 20);
             this.txtIVATotal.TabIndex = 0;
             // 
-            // txtEmpleado
+            // txtIdFactura
             // 
-            this.txtEmpleado.Enabled = false;
-            this.txtEmpleado.Location = new System.Drawing.Point(12, 12);
-            this.txtEmpleado.Name = "txtEmpleado";
-            this.txtEmpleado.Size = new System.Drawing.Size(184, 20);
-            this.txtEmpleado.TabIndex = 0;
+            this.txtIdFactura.Enabled = false;
+            this.txtIdFactura.Location = new System.Drawing.Point(12, 12);
+            this.txtIdFactura.Name = "txtIdFactura";
+            this.txtIdFactura.Size = new System.Drawing.Size(184, 20);
+            this.txtIdFactura.TabIndex = 0;
             // 
-            // txtCliente
+            // SearchLookEditCliente
             // 
-            this.txtCliente.Location = new System.Drawing.Point(11, 172);
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.SearchLookEditCliente.Location = new System.Drawing.Point(11, 172);
+            this.SearchLookEditCliente.Name = "SearchLookEditCliente";
+            this.SearchLookEditCliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtCliente.Properties.DataSource = this.xpCollectionCliente;
-            this.txtCliente.Properties.DisplayMember = "Nombre_Completo";
-            this.txtCliente.Properties.NullText = "";
-            this.txtCliente.Properties.PopupView = this.gridView1;
-            this.txtCliente.Properties.ValueMember = "Id";
-            this.txtCliente.Size = new System.Drawing.Size(184, 20);
-            this.txtCliente.TabIndex = 0;
+            this.SearchLookEditCliente.Properties.DataSource = this.xpCollectionCliente;
+            this.SearchLookEditCliente.Properties.DisplayMember = "Nombre_Completo";
+            this.SearchLookEditCliente.Properties.NullText = "";
+            this.SearchLookEditCliente.Properties.PopupView = this.gridViewCliente;
+            this.SearchLookEditCliente.Properties.ValueMember = "This";
+            this.SearchLookEditCliente.Size = new System.Drawing.Size(184, 20);
+            this.SearchLookEditCliente.TabIndex = 0;
             // 
             // xpCollectionCliente
             // 
             this.xpCollectionCliente.ObjectType = typeof(FarmaciaElPorvenir.Database.Cliente);
             this.xpCollectionCliente.Session = this.unitOfWork1;
             // 
-            // gridView1
+            // gridViewCliente
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colId2,
-            this.colNombre_Completo,
-            this.colDireccion,
-            this.colTelefono});
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridViewCliente.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.IdCliente,
+            this.Cliente,
+            this.Direccion,
+            this.Telefono});
+            this.gridViewCliente.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridViewCliente.Name = "gridViewCliente";
+            this.gridViewCliente.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewCliente.OptionsView.ShowGroupPanel = false;
             // 
-            // colId2
+            // IdCliente
             // 
-            this.colId2.FieldName = "Id";
-            this.colId2.Name = "colId2";
+            this.IdCliente.FieldName = "Id";
+            this.IdCliente.Name = "IdCliente";
             // 
-            // colNombre_Completo
+            // Cliente
             // 
-            this.colNombre_Completo.Caption = "Cliente";
-            this.colNombre_Completo.FieldName = "Nombre_Completo";
-            this.colNombre_Completo.Name = "colNombre_Completo";
-            this.colNombre_Completo.Visible = true;
-            this.colNombre_Completo.VisibleIndex = 0;
+            this.Cliente.Caption = "Cliente";
+            this.Cliente.FieldName = "Nombre_Completo";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.Visible = true;
+            this.Cliente.VisibleIndex = 0;
             // 
-            // colDireccion
+            // Direccion
             // 
-            this.colDireccion.FieldName = "Direccion";
-            this.colDireccion.Name = "colDireccion";
-            this.colDireccion.Visible = true;
-            this.colDireccion.VisibleIndex = 1;
+            this.Direccion.FieldName = "Direccion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.Visible = true;
+            this.Direccion.VisibleIndex = 1;
             // 
-            // colTelefono
+            // Telefono
             // 
-            this.colTelefono.FieldName = "Telefono";
-            this.colTelefono.Name = "colTelefono";
-            this.colTelefono.Visible = true;
-            this.colTelefono.VisibleIndex = 2;
+            this.Telefono.FieldName = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.Visible = true;
+            this.Telefono.VisibleIndex = 2;
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.labelControl7);
-            this.panelControl2.Controls.Add(this.labelControl6);
-            this.panelControl2.Controls.Add(this.labelControl5);
-            this.panelControl2.Controls.Add(this.labelControl8);
-            this.panelControl2.Controls.Add(this.labelControl4);
             this.panelControl2.Controls.Add(this.btnEliminarProducto);
             this.panelControl2.Controls.Add(this.btnAgregarProducto);
-            this.panelControl2.Controls.Add(this.txtIVA);
-            this.panelControl2.Controls.Add(this.txtDescuento);
-            this.panelControl2.Controls.Add(this.txtPrecio);
-            this.panelControl2.Controls.Add(this.txtTotal);
-            this.panelControl2.Controls.Add(this.txtCantidad);
             this.panelControl2.Controls.Add(this.lookUpEditProducto);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(212, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(885, 166);
+            this.panelControl2.Size = new System.Drawing.Size(860, 70);
             this.panelControl2.TabIndex = 1;
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(649, 57);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(21, 13);
-            this.labelControl7.TabIndex = 5;
-            this.labelControl7.Text = "IVA:";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(441, 57);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(55, 13);
-            this.labelControl6.TabIndex = 5;
-            this.labelControl6.Text = "Descuento:";
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(230, 57);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(33, 13);
-            this.labelControl5.TabIndex = 5;
-            this.labelControl5.Text = "Precio:";
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Location = new System.Drawing.Point(25, 108);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(44, 13);
-            this.labelControl8.TabIndex = 5;
-            this.labelControl8.Text = "Subtotal:";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(26, 57);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(47, 13);
-            this.labelControl4.TabIndex = 5;
-            this.labelControl4.Text = "Cantidad:";
             // 
             // btnEliminarProducto
             // 
@@ -372,6 +377,7 @@
             this.btnEliminarProducto.Name = "btnEliminarProducto";
             this.btnEliminarProducto.Size = new System.Drawing.Size(38, 36);
             this.btnEliminarProducto.TabIndex = 2;
+            this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
             // 
             // btnAgregarProducto
             // 
@@ -383,50 +389,6 @@
             this.btnAgregarProducto.TabIndex = 1;
             this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
             // 
-            // txtIVA
-            // 
-            this.txtIVA.EditValue = 15;
-            this.txtIVA.Enabled = false;
-            this.txtIVA.Location = new System.Drawing.Point(648, 76);
-            this.txtIVA.Name = "txtIVA";
-            this.txtIVA.Size = new System.Drawing.Size(184, 20);
-            this.txtIVA.TabIndex = 0;
-            // 
-            // txtDescuento
-            // 
-            this.txtDescuento.EditValue = 0;
-            this.txtDescuento.Location = new System.Drawing.Point(440, 76);
-            this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(184, 20);
-            this.txtDescuento.TabIndex = 0;
-            this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.EditValue = 0D;
-            this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(229, 76);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(184, 20);
-            this.txtPrecio.TabIndex = 0;
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(25, 127);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(127, 20);
-            this.txtTotal.TabIndex = 0;
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.EditValue = 0;
-            this.txtCantidad.Location = new System.Drawing.Point(25, 76);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(184, 20);
-            this.txtCantidad.TabIndex = 0;
-            this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
-            // 
             // lookUpEditProducto
             // 
             this.lookUpEditProducto.Location = new System.Drawing.Point(25, 23);
@@ -436,8 +398,8 @@
             this.lookUpEditProducto.Properties.DataSource = this.xpCollectionProducto;
             this.lookUpEditProducto.Properties.DisplayMember = "Medicamento";
             this.lookUpEditProducto.Properties.NullText = "Seleccione un Producto";
-            this.lookUpEditProducto.Properties.PopupView = this.searchLookUpEditProducto;
-            this.lookUpEditProducto.Properties.ValueMember = "Id";
+            this.lookUpEditProducto.Properties.PopupView = this.searchLookUpEditViewProducto;
+            this.lookUpEditProducto.Properties.ValueMember = "This";
             this.lookUpEditProducto.Size = new System.Drawing.Size(427, 20);
             this.lookUpEditProducto.TabIndex = 0;
             // 
@@ -446,107 +408,75 @@
             this.xpCollectionProducto.ObjectType = typeof(FarmaciaElPorvenir.Database.Producto);
             this.xpCollectionProducto.Session = this.unitOfWork1;
             // 
-            // searchLookUpEditProducto
+            // searchLookUpEditViewProducto
             // 
-            this.searchLookUpEditProducto.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colId1,
-            this.colMedicamento,
-            this.gridColumn5,
-            this.gridColumn6,
-            this.colPrecio_Compra,
-            this.colPrecio_Venta,
-            this.colDescuento1,
-            this.colStock,
-            this.colVencimiento,
-            this.gridColumn7,
-            this.gridColumn8});
-            this.searchLookUpEditProducto.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpEditProducto.Name = "searchLookUpEditProducto";
-            this.searchLookUpEditProducto.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpEditProducto.OptionsView.ShowGroupPanel = false;
-            this.searchLookUpEditProducto.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.searchLookUpEditProducto_RowClick);
+            this.searchLookUpEditViewProducto.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Id,
+            this.Producto,
+            this.Precio,
+            this.Descuento,
+            this.Stock,
+            this.Vencimiento,
+            this.Proveedor});
+            this.searchLookUpEditViewProducto.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEditViewProducto.Name = "searchLookUpEditViewProducto";
+            this.searchLookUpEditViewProducto.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEditViewProducto.OptionsView.ShowGroupPanel = false;
             // 
-            // colId1
+            // Id
             // 
-            this.colId1.FieldName = "Id";
-            this.colId1.Name = "colId1";
+            this.Id.FieldName = "id";
+            this.Id.Name = "Id";
             // 
-            // colMedicamento
+            // Producto
             // 
-            this.colMedicamento.FieldName = "Medicamento";
-            this.colMedicamento.Name = "colMedicamento";
-            this.colMedicamento.Visible = true;
-            this.colMedicamento.VisibleIndex = 0;
+            this.Producto.Caption = "Producto";
+            this.Producto.FieldName = "Medicamento";
+            this.Producto.Name = "Producto";
+            this.Producto.Visible = true;
+            this.Producto.VisibleIndex = 0;
             // 
-            // gridColumn5
+            // Precio
             // 
-            this.gridColumn5.FieldName = "Id_Categoria!";
-            this.gridColumn5.Name = "gridColumn5";
+            this.Precio.FieldName = "Precio_Venta";
+            this.Precio.Name = "Precio";
+            this.Precio.Visible = true;
+            this.Precio.VisibleIndex = 1;
             // 
-            // gridColumn6
+            // Descuento
             // 
-            this.gridColumn6.Caption = "Categoria";
-            this.gridColumn6.FieldName = "Id_Categoria.Categorias";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 1;
+            this.Descuento.FieldName = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.Visible = true;
+            this.Descuento.VisibleIndex = 2;
             // 
-            // colPrecio_Compra
+            // Stock
             // 
-            this.colPrecio_Compra.FieldName = "Precio_Compra";
-            this.colPrecio_Compra.Name = "colPrecio_Compra";
-            this.colPrecio_Compra.Visible = true;
-            this.colPrecio_Compra.VisibleIndex = 2;
+            this.Stock.FieldName = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.Visible = true;
+            this.Stock.VisibleIndex = 3;
             // 
-            // colPrecio_Venta
+            // Vencimiento
             // 
-            this.colPrecio_Venta.FieldName = "Precio_Venta";
-            this.colPrecio_Venta.Name = "colPrecio_Venta";
-            this.colPrecio_Venta.Visible = true;
-            this.colPrecio_Venta.VisibleIndex = 3;
+            this.Vencimiento.FieldName = "Vencimiento";
+            this.Vencimiento.Name = "Vencimiento";
+            this.Vencimiento.Visible = true;
+            this.Vencimiento.VisibleIndex = 4;
             // 
-            // colDescuento1
+            // Proveedor
             // 
-            this.colDescuento1.FieldName = "Descuento";
-            this.colDescuento1.Name = "colDescuento1";
-            this.colDescuento1.Visible = true;
-            this.colDescuento1.VisibleIndex = 4;
-            // 
-            // colStock
-            // 
-            this.colStock.FieldName = "Stock";
-            this.colStock.Name = "colStock";
-            this.colStock.Visible = true;
-            this.colStock.VisibleIndex = 5;
-            // 
-            // colVencimiento
-            // 
-            this.colVencimiento.FieldName = "Vencimiento";
-            this.colVencimiento.Name = "colVencimiento";
-            this.colVencimiento.Visible = true;
-            this.colVencimiento.VisibleIndex = 6;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.FieldName = "Id_Proveedor!";
-            this.gridColumn7.Name = "gridColumn7";
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Proveedor";
-            this.gridColumn8.FieldName = "Id_Proveedor.Nombre";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.Proveedor.FieldName = "Id_Proveedor.Nombre";
+            this.Proveedor.Name = "Proveedor";
             // 
             // gridControlProducto
             // 
             this.gridControlProducto.DataSource = this.xpCollectionDetalleVenta;
             this.gridControlProducto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlProducto.Location = new System.Drawing.Point(212, 166);
+            this.gridControlProducto.Location = new System.Drawing.Point(212, 70);
             this.gridControlProducto.MainView = this.gridViewDetalleVenta;
             this.gridControlProducto.Name = "gridControlProducto";
-            this.gridControlProducto.Size = new System.Drawing.Size(885, 425);
+            this.gridControlProducto.Size = new System.Drawing.Size(860, 521);
             this.gridControlProducto.TabIndex = 2;
             this.gridControlProducto.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDetalleVenta});
@@ -568,16 +498,17 @@
             this.colPrecio,
             this.colDescuento,
             this.colIVA,
-            this.colTotal});
+            this.colTotal,
+            this.colSubTotal,
+            this.gridColumn5,
+            this.gridColumn6});
             this.gridViewDetalleVenta.GridControl = this.gridControlProducto;
             this.gridViewDetalleVenta.Name = "gridViewDetalleVenta";
             this.gridViewDetalleVenta.OptionsCustomization.AllowFilter = false;
-            this.gridViewDetalleVenta.OptionsDragDrop.AllowDataReordering = false;
-            this.gridViewDetalleVenta.OptionsDragDrop.AllowSortedDataDragDrop = false;
             this.gridViewDetalleVenta.OptionsFilter.InHeaderSearchMode = DevExpress.XtraGrid.Views.Grid.GridInHeaderSearchMode.Disabled;
+            this.gridViewDetalleVenta.OptionsView.ShowDetailButtons = false;
             this.gridViewDetalleVenta.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
-            this.gridViewDetalleVenta.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn3, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridViewDetalleVenta.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewDetalleVenta_CellValueChanged);
             // 
             // colId
             // 
@@ -596,11 +527,8 @@
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "Producto";
-            this.gridColumn3.FieldName = "Id_Producto.Medicamento";
+            this.gridColumn3.FieldName = "Id_Producto!";
             this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 0;
             // 
             // gridColumn4
             // 
@@ -612,35 +540,58 @@
             this.colCantidad.FieldName = "Cantidad";
             this.colCantidad.Name = "colCantidad";
             this.colCantidad.Visible = true;
-            this.colCantidad.VisibleIndex = 1;
+            this.colCantidad.VisibleIndex = 2;
             // 
             // colPrecio
             // 
             this.colPrecio.FieldName = "Precio";
             this.colPrecio.Name = "colPrecio";
             this.colPrecio.Visible = true;
-            this.colPrecio.VisibleIndex = 2;
+            this.colPrecio.VisibleIndex = 3;
             // 
             // colDescuento
             // 
             this.colDescuento.FieldName = "Descuento";
             this.colDescuento.Name = "colDescuento";
             this.colDescuento.Visible = true;
-            this.colDescuento.VisibleIndex = 3;
+            this.colDescuento.VisibleIndex = 4;
             // 
             // colIVA
             // 
             this.colIVA.FieldName = "IVA";
             this.colIVA.Name = "colIVA";
             this.colIVA.Visible = true;
-            this.colIVA.VisibleIndex = 4;
+            this.colIVA.VisibleIndex = 5;
             // 
             // colTotal
             // 
             this.colTotal.FieldName = "Total";
             this.colTotal.Name = "colTotal";
             this.colTotal.Visible = true;
-            this.colTotal.VisibleIndex = 5;
+            this.colTotal.VisibleIndex = 7;
+            // 
+            // colSubTotal
+            // 
+            this.colSubTotal.FieldName = "SubTotal";
+            this.colSubTotal.Name = "colSubTotal";
+            this.colSubTotal.Visible = true;
+            this.colSubTotal.VisibleIndex = 6;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Producto";
+            this.gridColumn5.FieldName = "Id_Producto.Medicamento";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 0;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Categoria";
+            this.gridColumn6.FieldName = "Id_Producto.Id_Categoria.Categorias";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 1;
             // 
             // textEdit1
             // 
@@ -660,7 +611,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 591);
+            this.ClientSize = new System.Drawing.Size(1072, 591);
             this.Controls.Add(this.gridControlProducto);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -670,27 +621,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditEmpleado.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionEmpleado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewEmpleado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoFactura.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFecha.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFecha.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalFactura.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIVATotal.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmpleado.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCliente.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdFactura.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchLookEditCliente.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionCliente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIVA.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDescuento.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTotal.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCantidad.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditProducto.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProducto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditProducto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditViewProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalleVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleVenta)).EndInit();
@@ -708,6 +657,46 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewDetalleVenta;
         private DevExpress.Xpo.XPCollection xpCollectionDetalleVenta;
         private DevExpress.Xpo.UnitOfWork unitOfWork1;
+        private DevExpress.Xpo.XPCollection xpCollectionProducto;
+        private DevExpress.XtraEditors.SimpleButton btnCancelarProducto;
+        private DevExpress.XtraEditors.SimpleButton btnEliminarProducto;
+        private DevExpress.XtraEditors.SimpleButton btnAgregarProducto;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.DateEdit deFecha;
+        private DevExpress.XtraEditors.TextEdit txtIdFactura;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit txtNoFactura;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.SearchLookUpEdit lookUpEditProducto;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditViewProducto;
+        private DevExpress.XtraGrid.Columns.GridColumn Id;
+        private DevExpress.XtraGrid.Columns.GridColumn Producto;
+        private DevExpress.XtraGrid.Columns.GridColumn Precio;
+        private DevExpress.XtraGrid.Columns.GridColumn Descuento;
+        private DevExpress.XtraGrid.Columns.GridColumn Stock;
+        private DevExpress.XtraGrid.Columns.GridColumn Vencimiento;
+        private DevExpress.XtraGrid.Columns.GridColumn Proveedor;
+        private DevExpress.XtraEditors.SimpleButton btnProcesar;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.TextEdit txtTotalFactura;
+        private DevExpress.XtraEditors.TextEdit txtIVATotal;
+        private DevExpress.XtraEditors.SearchLookUpEdit SearchLookEditCliente;
+        private DevExpress.Xpo.XPCollection xpCollectionCliente;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCliente;
+        private DevExpress.XtraGrid.Columns.GridColumn IdCliente;
+        private DevExpress.XtraGrid.Columns.GridColumn Cliente;
+        private DevExpress.XtraGrid.Columns.GridColumn Direccion;
+        private DevExpress.XtraGrid.Columns.GridColumn Telefono;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEditEmpleado;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewEmpleado;
+        private DevExpress.Xpo.XPCollection xpCollectionEmpleado;
+        private DevExpress.XtraGrid.Columns.GridColumn colId1;
+        private DevExpress.XtraGrid.Columns.GridColumn colNombre_Completo;
+        private DevExpress.XtraGrid.Columns.GridColumn colCargo;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
@@ -718,52 +707,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDescuento;
         private DevExpress.XtraGrid.Columns.GridColumn colIVA;
         private DevExpress.XtraGrid.Columns.GridColumn colTotal;
-        private DevExpress.Xpo.XPCollection xpCollectionProducto;
-        private DevExpress.XtraEditors.SimpleButton btnCancelarProducto;
-        private DevExpress.XtraEditors.SimpleButton btnEliminarProducto;
-        private DevExpress.XtraEditors.SimpleButton btnAgregarProducto;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.DateEdit deFecha;
-        private DevExpress.XtraEditors.TextEdit txtEmpleado;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit txtNoFactura;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit txtIVA;
-        private DevExpress.XtraEditors.TextEdit txtDescuento;
-        private DevExpress.XtraEditors.TextEdit txtPrecio;
-        private DevExpress.XtraEditors.TextEdit txtTotal;
-        private DevExpress.XtraEditors.TextEdit txtCantidad;
-        private DevExpress.XtraEditors.SearchLookUpEdit lookUpEditProducto;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEditProducto;
-        private DevExpress.XtraGrid.Columns.GridColumn colId1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMedicamento;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubTotal;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraGrid.Columns.GridColumn colPrecio_Compra;
-        private DevExpress.XtraGrid.Columns.GridColumn colPrecio_Venta;
-        private DevExpress.XtraGrid.Columns.GridColumn colDescuento1;
-        private DevExpress.XtraGrid.Columns.GridColumn colStock;
-        private DevExpress.XtraGrid.Columns.GridColumn colVencimiento;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraEditors.SimpleButton btnProcesar;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.TextEdit txtTotalFactura;
-        private DevExpress.XtraEditors.TextEdit txtIVATotal;
-        private DevExpress.XtraEditors.SearchLookUpEdit txtCliente;
-        private DevExpress.Xpo.XPCollection xpCollectionCliente;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colId2;
-        private DevExpress.XtraGrid.Columns.GridColumn colNombre_Completo;
-        private DevExpress.XtraGrid.Columns.GridColumn colDireccion;
-        private DevExpress.XtraGrid.Columns.GridColumn colTelefono;
     }
 }

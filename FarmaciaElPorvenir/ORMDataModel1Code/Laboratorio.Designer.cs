@@ -46,13 +46,8 @@ namespace FarmaciaElPorvenir.Database
             get { return fTelefono; }
             set { SetPropertyValue<int>(nameof(Telefono), ref fTelefono, value); }
         }
-        Proveedor fId_Proveedor;
-        [Association(@"LaboratorioReferencesProveedor")]
-        public Proveedor Id_Proveedor
-        {
-            get { return fId_Proveedor; }
-            set { SetPropertyValue<Proveedor>(nameof(Id_Proveedor), ref fId_Proveedor, value); }
-        }
+        [Association(@"ProductoReferencesLaboratorio")]
+        public XPCollection<Producto> Productos { get { return GetCollection<Producto>(nameof(Productos)); } }
     }
 
 }

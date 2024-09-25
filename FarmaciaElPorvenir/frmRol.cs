@@ -31,7 +31,7 @@ namespace FarmaciaElPorvenir
         }
         private void Limpiar()
         {
-            txtRol.Clear();
+            txtRol.Text = "";
             txtRol.Focus();
         }
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -93,14 +93,14 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Crear o buscar el rol en la base de datos
-                Rol c = new Rol(unitOfWork1);
+                Rol rol = new Rol(unitOfWork1);
 
 
                 // Asignar los valores a las propiedades del rol
-                c.Nombre_Rol = txtRol.Text;
+                rol.Nombre_Rol = txtRol.Text;
 
                 // Guardar los cambios
-                c.Save();
+                rol.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -149,18 +149,18 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Rol c = unitOfWork1.GetObjectByKey<Rol>(id);
-                if (c == null)
+                Rol rol = unitOfWork1.GetObjectByKey<Rol>(id);
+                if (rol == null)
                 {
                     MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Asignar los valores a las propiedades del rol
-                c.Nombre_Rol = txtRol.Text;
+                rol.Nombre_Rol = txtRol.Text;
 
                 // Guardar los cambios
-                c.Save();
+                rol.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario

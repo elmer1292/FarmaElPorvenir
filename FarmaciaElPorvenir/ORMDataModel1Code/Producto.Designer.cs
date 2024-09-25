@@ -77,6 +77,13 @@ namespace FarmaciaElPorvenir.Database
             get { return fId_Proveedor; }
             set { SetPropertyValue<Proveedor>(nameof(Id_Proveedor), ref fId_Proveedor, value); }
         }
+        Laboratorio fId_Laboratorio;
+        [Association(@"ProductoReferencesLaboratorio")]
+        public Laboratorio Id_Laboratorio
+        {
+            get { return fId_Laboratorio; }
+            set { SetPropertyValue<Laboratorio>(nameof(Id_Laboratorio), ref fId_Laboratorio, value); }
+        }
         [Association(@"DetallecompraReferencesProducto")]
         public XPCollection<Detallecompra> Detallecompras { get { return GetCollection<Detallecompra>(nameof(Detallecompras)); } }
         [Association(@"DetalleventaReferencesProducto")]

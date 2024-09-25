@@ -43,14 +43,14 @@ namespace FarmaciaElPorvenir
         private void Limpiar()
         {
             
-            txtDescuento.Clear();
-            cmbCategorias.Clear();
-            cmbProveedor.Clear();  
-            searchLookUpEditMedicamento.Clear();
-            txtStock.Clear();
-            txtPrecioCompra.Clear();
-            txtPrecioVenta.Clear();
-            txtVencimiento.Clear();
+            txtDescuento.Text="";
+            cmbCategorias.Text = "";
+            cmbProveedor.Text = "";
+            searchLookUpEditMedicamento.Text = "";
+            txtStock.Text = "";
+            txtPrecioCompra.Text = "";
+            txtPrecioVenta.Text = "";
+            txtVencimiento.Text = "";
             searchLookUpEditMedicamento.Focus();
         }
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -108,26 +108,27 @@ namespace FarmaciaElPorvenir
                 string.IsNullOrEmpty(searchLookUpEditMedicamento.Text)||
                 string.IsNullOrEmpty(txtDescuento.Text)||
                 string.IsNullOrEmpty(cmbCategorias.Text)||
-                string.IsNullOrEmpty(cmbProveedor.Text))
+                string.IsNullOrEmpty(cmbProveedor.Text)|| string.IsNullOrEmpty(comboBoxEditLaboratorio.Text))
             {
                 MessageBox.Show("Campos Requeridos", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             try
             {        
-                Producto c = new Producto(unitOfWork1);
+                Producto producto = new Producto(unitOfWork1);
 
                 // Asignar los valores a las propiedades del rol
-                c.Vencimiento =txtVencimiento.DateTime;
-                c.Precio_Compra = float.Parse(txtPrecioCompra.Text);
-                c.Precio_Venta = float.Parse(txtPrecioVenta.Text);
-                c.Stock = int.Parse(txtStock.Text);
-                c.Medicamento = searchLookUpEditMedicamento.Text;
-                c.Descuento = float.Parse(txtDescuento.Text);
-                c.Id_Categoria = (Categoria)gridViewCategoria.GetFocusedRow();
-                c.Id_Proveedor = (Proveedor)searchLookUpEdit1ViewProveedor.GetFocusedRow();
+                producto.Vencimiento =txtVencimiento.DateTime;
+                producto.Precio_Compra = float.Parse(txtPrecioCompra.Text);
+                producto.Precio_Venta = float.Parse(txtPrecioVenta.Text);
+                producto.Stock = int.Parse(txtStock.Text);
+                producto.Medicamento = searchLookUpEditMedicamento.Text;
+                producto.Descuento = float.Parse(txtDescuento.Text);
+                producto.Id_Categoria = (Categoria)gridViewCategoria.GetFocusedRow();
+                producto.Id_Proveedor = (Proveedor)searchLookUpEdit1ViewProveedor.GetFocusedRow();
+                producto.Id_Laboratorio = (Laboratorio)searchLookUpEditLaboratorio.GetFocusedRow();
                 // Guardar los cambios
-                c.Save();
+                producto.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -193,24 +194,24 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Producto c = unitOfWork1.GetObjectByKey<Producto>(id);
-                if (c == null)
+                Producto producto = unitOfWork1.GetObjectByKey<Producto>(id);
+                if (producto == null)
                 {
                     MessageBox.Show("Producto no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Asignar los valores a las propiedades del rol
-                c.Vencimiento = txtVencimiento.DateTime;
-                c.Precio_Compra = float.Parse(txtPrecioCompra.Text);
-                c.Precio_Venta = float.Parse(txtPrecioVenta.Text);
-                c.Stock = int.Parse(txtStock.Text);
-                c.Medicamento = searchLookUpEditMedicamento.Text;
-                c.Descuento = float.Parse(txtDescuento.Text);
-                c.Id_Categoria = (Categoria)gridViewCategoria.GetFocusedRow();
-                c.Id_Proveedor = (Proveedor)searchLookUpEdit1ViewProveedor.GetFocusedRow();
+                producto.Vencimiento = txtVencimiento.DateTime;
+                producto.Precio_Compra = float.Parse(txtPrecioCompra.Text);
+                producto.Precio_Venta = float.Parse(txtPrecioVenta.Text);
+                producto.Stock = int.Parse(txtStock.Text);
+                producto.Medicamento = searchLookUpEditMedicamento.Text;
+                producto.Descuento = float.Parse(txtDescuento.Text);
+                producto.Id_Categoria = (Categoria)gridViewCategoria.GetFocusedRow();
+                producto.Id_Proveedor = (Proveedor)searchLookUpEdit1ViewProveedor.GetFocusedRow();
                 // Guardar los cambios
-                c.Save();
+                producto.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario

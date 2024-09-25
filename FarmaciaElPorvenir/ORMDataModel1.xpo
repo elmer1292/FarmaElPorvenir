@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<dataBaseObjectModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="8517c5f7-60c0-481d-b82b-faf6bafd5b56" namespace="FarmaciaElPorvenir.Database" dataBaseShemaInfo="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" generateConnectionHelper="true" generateStoredProcedures="false" fieldNameCase="Unchanged" generateDefaultConstructors="false" useNameOf="true" connectionStringName="ConnectionString" createdInVersion="24.1.3.0" generateJsonSerializationContractResolver="false" generateServiceCollectionExtensions="false" lastModifiedInVersion="24.1.3.0" name="Database" xmlns="http://schemas.microsoft.com/dsltools/ORMDataModel">
+<dataBaseObjectModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="8517c5f7-60c0-481d-b82b-faf6bafd5b56" namespace="FarmaciaElPorvenir.Database" dataBaseShemaInfo="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" generateConnectionHelper="true" generateStoredProcedures="false" fieldNameCase="Unchanged" generateDefaultConstructors="false" useNameOf="true" connectionStringName="ConnectionString" createdInVersion="24.1.3.0" generateJsonSerializationContractResolver="false" generateServiceCollectionExtensions="false" lastModifiedInVersion="24.1.3.0" name="Database" xmlns="http://schemas.microsoft.com/dsltools/ORMDataModel">
   <classes>
     <dataBaseObjectModelHasClasses Id="dc65c440-c674-4f40-ba82-2af488717d5c">
       <xpObject Id="33b14e15-ce4e-486e-8e03-50d60de4d443" name="Categoria" baseClass="XPLiteObject" userFileName="Categoria" designerFileName="Categoria.Designer" className="Categoria" initialName="Categoria" virtualBaseClass="XPLiteObject" persistent="categoria" virtualName="Categoria">
@@ -97,13 +97,16 @@
             <field Id="a56eec17-56be-4ea8-95e1-f2ea6c5a30c8" name="Precio" columnType="Single" initialName="Precio" persistent="Precio" virtualColumnType="Single" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
           <generalXpObjectHasFields Id="382b14bf-d880-44be-a0fe-688b682dbfdd">
-            <field Id="3a62f23c-7006-4397-873b-f501e74facd6" name="Descuento" columnType="Int32" initialName="Descuento" persistent="Descuento" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
+            <field Id="3a62f23c-7006-4397-873b-f501e74facd6" name="Descuento" columnType="Single" initialName="Descuento" persistent="Descuento" virtualColumnType="Single" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
           <generalXpObjectHasFields Id="2cfee6a0-76f1-4414-adb1-30830495c203">
             <field Id="c2985cd0-dd42-4536-8df4-282ab062e37d" name="IVA" columnType="Int32" initialName="IVA" persistent="IVA" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
           <generalXpObjectHasFields Id="4934496b-5def-4f8c-833b-dc83035df471">
             <field Id="adb501d2-b97d-44f1-a0ec-19dd3ff0f311" name="Total" columnType="Single" initialName="Total" persistent="Total" virtualColumnType="Single" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="3ac83183-e686-459c-ab1f-b677f6f1bae5">
+            <field Id="06b032e9-d51f-4bb1-8e03-8547fd275195" name="SubTotal" columnType="Single" initialName="SubTotal" persistent="SubTotal" virtualColumnType="Single" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
         </fields>
       </xpObject>
@@ -192,10 +195,16 @@
             <field Id="82ffed1d-41b0-42dc-83ba-5f84ff1f81bb" name="Fecha" columnType="DateTime" initialName="Fecha" persistent="Fecha" virtualColumnType="DateTime" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
           <generalXpObjectHasFields Id="d3abd554-e294-4c4a-bbdf-48875404634c">
-            <field Id="6cc143b1-27b4-48e9-9db5-b151c19a062c" name="No_Factura" initialName="No_Factura" persistent="No_Factura" virtualColumnType="String" delayedUpdateModifiedOnly="false" size="50" />
+            <field Id="6cc143b1-27b4-48e9-9db5-b151c19a062c" name="No_Factura" columnType="Int32" initialName="No_Factura" persistent="No_Factura" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
           <generalXpObjectHasFields Id="291e190a-5c20-4400-8f38-034b49946b91">
             <field Id="388906a5-c7b0-4c3d-baa7-88657f2e5a47" name="Id_Cliente" columnType="Int32" initialName="Id_Cliente" persistent="Id_Cliente" virtualColumnType="Cliente" logicalType="Cliente" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="4b5d0155-84ea-4de1-9045-06f4313026dd">
+            <field Id="73dbb466-ccba-48d1-bb42-ec4ce1a05647" name="Total_Factura" columnType="Single" initialName="Total_Factura" persistent="Total_Factura" virtualColumnType="Single" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="232259c7-b23f-4af6-98fc-fce1890a0a8b">
+            <field Id="c5b5ac96-afa7-493a-ace5-5e525a532f3e" name="Total_IVA" columnType="Single" initialName="Total_IVA" persistent="Total_IVA" virtualColumnType="Single" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
         </fields>
         <saTargets>
@@ -225,10 +234,17 @@
           <generalXpObjectHasFields Id="025c45c7-bc8f-471d-9645-da9362cf4f84">
             <field Id="ef4802d7-79be-40b3-8389-fb4bdac94baa" name="Telefono" columnType="Int32" initialName="Telefono" persistent="Telefono" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
-          <generalXpObjectHasFields Id="da7e053d-f772-478f-9a15-a5aeba4ed470">
-            <field Id="daef50a1-f662-4664-813c-5b025cadde3a" name="Id_Proveedor" columnType="Int32" initialName="Id_Proveedor" persistent="Id_Proveedor" virtualColumnType="Proveedor" logicalType="Proveedor" delayedUpdateModifiedOnly="false" />
-          </generalXpObjectHasFields>
         </fields>
+        <saTargets>
+          <simpleAssociation Id="4d6ce374-939a-4265-9a71-0de4339a0a27" sourceCollectionName="Productos" name="ProductoReferencesLaboratorio" targetFieldName="Id_Laboratorio">
+            <xpObjectMoniker Id="4538eeb3-6ba0-4fe6-8598-fad6fe501520" />
+          </simpleAssociation>
+        </saTargets>
+        <collectionFields>
+          <xpObjectHasCollectionFields Id="b2595199-fb3a-4fd6-a5e2-e0a450f57648">
+            <collectionField Id="f7e8541d-0896-4a61-ade8-6e1e8942a6fa" name="Productos" />
+          </xpObjectHasCollectionFields>
+        </collectionFields>
       </xpObject>
     </dataBaseObjectModelHasClasses>
     <dataBaseObjectModelHasClasses Id="23b9dd48-e3e0-42b5-985d-40c34ecec106">
@@ -260,6 +276,9 @@
           </generalXpObjectHasFields>
           <generalXpObjectHasFields Id="17403cd3-d546-489d-b021-855d57216647">
             <field Id="aa08ddb8-96f9-407b-acc3-a069a279ad48" name="Id_Proveedor" columnType="Int32" initialName="Id_Proveedor" persistent="Id_Proveedor" virtualColumnType="Proveedor" logicalType="Proveedor" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="d883fbdf-f093-48af-aa8d-16c7943ecd64">
+            <field Id="3a18c894-3347-4960-9f2b-ad0ab6901901" name="Id_Laboratorio" columnType="Int32" initialName="Id_Laboratorio" persistent="Id_Laboratorio" virtualColumnType="Laboratorio" logicalType="Laboratorio" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
         </fields>
         <saTargets>
@@ -294,19 +313,13 @@
           </generalXpObjectHasFields>
         </fields>
         <saTargets>
-          <simpleAssociation Id="a6448e02-7952-4413-96ef-58c962ef7e08" sourceCollectionName="Laboratorios" name="LaboratorioReferencesProveedor" targetFieldName="Id_Proveedor">
-            <xpObjectMoniker Id="5a735707-fd89-4d30-ac59-8538c70a5002" />
-          </simpleAssociation>
-          <simpleAssociation Id="66052f1f-8a2a-44e3-b0fc-c0c3998a5afc" sourceCollectionName="Productoes" name="ProductoReferencesProveedor" targetFieldName="Id_Proveedor">
+          <simpleAssociation Id="66052f1f-8a2a-44e3-b0fc-c0c3998a5afc" sourceCollectionName="Productos" name="ProductoReferencesProveedor" targetFieldName="Id_Proveedor">
             <xpObjectMoniker Id="4538eeb3-6ba0-4fe6-8598-fad6fe501520" />
           </simpleAssociation>
         </saTargets>
         <collectionFields>
-          <xpObjectHasCollectionFields Id="ea899971-cd99-4daf-a8e2-703a58b3232c">
-            <collectionField Id="5862cd5d-8659-4482-bb8a-49e8663dd5bf" name="Laboratorios" />
-          </xpObjectHasCollectionFields>
           <xpObjectHasCollectionFields Id="05543d3d-7c12-43a9-a4bf-555d30750460">
-            <collectionField Id="4f0451d7-2614-4a29-bcc4-56ca89521017" name="Productoes" />
+            <collectionField Id="4f0451d7-2614-4a29-bcc4-56ca89521017" name="Productos" />
           </xpObjectHasCollectionFields>
         </collectionFields>
       </xpObject>

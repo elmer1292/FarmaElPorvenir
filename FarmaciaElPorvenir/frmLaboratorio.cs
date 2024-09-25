@@ -38,10 +38,10 @@ namespace FarmaciaElPorvenir
 
         private void Limpiar()
         {
-            txtNombre.Clear();
-            txtTelefono.Clear();
-            txtDireccion.Clear();
-            cmbProducto.Clear();
+            txtNombre.Text = "";
+            txtTelefono.Text = "";
+            txtDireccion.Text = "";
+            cmbProducto.Text = "";
             txtNombre.Focus();
         }
 
@@ -69,16 +69,16 @@ namespace FarmaciaElPorvenir
             try
             {
 
-                Laboratorio c = new Laboratorio(unitOfWork1);
+                Laboratorio laboratorio = new Laboratorio(unitOfWork1);
 
 
 
-                c.Nombre = txtNombre.Text;
-                c.Direccion = txtDireccion.Text;
-                c.Telefono = int.Parse(txtTelefono.Text);
+                laboratorio.Nombre = txtNombre.Text;
+                laboratorio.Direccion = txtDireccion.Text;
+                laboratorio.Telefono = int.Parse(txtTelefono.Text);
 
                 // Guardar los cambios
-                c.Save();
+                laboratorio.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -141,20 +141,20 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Laboratorio c = unitOfWork1.GetObjectByKey<Laboratorio>(id);
-                if (c == null)
+                Laboratorio laboratorio = unitOfWork1.GetObjectByKey<Laboratorio>(id);
+                if (laboratorio == null)
                 {
                     MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Asignar los valores a las propiedades del rol
-                c.Nombre = txtNombre.Text;
-                c.Direccion = txtDireccion.Text;
-                c.Telefono = int.Parse(txtTelefono.Text);
+                laboratorio.Nombre = txtNombre.Text;
+                laboratorio.Direccion = txtDireccion.Text;
+                laboratorio.Telefono = int.Parse(txtTelefono.Text);
 
                 // Guardar los cambios
-                c.Save();
+                laboratorio.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario

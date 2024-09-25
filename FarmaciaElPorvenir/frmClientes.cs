@@ -35,9 +35,9 @@ namespace FarmaciaElPorvenir
 
         private void Limpiar()
         {
-            txtNombre.Clear();
-            txtTel.Clear();
-            txtDir.Clear();
+            txtNombre.Text = "";
+            txtTel.Text="";
+            txtDir.Text="";
             txtNombre.Focus();
         }
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -99,16 +99,16 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Crear o buscar el rol en la base de datos
-                Cliente c = new Cliente(unitOfWorkCliente);
+                Cliente cliente = new Cliente(unitOfWorkCliente);
 
 
                 // Asignar los valores a las propiedades del rol
-                c.Nombre_Completo = txtNombre.Text;
-                c.Direccion = txtDir.Text;
-                c.Telefono = int.Parse(txtTel.Text);
+                cliente.Nombre_Completo = txtNombre.Text;
+                cliente.Direccion = txtDir.Text;
+                cliente.Telefono = int.Parse(txtTel.Text);
 
                 // Guardar los cambios
-                c.Save();
+                cliente.Save();
                 unitOfWorkCliente.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -156,20 +156,20 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Cliente c = unitOfWorkCliente.GetObjectByKey<Cliente>(id);
-                if (c == null)
+                Cliente cliente = unitOfWorkCliente.GetObjectByKey<Cliente>(id);
+                if (cliente == null)
                 {
                     MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Asignar los valores a las propiedades del rol
-                c.Nombre_Completo = txtNombre.Text;
-                c.Direccion = txtDir.Text;
-                c.Telefono = int.Parse(txtTel.Text);
+                cliente.Nombre_Completo = txtNombre.Text;
+                cliente.Direccion = txtDir.Text;
+                cliente.Telefono = int.Parse(txtTel.Text);
 
                 // Guardar los cambios
-                c.Save();
+                cliente.Save();
                 unitOfWorkCliente.CommitChanges();
 
                 // Limpiar los controles del formulario

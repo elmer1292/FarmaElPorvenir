@@ -34,8 +34,8 @@ namespace FarmaciaElPorvenir
 
         private void Limpiar()
         {
-            txtCategoria.Clear();
-            txtDescripcion.Clear();
+            txtCategoria.Text="";
+            txtDescripcion.Text = "";
             txtCategoria.Focus();
         }
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -96,16 +96,16 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Crear o buscar el rol en la base de datos
-                Categoria c = new Categoria(unitOfWork1);
+                Categoria categoria = new Categoria(unitOfWork1);
 
 
                 // Asignar los valores a las propiedades del rol
-                c.Categorias = txtCategoria.Text;
-                c.Descripcion = txtDescripcion.Text;
+                categoria.Categorias = txtCategoria.Text;
+                categoria.Descripcion = txtDescripcion.Text;
 
 
                 // Guardar los cambios
-                c.Save();
+                categoria.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
@@ -153,19 +153,19 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Categoria c = unitOfWork1.GetObjectByKey<Categoria>(id);
-                if (c == null)
+                Categoria categoria = unitOfWork1.GetObjectByKey<Categoria>(id);
+                if (categoria == null)
                 {
                     MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Asignar los valores a las propiedades del rol
-                c.Categorias = txtCategoria.Text;
-                c.Descripcion = txtDescripcion.Text;
+                categoria.Categorias = txtCategoria.Text;
+                categoria.Descripcion = txtDescripcion.Text;
 
                 // Guardar los cambios
-                c.Save();
+                categoria.Save();
                 unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
