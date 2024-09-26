@@ -65,10 +65,6 @@ namespace FarmaciaElPorvenir.Database
             get { return fTotal_IVA; }
             set { SetPropertyValue<float>(nameof(Total_IVA), ref fTotal_IVA, value); }
         }
-        [Association(@"DetalleventaReferencesFactura_venta")]
-        public XPCollection<Detalleventa> Detalleventas { get { return GetCollection<Detalleventa>(nameof(Detalleventas)); } }
-        //[Association(@"DetalleventaReferencesFactura_venta1")]
-        //public XPCollection<Detalleventa> Detalleventas1 { get { return GetCollection<Detalleventa>(nameof(Detalleventas1)); } }
     }
 
 }

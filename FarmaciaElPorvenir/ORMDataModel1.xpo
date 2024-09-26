@@ -207,22 +207,6 @@
             <field Id="c5b5ac96-afa7-493a-ace5-5e525a532f3e" name="Total_IVA" columnType="Single" initialName="Total_IVA" persistent="Total_IVA" virtualColumnType="Single" delayedUpdateModifiedOnly="false" />
           </generalXpObjectHasFields>
         </fields>
-        <saTargets>
-          <simpleAssociation Id="dc246176-b735-4cd8-88d2-10d5c3ada585" sourceCollectionName="Detalleventas" name="DetalleventaReferencesFactura_venta" targetFieldName="Id_FacturaVenta">
-            <xpObjectMoniker Id="b2ac10cb-d403-4725-9e03-353c19a83f08" />
-          </simpleAssociation>
-          <simpleAssociation Id="acd4a17b-2cfd-4978-9dfc-9e3c4dd07cb6" sourceCollectionName="Detalleventas1" name="DetalleventaReferencesFactura_venta1" targetFieldName="Factura_venta_Id">
-            <xpObjectMoniker Id="b2ac10cb-d403-4725-9e03-353c19a83f08" />
-          </simpleAssociation>
-        </saTargets>
-        <collectionFields>
-          <xpObjectHasCollectionFields Id="8acbfd2c-6cda-4728-a60f-ef10634403e2">
-            <collectionField Id="1bbf442b-da99-4fac-a56c-0d184081fda4" name="Detalleventas" />
-          </xpObjectHasCollectionFields>
-          <xpObjectHasCollectionFields Id="f7bd8c8f-14a2-4d67-a21c-2ab5735eec8a">
-            <collectionField Id="1c0242ae-141d-47b5-b3a4-6a71cbd3b87c" name="Detalleventas1" />
-          </xpObjectHasCollectionFields>
-        </collectionFields>
       </xpObject>
     </dataBaseObjectModelHasClasses>
     <dataBaseObjectModelHasClasses Id="9e5b889c-2ba1-4fc2-933a-ec9ca4a3bd9b">

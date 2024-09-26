@@ -26,13 +26,6 @@ namespace FarmaciaElPorvenir.Database
             get { return fId; }
             set { SetPropertyValue<int>(nameof(Id), ref fId, value); }
         }
-        Factura_venta fId_FacturaVenta;
-        [Association(@"DetalleventaReferencesFactura_venta")]
-        public Factura_venta Id_FacturaVenta
-        {
-            get { return fId_FacturaVenta; }
-            set { SetPropertyValue<Factura_venta>(nameof(Id_FacturaVenta), ref fId_FacturaVenta, value); }
-        }
         Producto fId_Producto;
         [Association(@"DetalleventaReferencesProducto")]
         public Producto Id_Producto
@@ -78,12 +71,12 @@ namespace FarmaciaElPorvenir.Database
         }
         Factura_venta fFactura_venta_Id;
         [Persistent(@"factura_venta_Id")]
-        [Association(@"DetalleventaReferencesFactura_venta1")]
         public Factura_venta Factura_venta_Id
         {
             get { return fFactura_venta_Id; }
             set { SetPropertyValue<Factura_venta>(nameof(Factura_venta_Id), ref fFactura_venta_Id, value); }
         }
+
     }
 
 }

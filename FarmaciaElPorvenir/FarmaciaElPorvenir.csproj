@@ -37,6 +37,7 @@
     <Reference Include="DevExpress.Charts.v24.1.Core, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeParser.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.Desktop.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dialogs.v24.1.Core, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Drawing.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.DataAccess.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -61,6 +62,7 @@
     <Reference Include="DevExpress.XtraCharts.v24.1.Extensions, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v24.1.Wizard, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraDiagram.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDialogs.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGauges.v24.1.Core, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -119,17 +121,17 @@
     <Compile Include="formFacturasCompras.Designer.cs">
       <DependentUpon>formFacturasCompras.cs</DependentUpon>
     </Compile>
+    <Compile Include="formFacturaVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formFacturaVentas.Designer.cs">
+      <DependentUpon>formFacturaVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="formUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formUsuario.Designer.cs">
       <DependentUpon>formUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmFacturaVenta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmFacturaVenta.Designer.cs">
-      <DependentUpon>frmFacturaVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -242,11 +244,11 @@
     <EmbeddedResource Include="formFacturasCompras.resx">
       <DependentUpon>formFacturasCompras.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formFacturaVentas.resx">
+      <DependentUpon>formFacturaVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formUsuario.resx">
       <DependentUpon>formUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmFacturaVenta.resx">
-      <DependentUpon>frmFacturaVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLaboratorio.resx">
       <DependentUpon>frmLaboratorio.cs</DependentUpon>
