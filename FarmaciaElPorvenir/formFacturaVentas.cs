@@ -56,7 +56,7 @@ namespace FarmaciaElPorvenir
             if (!int.TryParse(txtCantidad.Text, out int cantidad) ||
       !float.TryParse(txtSubTotal.Text, out float subTotal) ||
       !float.TryParse(txtDescuento.Text, out float descuento) ||
-      !int.TryParse(txtIVA.Text, out int iva) ||
+      !float.TryParse(txtIVA.Text, out float iva) ||
       !float.TryParse(txtTotal.Text, out float total)|| !float.TryParse(txtPrecio.Text, out float precio))
             {
                 MessageBox.Show("Por favor, verifica los datos ingresados.");
@@ -84,6 +84,13 @@ namespace FarmaciaElPorvenir
             totalFactura += detalle.Total; // Suma el total del nuevo detalle
             txtTotalFactura.Text = totalFactura.ToString("0.00"); // Asigna el nuevo total formateado
 
+
+            float totalIVA = 0f;
+            float.TryParse(txtTotalIVA.Text, out totalIVA); // Intenta convertir el total actual
+            totalIVA += detalle.IVA; // Suma el total del nuevo detalle
+            txtTotalIVA.Text = totalIVA.ToString("0.00"); // Asigna el nuevo total formateado
+
+
         }
 
         private void txtCantidad_EditValueChanged(object sender, EventArgs e)
@@ -97,9 +104,10 @@ namespace FarmaciaElPorvenir
             }
 
             txtPrecio.Text = p.Precio_Venta.ToString();
-            txtSubTotal.Text =int.TryParse(txtCantidad.Text, out int cantidad)? (p.Precio_Venta * cantidad).ToString("0.00"): "0.00"; // o string.Empty si prefieres dejarlo vacío
+            txtSubTotal.Text = int.TryParse(txtCantidad.Text, out int cantidad) ? (p.Precio_Venta * cantidad).ToString("0.00") : "0.00"; // o string.Empty si prefieres dejarlo vacío
+            txtIVA.Text = (float.Parse(txtSubTotal.Text) * 15 / 100).ToString();
+            txtTotal.Text = (float.Parse(txtSubTotal.Text)+float.Parse(txtIVA.Text)).ToString();
         }
-
         private void searchCliente_BeforePopup(object sender, EventArgs e)
         {
             searchViewCliente.Columns[0].Visible = false;
@@ -251,5 +259,7 @@ namespace FarmaciaElPorvenir
             detallesVenta.Clear(); // Limpia la lista de detalles
             gridControlDetalleVenta.Refresh();
         }
+
+         
     }
 }

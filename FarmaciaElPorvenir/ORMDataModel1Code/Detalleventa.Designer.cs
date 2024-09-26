@@ -51,11 +51,11 @@ namespace FarmaciaElPorvenir.Database
             get { return fDescuento; }
             set { SetPropertyValue<float>(nameof(Descuento), ref fDescuento, value); }
         }
-        int fIVA;
-        public int IVA
+        float fIVA;
+        public float IVA
         {
             get { return fIVA; }
-            set { SetPropertyValue<int>(nameof(IVA), ref fIVA, value); }
+            set { SetPropertyValue<float>(nameof(IVA), ref fIVA, value); }
         }
         float fTotal;
         public float Total
@@ -69,16 +69,14 @@ namespace FarmaciaElPorvenir.Database
             get { return fSubTotal; }
             set { SetPropertyValue<float>(nameof(SubTotal), ref fSubTotal, value); }
         }
-
         Factura_venta fFactura_venta_Id;
-        [Association(@"Factura_ventaReferencesDetalleventa")]//se agrego esto para asegurar la relacion
         [Persistent(@"factura_venta_Id")]
+        [Association(@"DetalleventaReferencesFactura_venta")]
         public Factura_venta Factura_venta_Id
         {
             get { return fFactura_venta_Id; }
             set { SetPropertyValue<Factura_venta>(nameof(Factura_venta_Id), ref fFactura_venta_Id, value); }
         }
-
     }
 
 }
