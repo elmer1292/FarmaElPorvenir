@@ -69,7 +69,9 @@ namespace FarmaciaElPorvenir.Database
             get { return fSubTotal; }
             set { SetPropertyValue<float>(nameof(SubTotal), ref fSubTotal, value); }
         }
+
         Factura_venta fFactura_venta_Id;
+        [Association(@"Factura_ventaReferencesDetalleventa")]//se agrego esto para asegurar la relacion
         [Persistent(@"factura_venta_Id")]
         public Factura_venta Factura_venta_Id
         {

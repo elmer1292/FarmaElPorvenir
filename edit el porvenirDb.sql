@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE `categoria` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Categorias` varchar(50) DEFAULT NULL,
-  `Descripcion` text,
+  `Descripcion` longtext,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE `cliente` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Nombre_Completo` varchar(50) DEFAULT NULL,
-  `Direccion` text,
+  `Direccion` longtext,
   `Telefono` int DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -80,8 +80,8 @@ CREATE TABLE `detallecompra` (
   `Id_FacturaCompra` int NOT NULL,
   `Id_Producto` int NOT NULL,
   `Cantidad` int DEFAULT NULL,
-  `Precio` float DEFAULT NULL,
-  `Total` float DEFAULT NULL,
+  `Precio` double DEFAULT NULL,
+  `Total` double DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_Id_producto_Producto_idx` (`Id_Producto`),
   KEY `fk_factura_compra_Id_FacturaCompra` (`Id_FacturaCompra`),
@@ -108,20 +108,20 @@ DROP TABLE IF EXISTS `detalleventa`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `detalleventa` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Id_FacturaVenta` int NOT NULL,
   `Id_Producto` int NOT NULL,
   `Cantidad` int NOT NULL,
-  `Precio` float NOT NULL,
-  `Descuento` float NOT NULL,
+  `Precio` double DEFAULT NULL,
+  `Descuento` double DEFAULT NULL,
   `IVA` int NOT NULL,
-  `SubTotal` float NOT NULL,
+  `SubTotal` double DEFAULT NULL,
   `Total` double DEFAULT NULL,
+  `factura_venta_Id` int DEFAULT NULL,
   PRIMARY KEY (`Id`),
-  KEY `detalleventa_ibfk_1` (`Id_FacturaVenta`),
   KEY `fk_Id_Producto_Producto_idx` (`Id_Producto`),
-  CONSTRAINT `detalleventa_ibfk_1` FOREIGN KEY (`Id_FacturaVenta`) REFERENCES `factura_venta` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  KEY `ifactura_venta_Id_detalleventa` (`factura_venta_Id`),
+  CONSTRAINT `FK_detalleventa_factura_venta_Id` FOREIGN KEY (`factura_venta_Id`) REFERENCES `factura_venta` (`Id`),
   CONSTRAINT `fk_Id_Producto_Producto` FOREIGN KEY (`Id_Producto`) REFERENCES `producto` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,6 +130,7 @@ CREATE TABLE `detalleventa` (
 
 LOCK TABLES `detalleventa` WRITE;
 /*!40000 ALTER TABLE `detalleventa` DISABLE KEYS */;
+INSERT INTO `detalleventa` VALUES (1,5,12,12,0,22,144,165.6,NULL),(2,5,12,12,0,22,144,165.6,29),(3,2,12,15,0,27,180,207,NULL),(4,2,12,15,0,27,180,207,30),(5,2,20,15,0,15,300,315,31),(6,1,20,30,0,0,600,600,NULL);
 /*!40000 ALTER TABLE `detalleventa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,10 +169,10 @@ DROP TABLE IF EXISTS `factura_compra`;
 CREATE TABLE `factura_compra` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Id_Empleado` int NOT NULL,
-  `Fecha` date DEFAULT NULL,
+  `Fecha` datetime(6) DEFAULT NULL,
   `No_Factura` varchar(50) DEFAULT NULL,
   `Id_Proveedor` int DEFAULT NULL,
-  `Total` float DEFAULT NULL,
+  `Total` double DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `Id_Empleado` (`Id_Empleado`),
   CONSTRAINT `factura_compra_ibfk_2` FOREIGN KEY (`Id_Empleado`) REFERENCES `empleado` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -196,9 +197,9 @@ DROP TABLE IF EXISTS `factura_venta`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `factura_venta` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Fecha` date DEFAULT NULL,
-  `No_Factura` int DEFAULT NULL,
-  `Total_Factura` float NOT NULL,
+  `Fecha` datetime(6) DEFAULT NULL,
+  `No_Factura` varchar(50) DEFAULT NULL,
+  `Total_Factura` double DEFAULT NULL,
   `Id_Cliente` int NOT NULL,
   `Id_Empleado` int NOT NULL,
   `Total_IVA` double DEFAULT NULL,
@@ -207,7 +208,7 @@ CREATE TABLE `factura_venta` (
   KEY `clientefkventa_idx` (`Id_Cliente`),
   CONSTRAINT `clientefkventa` FOREIGN KEY (`Id_Cliente`) REFERENCES `cliente` (`Id`),
   CONSTRAINT `factura_venta_ibfk_1` FOREIGN KEY (`Id_Empleado`) REFERENCES `empleado` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,6 +217,7 @@ CREATE TABLE `factura_venta` (
 
 LOCK TABLES `factura_venta` WRITE;
 /*!40000 ALTER TABLE `factura_venta` DISABLE KEYS */;
+INSERT INTO `factura_venta` VALUES (29,'2024-09-25 18:26:34.605828','1',165.6,2,9,22),(30,'2024-09-25 18:28:02.302832','1',207,1,1,27),(31,'2024-09-25 00:00:00.000000','123',315,12,1,15),(32,'2024-09-25 00:00:00.000000','123',160,12,1,0),(33,'2024-09-25 00:00:00.000000','132',600,12,1,0);
 /*!40000 ALTER TABLE `factura_venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,11 +257,11 @@ DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Medicamento` varchar(50) DEFAULT NULL,
-  `Precio_Compra` float DEFAULT NULL,
-  `Precio_Venta` float DEFAULT NULL,
-  `Descuento` float DEFAULT NULL,
+  `Precio_Compra` double DEFAULT NULL,
+  `Precio_Venta` double DEFAULT NULL,
+  `Descuento` double DEFAULT NULL,
   `Stock` int DEFAULT NULL,
-  `Vencimiento` date DEFAULT NULL,
+  `Vencimiento` datetime(6) DEFAULT NULL,
   `Id_Categoria` int NOT NULL,
   `Id_Proveedor` int NOT NULL,
   `Id_Laboratorio` int NOT NULL,
@@ -279,7 +281,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'Amigdocaina',20,30,0,100,'2025-12-11',1,1,3),(2,'Acitromicina',10,15,0,100,'2025-08-04',1,1,1),(3,'Doxiciclina',25,32,2,100,'2025-10-12',1,2,1),(4,'Ibuprofeno',15,21,0,100,'2025-12-01',2,2,2),(5,'Aspirina ',8,12,0,100,'2025-05-05',2,3,3),(6,'Paracetamol ',5,8,0,100,'2025-11-11',2,3,2);
+INSERT INTO `producto` VALUES (1,'Amigdocaina',20,30,0,100,'2025-12-11 00:00:00.000000',1,1,3),(2,'Acitromicina',10,15,0,100,'2025-08-04 00:00:00.000000',1,1,1),(3,'Doxiciclina',25,32,2,100,'2025-10-12 00:00:00.000000',1,2,1),(4,'Ibuprofeno',15,21,0,100,'2025-12-01 00:00:00.000000',2,2,2),(5,'Aspirina ',8,12,0,100,'2025-05-05 00:00:00.000000',2,3,3),(6,'Paracetamol ',5,8,0,100,'2025-11-11 00:00:00.000000',2,3,2);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +295,7 @@ DROP TABLE IF EXISTS `proveedor`;
 CREATE TABLE `proveedor` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(50) DEFAULT NULL,
-  `Direccion` text,
+  `Direccion` longtext,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -374,4 +376,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-24 22:40:55
+-- Dump completed on 2024-09-25 21:55:27

@@ -15,18 +15,18 @@ namespace FarmaciaElPorvenir
     public partial class formFacturaVentas : Form
     {
         Factura_venta fv;
-        BindingList<Detalleventa> detalleVentas; // Lista para manejar los detalles de la venta
+        private List<Detalleventa> detallesVenta;
         public formFacturaVentas()
         {
             InitializeComponent();
-            detalleVentas = new BindingList<Detalleventa>(); // Inicializa la lista
+            detallesVenta = new List<Detalleventa>();
         }
 
 
         private void formFacturaVentas_Load(object sender, EventArgs e)
         {
             dateFecha.Text = DateTime.Now.ToString("d/MM/yyyy");
-            gridControlDetalleVenta.DataSource = detalleVentas; // Asigna la lista como DataSource
+            gridControlDetalleVenta.DataSource = detallesVenta; // Asigna la lista como DataSource
             //HabilitarBotones(false);
         }
 
@@ -40,8 +40,12 @@ namespace FarmaciaElPorvenir
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             fv = null;
-            detalleVentas.Clear(); // Limpia la lista de detalles
+            detallesVenta.Clear(); // Limpia la lista de detalles
             gridControlDetalleVenta.Refresh();
+            //if (MessageBox.Show("¿Está seguro de que desea cancelar la factura?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //{
+            //    btnCancelar_Click(sender, e);
+            //}
 
             //HabilitarBotones(false);
         }
@@ -58,7 +62,7 @@ namespace FarmaciaElPorvenir
                 return;
             }
 
-            Detalleventa d = new Detalleventa(unitOfWork1)
+            var detalle = new Detalleventa(unitOfWork1)
             {
                 Precio =precio,
                 Cantidad = cantidad,
@@ -70,13 +74,13 @@ namespace FarmaciaElPorvenir
             };
 
             // Actualiza el GridControl (asumiendo que hay una lista para la colección de detalles)
-            detalleVentas.Add(d);
+            detallesVenta.Add(detalle);
             gridControlDetalleVenta.RefreshDataSource();
 
             // Manejar la suma total de la factura
             float totalFactura = 0f;
             float.TryParse(txtTotalFactura.Text, out totalFactura); // Intenta convertir el total actual
-            totalFactura += d.Total; // Suma el total del nuevo detalle
+            totalFactura += detalle.Total; // Suma el total del nuevo detalle
             txtTotalFactura.Text = totalFactura.ToString("0.00"); // Asigna el nuevo total formateado
 
         }
@@ -103,13 +107,36 @@ namespace FarmaciaElPorvenir
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (!DateTime.TryParse(dateFecha.Text, out DateTime fecha) ||
-                 !float.TryParse(txtTotalFactura.Text, out float totalFactura) ||
-                 !float.TryParse(txtTotalIVA.Text, out float totalIVA))
+                !float.TryParse(txtTotalFactura.Text, out float totalFactura) ||
+                !float.TryParse(txtTotalIVA.Text, out float totalIVA))
             {
                 MessageBox.Show("Por favor, verifica los datos ingresados.");
                 return;
             }
-            
+            if (searchViewProductos.GetFocusedRow() == null)
+            {
+                MessageBox.Show("Por favor, seleccione un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (searchViewCliente.GetFocusedRow() == null)
+            {
+                MessageBox.Show("Debe seleccionar un cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (searchViewEmpleados.GetFocusedRow() == null)
+            {
+                MessageBox.Show("Debe seleccionar un empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Verifica si hay detalles de venta antes de proceder
+            if (detallesVenta.Count == 0)
+            {
+                MessageBox.Show("Debe agregar al menos un detalle de venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Inicializa la factura
             fv = new Factura_venta(unitOfWork1)
             {
@@ -118,29 +145,57 @@ namespace FarmaciaElPorvenir
                 Total_IVA = totalIVA,
                 Id_Cliente = (Cliente)searchViewCliente.GetFocusedRow(),
                 No_Factura = txtNoFactura.Text,
-                Id_Empleado = (Empleado)searchViewEmpleados.GetFocusedRow()
+                Id_Empleado = (Empleado)searchViewEmpleados.GetFocusedRow(),
             };
 
             try
             {
-                
                 fv.Save(); // Guarda la factura
+
+                // Agregar los detalles de venta a la colección DetalleVentas
+                foreach (var detalle in detallesVenta)
+                {
+                    var detalleVenta = new Detalleventa(unitOfWork1)
+                    {
+                        Id_Producto = detalle.Id_Producto,
+                        Cantidad = detalle.Cantidad,
+                        Precio = detalle.Precio,
+                        Descuento = detalle.Descuento,
+                        IVA = detalle.IVA,
+                        Total = detalle.Total,
+                        SubTotal = detalle.SubTotal,
+                        Factura_venta_Id = fv // Asignar la factura a cada detalle
+                    };
+
+                    detalleVenta.Save(); // Guardar el detalle de venta
+                }
+
                 unitOfWork1.CommitChanges(); // Aplica los cambios a la base de datos
                 MessageBox.Show("Registro Guardado.", "Sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar campos de la interfaz
+                txtNoFactura.Text = GenerarNuevoNumeroFactura(); // Podrías generar un nuevo número automáticamente
+                txtTotalFactura.Text = "0.00";
+                txtTotalIVA.Text = "0.00";
+                txtCantidad.Text = string.Empty;
+                txtPrecio.Text = string.Empty;
+                txtSubTotal.Text = string.Empty;
             }
             catch (Exception ex)
             {
+                unitOfWork1.RollbackTransaction(); // Revertir los cambios en caso de error
                 MessageBox.Show("Error: " + ex.Message, "Sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // Reinicia la interfaz
             fv = null;
-            detalleVentas.Clear(); // Limpia la lista de detalles
+            detallesVenta.Clear(); // Limpia la lista de detalles
             gridControlDetalleVenta.Refresh();
             HabilitarBotones(false);
         }
+
 
         private void searchViewProductos_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
@@ -150,9 +205,50 @@ namespace FarmaciaElPorvenir
             }
         }
 
+        private void RecalcularTotalFactura()
+        {
+            float totalFactura = detallesVenta.Sum(d => d.Total);
+            txtTotalFactura.Text = totalFactura.ToString("0.00");
+        }
+        private string GenerarNuevoNumeroFactura()
+        {
+            // Buscar la última factura registrada
+            var ultimaFactura = unitOfWork1.Query<Factura_venta>()
+                                           .OrderByDescending(f => f.No_Factura)
+                                           .FirstOrDefault();
+
+            // Si no hay facturas previas, empezar con un número base
+            if (ultimaFactura == null)
+            {
+                return "000001"; // Primer número de factura si no hay ninguna
+            }
+
+            // Obtener el último número de factura y convertirlo a entero
+            string ultimoNumeroFactura = ultimaFactura.No_Factura;
+
+            // Suponiendo que el formato es un número secuencial de 6 dígitos
+            int numeroFacturaInt;
+            if (int.TryParse(ultimoNumeroFactura, out numeroFacturaInt))
+            {
+                // Incrementar el número de factura
+                numeroFacturaInt++;
+
+                // Devolver el nuevo número con el mismo formato, por ejemplo, 000001, 000002, etc.
+                return numeroFacturaInt.ToString("D6");
+            }
+
+            // Si por alguna razón el número de factura no es un entero válido, devuelve un valor por defecto
+            return "000001";
+        }
+
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-
+            GenerarNuevoNumeroFactura();
+            HabilitarBotones(true);
+            fv = null;
+            detallesVenta.Clear(); // Limpia la lista de detalles
+            gridControlDetalleVenta.Refresh();
         }
     }
 }
