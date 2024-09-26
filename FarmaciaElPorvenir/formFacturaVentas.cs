@@ -27,6 +27,7 @@ namespace FarmaciaElPorvenir
         {
             dateFecha.Text = DateTime.Now.ToString("d/MM/yyyy");
             gridControlDetalleVenta.DataSource = detallesVenta; // Asigna la lista como DataSource
+            GenerarNuevoNumeroFactura();
             //HabilitarBotones(false);
         }
 
