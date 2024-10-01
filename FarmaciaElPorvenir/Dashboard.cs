@@ -20,16 +20,19 @@ namespace FarmaciaElPorvenir
     public partial class Dashboard : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private Usuario us;
+        private Rol rols;
+        //public Dashboard(Usuario u, Rol id_Rol)
+        //{
+        //    InitializeComponent();
 
-        public Dashboard(Usuario u, Rol id_Rol)
-        {
-            InitializeComponent();
+        //}
 
-        }
-
-        public Dashboard(Usuario us)
+        public Dashboard(Usuario us, Rol rol)
         {
             this.us = us;
+            this.rols = rol;
+            InitializeComponent();
+            Accesos(rols);
         }
 
         private void btnAgregarCategoria_ItemClick(object sender, ItemClickEventArgs e)
@@ -207,12 +210,74 @@ namespace FarmaciaElPorvenir
 
         private void btnAgregarProveedor_ItemClick(object sender, ItemClickEventArgs e)
         {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                frmProveedor formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is formFacturaVentas)
+                    {
+                        formularioExistente = (frmProveedor)form;
+                        break;
+                    }
+                }
 
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    frmProveedor nuevoFormulario = new frmProveedor();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
+
+        private void Accesos(Rol r)
+        {
+            try
+            {
+                if (r != null) 
+                { 
+                    if(r.Nombre_Rol == "Vendedor")
+                    {
+                        ribbonPageCliente.Visible = true;
+                        ribbonPageFacturas.Visible = true;
+                    }else if(r.Nombre_Rol =="Consulta")
+                    {
+                        ribbonPageInventario.Visible = true;
+                    }
+                    else
+                    {
+                        ribbonPageHome.Visible = true;
+                        ribbonPageCliente.Visible=true;
+                        ribbonPageEmpleado.Visible=true;
+                        ribbonPageFacturas.Visible=true;
+                        ribbonPageFacturas.Visible = true;
+                        ribbonPageUsuario.Visible=true;
+                        ribbonPageInventario.Visible=true;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
+            barStaticItemUser.Caption = us.Usuario1;
         }
 
         private void barButtonItemVentas_ItemClick(object sender, ItemClickEventArgs e)

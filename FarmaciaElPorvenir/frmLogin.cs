@@ -43,7 +43,7 @@ namespace FarmaciaElPorvenir
                 if (us.Usuario1.Equals(txtUser.Text) &&
                     us.Pass.Equals(txtPwd.Text))
                 {
-                    Dashboard fp = new Dashboard(us);
+                    Dashboard fp = new Dashboard(us, us.Id_Rol);
                     this.Visible = false;
                     fp.ShowDialog();
                     this.Visible = true;
