@@ -21,18 +21,34 @@ namespace FarmaciaElPorvenir
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
+           // bool usr = false;
+           // foreach (Usuario usuario in xpCollectionUsuario)
+            //{
+            //    if (usuario.Usuario1.Equals(txtUser.Text) &&
+            //        usuario.Pass.Equals(txtPwd.Text))
+            //    {
+            //        Dashboard fp = new Dashboard(usuario, usuario.Id_Rol);
+            //        this.Visible = false;
+            //        fp.ShowDialog();
+            //        this.Visible = true;
+            //        txtPwd.Text = "";
+            //        txtUser.Text = "";
+            //        usr = true;
+            //    }
+            //}
+
             bool usr = false;
-            foreach (Usuario usuario in xpCollectionUsuario)
+            foreach (Usuario us in xpCollectionUsuario)
             {
-                if (usuario.Usuario1.Equals(txtUser.Text) &&
-                    usuario.Pass.Equals(txtPwd.Text))
+                if (us.Usuario1.Equals(txtUser.Text) &&
+                    us.Pass.Equals(txtPwd.Text))
                 {
-                    Dashboard fp = new Dashboard(usuario, usuario.Id_Rol);
+                    Dashboard fp = new Dashboard(us);
                     this.Visible = false;
                     fp.ShowDialog();
                     this.Visible = true;
-                    txtPwd.Text = "";
-                    txtUser.Text = "";
+                    txtUser.Clear();
+                    txtPwd.Clear();
                     usr = true;
                 }
             }
