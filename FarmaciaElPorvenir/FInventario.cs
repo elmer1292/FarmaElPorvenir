@@ -235,5 +235,10 @@ namespace FarmaciaElPorvenir
             ActualizarEstadoBotones(true, false, false, false, false, false);
             Limpiar();
         }
+
+        private void searchLookUpEditMedicamento_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
