@@ -15,9 +15,12 @@ namespace FarmaciaElPorvenir
 {
     public partial class formFacturasCompras : Form
     {
+        Factura_compra factura_Compra;
+        List<Detallecompra> detallesCompra;
         public formFacturasCompras()
         {
             InitializeComponent();
+            detallesCompra = new List<Detallecompra>();
         }
 
         private void ActualizarEstadoBotones(bool nuevo, bool guardar, bool eliminar, bool cancelar, bool camposHabilitados)
@@ -32,34 +35,70 @@ namespace FarmaciaElPorvenir
             txtPrecio.Enabled = camposHabilitados;
             deFecha.Enabled = camposHabilitados;
             cmbProducto.Enabled = camposHabilitados;
-            cmbProveedor.Enabled = camposHabilitados;
+            cmbLab.Enabled = camposHabilitados;
             txtTotal.Enabled = camposHabilitados;
             txtNoFac.Enabled = camposHabilitados;
         }
 
         private void Limpiar()
         {
-            deFecha.Text = "";
+    
             txtCantidad.Text="";
             txtPrecio.Text="";
-            cmbProveedor.Text="";
+            cmbLab.Text="";
             cmbProducto.Text="";
             txtTotal.Text="";
-            txtNoFac.Text="";
+
             deFecha.Focus();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            GenerarNuevoNumeroFactura();
+            factura_Compra = null;
+            detallesCompra.Clear(); // Limpia la lista de detalles
+            gridControlDetalleCompra.Refresh();
             ActualizarEstadoBotones(false, true, false, true, true);
             Limpiar();
         }
 
         private void formFacturasCompras_Load(object sender, EventArgs e)
         {
+            deFecha.Text = DateTime.Now.ToString("d/MM/yyyy");
+            gridControlDetalleCompra.DataSource = detallesCompra;
+            txtNoFac.Text = GenerarNuevoNumeroFactura();
             ActualizarEstadoBotones(true, false, false, false, false);
         }
+        private string GenerarNuevoNumeroFactura()
+        {
+            // Buscar la última factura registrada
+            var ultimaFactura = unitOfWork1.Query<Factura_compra>()
+                                           .OrderByDescending(f => f.No_Factura)
+                                           .FirstOrDefault();
 
+            // Si no hay facturas previas, empezar con un número base
+            if (ultimaFactura == null)
+            {
+                return "000001"; // Primer número de factura si no hay ninguna
+            }
+
+            // Obtener el último número de factura y convertirlo a entero
+            string ultimoNumeroFactura = ultimaFactura.No_Factura;
+
+            // Suponiendo que el formato es un número secuencial de 6 dígitos
+            int numeroFacturaInt;
+            if (int.TryParse(ultimoNumeroFactura, out numeroFacturaInt))
+            {
+                // Incrementar el número de factura
+                numeroFacturaInt++;
+
+                // Devolver el nuevo número con el mismo formato, por ejemplo, 000001, 000002, etc.
+                return numeroFacturaInt.ToString("D6");
+            }
+
+            // Si por alguna razón el número de factura no es un entero válido, devuelve un valor por defecto
+            return "000001";
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             ActualizarEstadoBotones(true, false, false, false, false);
@@ -68,80 +107,97 @@ namespace FarmaciaElPorvenir
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            // Verificar si los campos obligatorios están vacíos
-            if (string.IsNullOrEmpty(txtCantidad.Text) || string.IsNullOrEmpty(txtPrecio.Text) ||
-                string.IsNullOrEmpty(txtNoFac.Text) || string.IsNullOrEmpty(deFecha.Text) ||
-                cmbProducto.EditValue == null||cmbProveedor.EditValue == null)
+            if (!DateTime.TryParse(deFecha.Text, out DateTime fecha) ||
+               string.IsNullOrEmpty(txtNoFac.Text) ||
+               !int.TryParse(txtCantidad.Text, out int cantidad))
             {
-                MessageBox.Show("Campos Requeridos", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Por favor, verifica los datos ingresados.");
+                return;
+            }
+            if (searchProducto.GetFocusedRow() == null)
+            {
+                MessageBox.Show("Por favor, seleccione un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (searchProveedor.GetFocusedRow() == null)
+            {
+                MessageBox.Show("Debe seleccionar un proveedor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            if (searchLab.GetFocusedRow() == null)
+            {
+                MessageBox.Show("Debe seleccionar un Laboratorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Verifica si hay detalles de venta antes de proceder
+            if (detallesCompra.Count == 0)
+            {
+                MessageBox.Show("Debe agregar al menos un detalle de venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Empleado em = new Empleado(unitOfWork1);
+            em.Id = 1;
+            // Inicializa la factura
+            factura_Compra = new Factura_compra(unitOfWork1)
+            {
+                Fecha = fecha,
+                Total= float.Parse( txtTotal.Text),
+                Id_Proveedor = (Proveedor)searchProveedor.GetFocusedRow(),
+                No_Factura = txtNoFac.Text,
+                Id_Empleado = em,
+                Id_Laboratorio = (Laboratorio)searchLab.GetFocusedRow(),
+            };
+
             try
             {
-                // Crear o buscar la factura en la base de datos
-                Factura_compra factura_compra = new Factura_compra(unitOfWork1);
-                Empleado empleado = unitOfWork1.GetObjectByKey<Empleado>(2);
+                factura_Compra.Save(); // Guarda la factura
 
-                // Asignar los valores a las propiedades del objeto
-                factura_compra.Id_Empleado = empleado;
-                factura_compra.Fecha = deFecha.DateTime.Date;
-                factura_compra.No_Factura = txtNoFac.Text;
+                // Agregar los detalles de venta a la colección DetalleVentas
+                foreach (var detalle in detallesCompra)
+                {
+                    var detallesCompra = new Detallecompra(unitOfWork1)
+                    {
+                        Id_Producto = detalle.Id_Producto,
+                        Cantidad = detalle.Cantidad,
+                        Precio = detalle.Precio,
+                        Total = detalle.Total,
+                        Id_FacturaCompra = factura_Compra // Asignar la factura a cada detalle
+                    };
 
-                // Asignar el objeto Inventario a la propiedad en
-                //Proveedor la = unitOfWork1.GetObjectByKey<Proveedor>(cmbProveedor.EditValue);
-                //c.Id_Proveedor = la;
+                    detallesCompra.Save(); // Guardar el detalle de venta
+                }
 
-                // Verificar si el inventario es nulo
-                //if (la == null)
-                //{
-                //    MessageBox.Show("Inventario no encontrado para el producto seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
-                //Inventario a = unitOfWork1.GetObjectByKey<Inventario>(cmbProducto.EditValue);
-                //c.Id_Medicamento = a.Id_Medicamento;
+                unitOfWork1.CommitChanges(); // Aplica los cambios a la base de datos
+                MessageBox.Show("Registro Guardado.", "Sistema",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Obtener y asignar los valores de cantidad, precio e IVA
-                //int cantidad = int.Parse(txtCantidad.Text);
-                //c.Cantidad = cantidad;
-                //c.Precio_Compra = float.Parse(txtPrecio.Text);
-
-                //float precio = float.Parse(txtPrecio.Text);
-                //float total = cantidad * precio;
-
-                //// Asignar los valores calculados
-                //txtTotal.Text = total.ToString(); // Formatear como decimal con 2 decimales
-                //c.Total = (float)total; // Convertir el total a float
-
-                //// Restar la cantidad del inventario
-                //Inventario inventario = unitOfWork1.GetObjectByKey<Inventario>(cmbProducto.EditValue); inventario.Stock += cantidad;
-
-                //// Guardar los cambios en el inventario
-                //unitOfWork1.Save(inventario);
-
-                //// Guardar la factura
-                //c.Save();
-                //unitOfWork1.CommitChanges();
-
-                //// Limpiar los controles del formulario
-                //Limpiar();
-
-                //// Mostrar un mensaje de éxito
-                //MessageBox.Show("Guardado Exitoso", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //// Recargar la colección de facturas para reflejar los cambios
-                xpCollectionCompras.Reload();
-                ActualizarEstadoBotones(true, false, false, false, false);
+                // Limpiar campos de la interfaz
+                txtNoFac.Text = GenerarNuevoNumeroFactura(); // Podrías generar un nuevo número automáticamente
+                txtCantidad.Text = string.Empty;
+                txtPrecio.Text = string.Empty;
+                txtTotal.Text = string.Empty;
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                unitOfWork1.RollbackTransaction(); // Revertir los cambios en caso de error
+                MessageBox.Show("Error: " + ex.Message, "Sistema",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            // Reinicia la interfaz
+            factura_Compra = null;
+            detallesCompra.Clear(); // Limpia la lista de detalles
+            gridControlDetalleCompra.Refresh();
+            ActualizarEstadoBotones(true, false, false, false, false);
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Factura_compra c = (Factura_compra)gridView1.GetFocusedRow();
+            Factura_compra c = (Factura_compra)gridViewDetalleCompras.GetFocusedRow();
             if (c != null)
             {
                 DialogResult r = MessageBox.Show("¿Desea Eliminar Registro?", "Información del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -166,8 +222,8 @@ namespace FarmaciaElPorvenir
         {
             if (e.RowHandle > 0)
             {
-                object medicamentoId = gridView1.GetRowCellValue(e.RowHandle, "Id_Medicamento!Key");
-                object labid = gridView1.GetRowCellValue(e.RowHandle, "Id_Proveedor!Key");
+                object medicamentoId = gridViewDetalleCompras.GetRowCellValue(e.RowHandle, "Id_Medicamento!Key");
+                object labid = gridViewDetalleCompras.GetRowCellValue(e.RowHandle, "Id_Proveedor!Key");
 
                 if (medicamentoId != null)
                 {
@@ -180,20 +236,38 @@ namespace FarmaciaElPorvenir
                 }
                 if (labid != null)
                 {
-                    cmbProveedor.EditValue = labid;
+                    cmbLab.EditValue = labid;
                 }
                 else
                 {
                     // Opcional: Manejar el caso donde el ítem no se encuentra o es nulo.
                     MessageBox.Show("El Laboratorio no está en la lista.");
                 }
-                txtCantidad.Text = gridView1.GetRowCellValue(e.RowHandle,"Cantidad").ToString();
-                txtNoFac.Text = gridView1.GetRowCellValue(e.RowHandle, "No_Factura").ToString();
-                txtPrecio.Text = gridView1.GetRowCellValue(e.RowHandle, "Precio_Compra").ToString();
-                txtTotal.Text = gridView1.GetRowCellValue(e.RowHandle, "Total").ToString();
-                deFecha.Text = gridView1.GetRowCellValue(e.RowHandle,"Fecha").ToString();
+                txtCantidad.Text = gridViewDetalleCompras.GetRowCellValue(e.RowHandle,"Cantidad").ToString();
+                txtNoFac.Text = gridViewDetalleCompras.GetRowCellValue(e.RowHandle, "No_Factura").ToString();
+                txtPrecio.Text = gridViewDetalleCompras.GetRowCellValue(e.RowHandle, "Precio_Compra").ToString();
+                txtTotal.Text = gridViewDetalleCompras.GetRowCellValue(e.RowHandle, "Total").ToString();
+                deFecha.Text = gridViewDetalleCompras.GetRowCellValue(e.RowHandle,"Fecha").ToString();
+                cmbLab.EditValue = gridViewDetalleCompras.GetRowCellValue(e.RowHandle, "Id_Laboratorio!Key").ToString();
+                cmbProveedor.EditValue = gridViewDetalleCompras.GetRowCellValue(e.RowHandle, "Id_Proveedor!Key").ToString();
+                cmbProducto.EditValue = gridViewDetalleCompras.GetRowCellValue(e.RowHandle, "Id_Inventario!Key").ToString();
+
                 ActualizarEstadoBotones(true, false, true, true, false);
             }
+        }
+
+        private void NuevoProducto_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(txtCantidad.Text, out int cantidad) ||
+    
+   // !float.TryParse(txtDescuento.Text, out float descuento) ||
+   // !float.TryParse(txtIVA.Text, out float iva) ||
+    !float.TryParse(txtTotal.Text, out float total) || !float.TryParse(txtPrecio.Text, out float precio))
+            {
+                MessageBox.Show("Por favor, verifica los datos ingresados.");
+                return;
+            }
+
         }
     }
 }

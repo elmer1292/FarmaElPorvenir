@@ -78,8 +78,19 @@
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridControlDetalleVenta = new DevExpress.XtraGrid.GridControl();
-            this.gridViewDetalleVenta = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xpCollectionDetalleVentas = new DevExpress.Xpo.XPCollection(this.components);
+            this.gridViewDetalleVenta = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCantidad = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPrecio = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescuento = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIVA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubTotal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchProducto.Properties)).BeginInit();
@@ -126,8 +137,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDetalleVenta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalleVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleVenta)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -468,6 +479,7 @@
             // 
             // txtNoFactura
             // 
+            this.txtNoFactura.Enabled = false;
             this.txtNoFactura.Location = new System.Drawing.Point(92, 12);
             this.txtNoFactura.Name = "txtNoFactura";
             this.txtNoFactura.Size = new System.Drawing.Size(538, 20);
@@ -612,6 +624,7 @@
             // 
             // gridControlDetalleVenta
             // 
+            this.gridControlDetalleVenta.DataSource = this.xpCollectionDetalleVentas;
             this.gridControlDetalleVenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlDetalleVenta.Location = new System.Drawing.Point(0, 153);
             this.gridControlDetalleVenta.MainView = this.gridViewDetalleVenta;
@@ -621,15 +634,98 @@
             this.gridControlDetalleVenta.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDetalleVenta});
             // 
-            // gridViewDetalleVenta
-            // 
-            this.gridViewDetalleVenta.GridControl = this.gridControlDetalleVenta;
-            this.gridViewDetalleVenta.Name = "gridViewDetalleVenta";
-            // 
             // xpCollectionDetalleVentas
             // 
             this.xpCollectionDetalleVentas.ObjectType = typeof(FarmaciaElPorvenir.Database.Detalleventa);
             this.xpCollectionDetalleVentas.Session = this.unitOfWork1;
+            // 
+            // gridViewDetalleVenta
+            // 
+            this.gridViewDetalleVenta.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colId,
+            this.gridColumn1,
+            this.gridColumn2,
+            this.colCantidad,
+            this.colPrecio,
+            this.colDescuento,
+            this.colIVA,
+            this.colTotal,
+            this.colSubTotal,
+            this.gridColumn3,
+            this.gridColumn4});
+            this.gridViewDetalleVenta.GridControl = this.gridControlDetalleVenta;
+            this.gridViewDetalleVenta.Name = "gridViewDetalleVenta";
+            // 
+            // colId
+            // 
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Poducto";
+            this.gridColumn1.FieldName = "Id_Producto.Detallecompras.Id_Producto.Detalleventas.Id_Producto.Medicamento";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Producto";
+            this.gridColumn2.FieldName = "Id_Producto.Medicamento";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.FieldName = "Cantidad";
+            this.colCantidad.Name = "colCantidad";
+            this.colCantidad.Visible = true;
+            this.colCantidad.VisibleIndex = 1;
+            // 
+            // colPrecio
+            // 
+            this.colPrecio.FieldName = "Precio";
+            this.colPrecio.Name = "colPrecio";
+            this.colPrecio.Visible = true;
+            this.colPrecio.VisibleIndex = 2;
+            // 
+            // colDescuento
+            // 
+            this.colDescuento.FieldName = "Descuento";
+            this.colDescuento.Name = "colDescuento";
+            this.colDescuento.Visible = true;
+            this.colDescuento.VisibleIndex = 3;
+            // 
+            // colIVA
+            // 
+            this.colIVA.FieldName = "IVA";
+            this.colIVA.Name = "colIVA";
+            this.colIVA.Visible = true;
+            this.colIVA.VisibleIndex = 4;
+            // 
+            // colTotal
+            // 
+            this.colTotal.FieldName = "Total";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.Visible = true;
+            this.colTotal.VisibleIndex = 6;
+            // 
+            // colSubTotal
+            // 
+            this.colSubTotal.FieldName = "SubTotal";
+            this.colSubTotal.Name = "colSubTotal";
+            this.colSubTotal.Visible = true;
+            this.colSubTotal.VisibleIndex = 5;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.FieldName = "Factura_venta_Id!";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.FieldName = "Factura_venta_Id!Key";
+            this.gridColumn4.Name = "gridColumn4";
             // 
             // formFacturaVentas
             // 
@@ -688,8 +784,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDetalleVenta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalleVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleVenta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -746,5 +842,16 @@
         private DevExpress.Xpo.XPCollection xpCollectionEmpleados;
         private DevExpress.Xpo.XPCollection xpCollectionDetalleVentas;
         private DevExpress.Xpo.XPCollection xpCollectionProductos;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn colCantidad;
+        private DevExpress.XtraGrid.Columns.GridColumn colPrecio;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescuento;
+        private DevExpress.XtraGrid.Columns.GridColumn colIVA;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotal;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubTotal;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
     }
 }

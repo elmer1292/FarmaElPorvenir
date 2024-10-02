@@ -48,6 +48,8 @@ namespace FarmaciaElPorvenir.Database
         }
         [Association(@"ProductoReferencesLaboratorio")]
         public XPCollection<Producto> Productos { get { return GetCollection<Producto>(nameof(Productos)); } }
+        [Association(@"Factura_compraReferencesLaboratorio")]
+        public XPCollection<Factura_compra> Factura_compras { get { return GetCollection<Factura_compra>(nameof(Factura_compras)); } }
     }
 
 }
