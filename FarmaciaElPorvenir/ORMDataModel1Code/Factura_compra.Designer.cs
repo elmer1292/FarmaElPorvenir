@@ -46,17 +46,25 @@ namespace FarmaciaElPorvenir.Database
             get { return fNo_Factura; }
             set { SetPropertyValue<string>(nameof(No_Factura), ref fNo_Factura, value); }
         }
-        int fId_Proveedor;
-        public int Id_Proveedor
+        Proveedor fId_Proveedor;
+        [Association(@"Factura_compraReferencesProveedor")]
+        public Proveedor Id_Proveedor
         {
             get { return fId_Proveedor; }
-            set { SetPropertyValue<int>(nameof(Id_Proveedor), ref fId_Proveedor, value); }
+            set { SetPropertyValue<Proveedor>(nameof(Id_Proveedor), ref fId_Proveedor, value); }
         }
         float fTotal;
         public float Total
         {
             get { return fTotal; }
             set { SetPropertyValue<float>(nameof(Total), ref fTotal, value); }
+        }
+        Laboratorio fId_Laboratorio;
+        [Association(@"Factura_compraReferencesLaboratorio")]
+        public Laboratorio Id_Laboratorio
+        {
+            get { return fId_Laboratorio; }
+            set { SetPropertyValue<Laboratorio>(nameof(Id_Laboratorio), ref fId_Laboratorio, value); }
         }
         [Association(@"DetallecompraReferencesFactura_compra")]
         public XPCollection<Detallecompra> Detallecompras { get { return GetCollection<Detallecompra>(nameof(Detallecompras)); } }

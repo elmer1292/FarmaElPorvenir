@@ -16,18 +16,23 @@ namespace FarmaciaElPorvenir
     {
         Factura_venta fv;
         private List<Detalleventa> detallesVenta;
-        public formFacturaVentas()
+        Usuario us;
+        public formFacturaVentas(Usuario us)
         {
             InitializeComponent();
             detallesVenta = new List<Detalleventa>();
+            this.us = us;
         }
 
 
         private void formFacturaVentas_Load(object sender, EventArgs e)
         {
+            searchEmpleado.EditValue = us.Id_Empleado.Id;
+
             dateFecha.Text = DateTime.Now.ToString("d/MM/yyyy");
             gridControlDetalleVenta.DataSource = detallesVenta; // Asigna la lista como DataSource
-            GenerarNuevoNumeroFactura();
+
+           txtNoFactura.Text= GenerarNuevoNumeroFactura();
             //HabilitarBotones(false);
         }
 
@@ -211,6 +216,7 @@ namespace FarmaciaElPorvenir
             if(e.RowHandle>=0)
             {
                 txtPrecio.Text = searchViewProductos.GetRowCellValue(e.RowHandle,"Precio_Venta").ToString();
+                txtDescuento.Text = searchViewProductos.GetRowCellValue(e.RowHandle, "Descuento").ToString();
             }
         }
 

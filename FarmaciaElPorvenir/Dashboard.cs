@@ -298,7 +298,7 @@ namespace FarmaciaElPorvenir
                 // Si el formulario no está abierto, crea una nueva instancia y muéstrala
                 if (formularioExistente == null)
                 {
-                    formFacturaVentas nuevoFormulario = new formFacturaVentas();
+                    formFacturaVentas nuevoFormulario = new formFacturaVentas(us);
                     nuevoFormulario.MdiParent = this;
                     nuevoFormulario.Show();
                 }

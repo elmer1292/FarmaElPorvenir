@@ -10,9 +10,6 @@ namespace FarmaciaElPorvenir.Database
 
     public partial class Usuario
     {
-        internal object login;
-        internal object clave;
-
         public Usuario(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
