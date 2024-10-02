@@ -42,13 +42,13 @@ namespace FarmaciaElPorvenir
 
         private void Limpiar()
         {
-            deFecha.Text = "";
+    
             txtCantidad.Text="";
             txtPrecio.Text="";
             cmbLab.Text="";
             cmbProducto.Text="";
             txtTotal.Text="";
-            txtNoFac.Text="";
+
             deFecha.Focus();
         }
 
@@ -178,9 +178,7 @@ namespace FarmaciaElPorvenir
                 txtCantidad.Text = string.Empty;
                 txtPrecio.Text = string.Empty;
                 txtTotal.Text = string.Empty;
-                searchLab.EditingValue= null ;
-                searchProducto.EditingValue = null;
-                searchProveedor.EditingValue = null;
+                
             }
             catch (Exception ex)
             {
@@ -260,10 +258,16 @@ namespace FarmaciaElPorvenir
 
         private void NuevoProducto_Click(object sender, EventArgs e)
         {
-         FInventario fInventario = new FInventario();
-            fInventario.ShowDialog();
+            if (!int.TryParse(txtCantidad.Text, out int cantidad) ||
+    
+   // !float.TryParse(txtDescuento.Text, out float descuento) ||
+   // !float.TryParse(txtIVA.Text, out float iva) ||
+    !float.TryParse(txtTotal.Text, out float total) || !float.TryParse(txtPrecio.Text, out float precio))
+            {
+                MessageBox.Show("Por favor, verifica los datos ingresados.");
+                return;
+            }
 
-            cmbProducto.Refresh();
         }
     }
 }
