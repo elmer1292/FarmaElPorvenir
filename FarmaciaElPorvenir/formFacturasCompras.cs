@@ -38,6 +38,7 @@ namespace FarmaciaElPorvenir
             txtPrecio.Enabled = camposHabilitados;
             deFecha.Enabled = camposHabilitados;
             cmbProducto.Enabled = camposHabilitados;
+            cmbProveedor.Enabled = camposHabilitados;
             cmbLab.Enabled = camposHabilitados;
             txtTotal.Enabled = camposHabilitados;
             txtNoFac.Enabled = camposHabilitados;
@@ -314,7 +315,7 @@ namespace FarmaciaElPorvenir
             
         }
 
-        private void txtPrecio_EditValueChanged(object sender, EventArgs e)
+        private void txtPrecio_EditValueChanged_1(object sender, EventArgs e)
         {
             // Verificar que los campos no estén vacíos y que los valores sean válidos
             if (!string.IsNullOrEmpty(txtCantidad.Text) && !string.IsNullOrEmpty(txtPrecio.Text))
@@ -333,7 +334,7 @@ namespace FarmaciaElPorvenir
                     txtTotal.Text = "0";
                 }
             }
-            
+
         }
     }
 }
