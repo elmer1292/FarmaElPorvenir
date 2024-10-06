@@ -1,5 +1,8 @@
-﻿using DevExpress.XtraBars;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.Xpo;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using FarmaciaElPorvenir.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DevExpress.Data.Filtering.Helpers.SubExprHelper.ThreadHoppingFiltering;
 
 namespace FarmaciaElPorvenir.Reportes
 {
@@ -18,50 +22,43 @@ namespace FarmaciaElPorvenir.Reportes
         public InformeCompras()
         {
             InitializeComponent();
+        }
+        private void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
+        {
+            if (e.Button.Properties.Caption == "Imprimir") gridControlCompras.ShowRibbonPrintPreview();
+        }
 
-            gridControl.DataSource = GetDataSource();
-        }
-        void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
+        private void btnMostrar_Click(object sender, EventArgs e)
         {
-            if (e.Button.Properties.Caption == "Print") gridControl.ShowRibbonPrintPreview();
-        }
-        public BindingList<Customer> GetDataSource()
-        {
-            BindingList<Customer> result = new BindingList<Customer>();
-            result.Add(new Customer()
+            DateTime fechaActual = DateTime.Now;
+            DateTime fechaInicial = deFechaInicial.DateTime;
+            DateTime fechaFinal = deFechaFinal.DateTime;
+
+            // Verifica que la fecha inicial no sea mayor o igual a la fecha actual
+            if (fechaInicial >= fechaActual)
             {
-                ID = 1,
-                Name = "ACME",
-                Address = "2525 E El Segundo Blvd",
-                City = "El Segundo",
-                State = "CA",
-                ZipCode = "90245",
-                Phone = "(310) 536-0611"
-            });
-            result.Add(new Customer()
+                MessageBox.Show("La fecha inicial no debe ser mayor ni igual a la fecha actual", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            // Verifica que la fecha final no sea menor que la fecha inicial
+            else if (fechaFinal < fechaInicial)
             {
-                ID = 2,
-                Name = "Electronics Depot",
-                Address = "2455 Paces Ferry Road NW",
-                City = "Atlanta",
-                State = "GA",
-                ZipCode = "30339",
-                Phone = "(800) 595-3232"
-            });
-            return result;
+                MessageBox.Show("La fecha final no debe ser menor que la fecha inicial", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                // Obtiene las facturas de compra entre las fechas inicial y final usando DevExpress XPO
+                var facturasFiltradas = new XPCollection<Factura_compra>(unitOfWork1)
+                {
+                    Criteria = CriteriaOperator.Parse("Fecha >= ? AND Fecha <= ?", fechaInicial, fechaFinal)
+                };
+
+                // Asigna el resultado filtrado al DataSource del GridView
+                gridControlCompras.DataSource = facturasFiltradas;
+
+                // Refresca el GridView para mostrar los resultados
+                gridControlCompras.Refresh();
+            }
         }
-        public class Customer
-        {
-            [Key, Display(AutoGenerateField = false)]
-            public int ID { get; set; }
-            [Required]
-            public string Name { get; set; }
-            public string Address { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            [Display(Name = "Zip Code")]
-            public string ZipCode { get; set; }
-            public string Phone { get; set; }
-        }
+
     }
 }

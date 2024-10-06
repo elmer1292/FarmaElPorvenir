@@ -297,6 +297,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reportes\InformeCompras.resx">
+      <DependentUpon>InformeCompras.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\InformeVentas.resx">
       <DependentUpon>InformeVentas.cs</DependentUpon>
     </EmbeddedResource>
