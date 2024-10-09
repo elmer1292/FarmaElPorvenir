@@ -52,6 +52,9 @@
             this.barButtonItemRespaldo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemRestaurar = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItemUser = new DevExpress.XtraBars.BarStaticItem();
+            this.btnInformeCompras = new DevExpress.XtraBars.BarButtonItem();
+            this.btnInformeVentas = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHome = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupDB = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCliente = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -68,6 +71,8 @@
             this.ribbonPageFacturas = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupVenta = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupCompras = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageInformes = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemListarClientes = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -115,9 +120,12 @@
             this.btnProveedor,
             this.barButtonItemRespaldo,
             this.barButtonItemRestaurar,
-            this.barStaticItemUser});
+            this.barStaticItemUser,
+            this.btnInformeCompras,
+            this.btnInformeVentas,
+            this.barButtonItem6});
             this.ribbonHome.Location = new System.Drawing.Point(0, 0);
-            this.ribbonHome.MaxItemId = 30;
+            this.ribbonHome.MaxItemId = 33;
             this.ribbonHome.Name = "ribbonHome";
             this.ribbonHome.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageHome,
@@ -125,7 +133,8 @@
             this.ribbonPageEmpleado,
             this.ribbonPageInventario,
             this.ribbonPageUsuario,
-            this.ribbonPageFacturas});
+            this.ribbonPageFacturas,
+            this.ribbonPageInformes});
             this.ribbonHome.QuickToolbarItemLinks.Add(this.barStaticItemUser);
             this.ribbonHome.Size = new System.Drawing.Size(1033, 158);
             this.ribbonHome.StatusBar = this.ribbonStatusBar;
@@ -279,6 +288,30 @@
             this.barStaticItemUser.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barStaticItemUser.ImageOptions.LargeImage")));
             this.barStaticItemUser.Name = "barStaticItemUser";
             // 
+            // btnInformeCompras
+            // 
+            this.btnInformeCompras.Caption = "Compras";
+            this.btnInformeCompras.Id = 30;
+            this.btnInformeCompras.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnInformeCompras.ImageOptions.LargeImage")));
+            this.btnInformeCompras.Name = "btnInformeCompras";
+            this.btnInformeCompras.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInformeCompras_ItemClick);
+            // 
+            // btnInformeVentas
+            // 
+            this.btnInformeVentas.Caption = "Ventas";
+            this.btnInformeVentas.Id = 31;
+            this.btnInformeVentas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnInformeVentas.ImageOptions.LargeImage")));
+            this.btnInformeVentas.Name = "btnInformeVentas";
+            this.btnInformeVentas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInformeVentas_ItemClick);
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Inventario";
+            this.barButtonItem6.Id = 32;
+            this.barButtonItem6.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            // 
             // ribbonPageHome
             // 
             this.ribbonPageHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -385,6 +418,21 @@
             // 
             this.ribbonPageGroupCompras.ItemLinks.Add(this.barButtonItemCompras);
             this.ribbonPageGroupCompras.Name = "ribbonPageGroupCompras";
+            // 
+            // ribbonPageInformes
+            // 
+            this.ribbonPageInformes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.ribbonPageInformes.Name = "ribbonPageInformes";
+            this.ribbonPageInformes.Text = "Informes";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnInformeCompras);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnInformeVentas);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Informes";
             // 
             // barButtonItemListarClientes
             // 
@@ -508,5 +556,10 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupDB;
         private DevExpress.Xpo.UnitOfWork unitOfWork1;
         private DevExpress.XtraBars.BarStaticItem barStaticItemUser;
+        private DevExpress.XtraBars.BarButtonItem btnInformeCompras;
+        private DevExpress.XtraBars.BarButtonItem btnInformeVentas;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageInformes;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     }
 }
