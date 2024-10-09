@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace FarmaciaElPorvenir
@@ -20,7 +21,7 @@ namespace FarmaciaElPorvenir
                 ConnectionHelper.ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formFacturasCompras());
+            Application.Run(new Reportes.InformeCompras());
 
         }
     }

@@ -79,14 +79,14 @@
             this.colPrecio_Venta = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFecha_Vencimiento = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtCantidad = new DevExpress.XtraEditors.TextEdit();
-            this.txtPrecio = new DevExpress.XtraEditors.TextEdit();
             this.txtTotal = new DevExpress.XtraEditors.TextEdit();
+            this.txtPrecio = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridControlDetalleCompra = new DevExpress.XtraGrid.GridControl();
             this.xpCollectionDetalleCompras = new DevExpress.Xpo.XPCollection(this.components);
             this.gridViewDetalleCompras = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -139,14 +139,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbProducto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDetalleCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalleCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleCompras)).BeginInit();
@@ -524,9 +524,9 @@
             // 
             this.layoutControl2.Controls.Add(this.cmbProducto);
             this.layoutControl2.Controls.Add(this.txtCantidad);
-            this.layoutControl2.Controls.Add(this.txtPrecio);
             this.layoutControl2.Controls.Add(this.txtTotal);
             this.layoutControl2.Controls.Add(this.NuevoProducto);
+            this.layoutControl2.Controls.Add(this.txtPrecio);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
             this.layoutControl2.Name = "layoutControl2";
@@ -537,7 +537,7 @@
             // 
             // cmbProducto
             // 
-            this.cmbProducto.Location = new System.Drawing.Point(93, 12);
+            this.cmbProducto.Location = new System.Drawing.Point(67, 12);
             this.cmbProducto.Name = "cmbProducto";
             this.cmbProducto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -546,7 +546,7 @@
             this.cmbProducto.Properties.NullText = "Seleccione un Medicamento";
             this.cmbProducto.Properties.PopupView = this.searchProducto;
             this.cmbProducto.Properties.ValueMember = "Id";
-            this.cmbProducto.Size = new System.Drawing.Size(545, 20);
+            this.cmbProducto.Size = new System.Drawing.Size(571, 20);
             this.cmbProducto.StyleController = this.layoutControl2;
             this.cmbProducto.TabIndex = 29;
             // 
@@ -613,33 +613,16 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.EditValue = 0;
-            this.txtCantidad.Location = new System.Drawing.Point(723, 12);
+            this.txtCantidad.EditValue = "";
+            this.txtCantidad.Location = new System.Drawing.Point(697, 12);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txtCantidad.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.txtCantidad.Properties.MaskSettings.Set("mask", "d");
-            this.txtCantidad.Size = new System.Drawing.Size(545, 20);
+            this.txtCantidad.Size = new System.Drawing.Size(571, 20);
             this.txtCantidad.StyleController = this.layoutControl2;
             this.txtCantidad.TabIndex = 21;
             this.txtCantidad.EditValueChanged += new System.EventHandler(this.txtCantidad_EditValueChanged);
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtPrecio.Location = new System.Drawing.Point(93, 36);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txtPrecio.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txtPrecio.Properties.MaskSettings.Set("mask", "");
-            this.txtPrecio.Size = new System.Drawing.Size(1175, 20);
-            this.txtPrecio.StyleController = this.layoutControl2;
-            this.txtPrecio.TabIndex = 24;
-            this.txtPrecio.EditValueChanged += new System.EventHandler(this.txtPrecio_EditValueChanged);
             // 
             // txtTotal
             // 
@@ -648,12 +631,24 @@
             0,
             0,
             131072});
-            this.txtTotal.Location = new System.Drawing.Point(93, 60);
+            this.txtTotal.Location = new System.Drawing.Point(67, 60);
             this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txtTotal.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
+            this.txtTotal.Properties.MaskSettings.Set("mask", "c");
             this.txtTotal.Properties.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(1175, 20);
+            this.txtTotal.Size = new System.Drawing.Size(1201, 20);
             this.txtTotal.StyleController = this.layoutControl2;
             this.txtTotal.TabIndex = 20;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(67, 36);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(1201, 20);
+            this.txtPrecio.StyleController = this.layoutControl2;
+            this.txtPrecio.TabIndex = 31;
+            this.txtPrecio.EditValueChanged += new System.EventHandler(this.txtPrecio_EditValueChanged_1);
             // 
             // Root
             // 
@@ -661,10 +656,10 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem12,
-            this.layoutControlItem10,
             this.layoutControlItem6,
             this.layoutControlItem7,
-            this.layoutControlItem14});
+            this.layoutControlItem14,
+            this.layoutControlItem10});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1280, 135);
             this.Root.TextVisible = false;
@@ -678,18 +673,7 @@
             this.layoutControlItem12.Name = "layoutControlItem12";
             this.layoutControlItem12.Size = new System.Drawing.Size(630, 24);
             this.layoutControlItem12.Text = "Producto";
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(69, 13);
-            // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.Control = this.txtPrecio;
-            this.layoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem10.CustomizationFormText = "Precio Compra";
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(1260, 24);
-            this.layoutControlItem10.Text = "Precio Compra";
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(69, 13);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(43, 13);
             // 
             // layoutControlItem6
             // 
@@ -700,7 +684,7 @@
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(1260, 24);
             this.layoutControlItem6.Text = "Total";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(69, 13);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(43, 13);
             // 
             // layoutControlItem7
             // 
@@ -711,7 +695,7 @@
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(630, 24);
             this.layoutControlItem7.Text = "Cantidad";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(69, 13);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(43, 13);
             // 
             // layoutControlItem14
             // 
@@ -721,6 +705,15 @@
             this.layoutControlItem14.Size = new System.Drawing.Size(1260, 43);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.txtPrecio;
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(1260, 24);
+            this.layoutControlItem10.Text = "Precio:";
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(43, 13);
             // 
             // gridControlDetalleCompra
             // 
@@ -944,14 +937,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbProducto.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDetalleCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalleCompras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleCompras)).EndInit();
@@ -1030,8 +1023,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private DevExpress.XtraEditors.TextEdit txtCantidad;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraEditors.TextEdit txtPrecio;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraEditors.TextEdit txtTotal;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
@@ -1046,5 +1037,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.TextEdit txtPrecio;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
     }
 }
