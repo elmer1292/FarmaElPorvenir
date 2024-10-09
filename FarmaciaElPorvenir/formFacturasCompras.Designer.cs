@@ -111,6 +111,8 @@
             this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn52 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoFac.Properties)).BeginInit();
@@ -153,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbLab2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -513,7 +516,7 @@
             // 
             this.NuevoProducto.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("NuevoProducto.ImageOptions.Image")));
             this.NuevoProducto.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.NuevoProducto.Location = new System.Drawing.Point(12, 84);
+            this.NuevoProducto.Location = new System.Drawing.Point(12, 86);
             this.NuevoProducto.Name = "NuevoProducto";
             this.NuevoProducto.Size = new System.Drawing.Size(1256, 36);
             this.NuevoProducto.StyleController = this.layoutControl2;
@@ -527,6 +530,7 @@
             this.layoutControl2.Controls.Add(this.txtTotal);
             this.layoutControl2.Controls.Add(this.NuevoProducto);
             this.layoutControl2.Controls.Add(this.txtPrecio);
+            this.layoutControl2.Controls.Add(this.btnAdd);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
             this.layoutControl2.Name = "layoutControl2";
@@ -546,7 +550,7 @@
             this.cmbProducto.Properties.NullText = "Seleccione un Medicamento";
             this.cmbProducto.Properties.PopupView = this.searchProducto;
             this.cmbProducto.Properties.ValueMember = "Id";
-            this.cmbProducto.Size = new System.Drawing.Size(571, 20);
+            this.cmbProducto.Size = new System.Drawing.Size(570, 20);
             this.cmbProducto.StyleController = this.layoutControl2;
             this.cmbProducto.TabIndex = 29;
             // 
@@ -614,12 +618,12 @@
             // txtCantidad
             // 
             this.txtCantidad.EditValue = "";
-            this.txtCantidad.Location = new System.Drawing.Point(697, 12);
+            this.txtCantidad.Location = new System.Drawing.Point(762, 12);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txtCantidad.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.txtCantidad.Properties.MaskSettings.Set("mask", "d");
-            this.txtCantidad.Size = new System.Drawing.Size(571, 20);
+            this.txtCantidad.Size = new System.Drawing.Size(506, 20);
             this.txtCantidad.StyleController = this.layoutControl2;
             this.txtCantidad.TabIndex = 21;
             this.txtCantidad.EditValueChanged += new System.EventHandler(this.txtCantidad_EditValueChanged);
@@ -631,7 +635,7 @@
             0,
             0,
             131072});
-            this.txtTotal.Location = new System.Drawing.Point(67, 60);
+            this.txtTotal.Location = new System.Drawing.Point(67, 62);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txtTotal.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
@@ -643,7 +647,7 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(67, 36);
+            this.txtPrecio.Location = new System.Drawing.Point(67, 38);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(1201, 20);
             this.txtPrecio.StyleController = this.layoutControl2;
@@ -659,7 +663,8 @@
             this.layoutControlItem6,
             this.layoutControlItem7,
             this.layoutControlItem14,
-            this.layoutControlItem10});
+            this.layoutControlItem10,
+            this.layoutControlItem15});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1280, 135);
             this.Root.TextVisible = false;
@@ -671,7 +676,7 @@
             this.layoutControlItem12.CustomizationFormText = "Producto";
             this.layoutControlItem12.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(630, 24);
+            this.layoutControlItem12.Size = new System.Drawing.Size(629, 26);
             this.layoutControlItem12.Text = "Producto";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(43, 13);
             // 
@@ -680,7 +685,7 @@
             this.layoutControlItem6.Control = this.txtTotal;
             this.layoutControlItem6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem6.CustomizationFormText = "Total";
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 50);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(1260, 24);
             this.layoutControlItem6.Text = "Total";
@@ -691,25 +696,25 @@
             this.layoutControlItem7.Control = this.txtCantidad;
             this.layoutControlItem7.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem7.CustomizationFormText = "Cantidad";
-            this.layoutControlItem7.Location = new System.Drawing.Point(630, 0);
+            this.layoutControlItem7.Location = new System.Drawing.Point(695, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(630, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(565, 26);
             this.layoutControlItem7.Text = "Cantidad";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(43, 13);
             // 
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.NuevoProducto;
-            this.layoutControlItem14.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 74);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(1260, 43);
+            this.layoutControlItem14.Size = new System.Drawing.Size(1260, 41);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
             // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.txtPrecio;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(1260, 24);
             this.layoutControlItem10.Text = "Precio:";
@@ -898,6 +903,25 @@
             this.layoutControlItem11.Text = "Laboratorio";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(69, 13);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(641, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(62, 22);
+            this.btnAdd.StyleController = this.layoutControl2;
+            this.btnAdd.TabIndex = 32;
+            this.btnAdd.Text = "+ producto";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // layoutControlItem15
+            // 
+            this.layoutControlItem15.Control = this.btnAdd;
+            this.layoutControlItem15.Location = new System.Drawing.Point(629, 0);
+            this.layoutControlItem15.Name = "layoutControlItem15";
+            this.layoutControlItem15.Size = new System.Drawing.Size(66, 26);
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem15.TextVisible = false;
+            // 
             // formFacturasCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -951,6 +975,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbLab2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1039,5 +1064,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraEditors.TextEdit txtPrecio;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
+        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
     }
 }

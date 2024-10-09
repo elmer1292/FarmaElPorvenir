@@ -36,11 +36,29 @@ namespace FarmaciaElPorvenir
             //HabilitarBotones(false);
         }
 
-        private void HabilitarBotones(bool v)
+        private void ActualizarEstadoBotones(bool nuevo, bool guardar, bool eliminar, bool cancelar, bool camposHabilitados)
         {
-            btnNuevo.Enabled = !v;
-            btnCancelar.Enabled = v;
-            btnGuardar.Enabled = v;
+            btnNuevo.Enabled = nuevo;
+            btnGuardar.Enabled = guardar;
+            btnEliminar.Enabled = eliminar;
+            btnCancelar.Enabled = cancelar;
+
+            // Habilitar o deshabilitar los campos
+            txtCantidad.Enabled = camposHabilitados;
+        }
+
+        private void Limpiar()
+        {
+
+            txtCantidad.Clear();
+            txtPrecio.Clear();
+            txtDescuento.Clear();
+            txtIVA.Clear();
+            txtSubTotal.Clear();
+            txtTotalIVA.Clear();
+            txtTotalFactura.Clear();
+            txtTotal.Clear();
+            searchProducto.Clear();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -48,38 +66,50 @@ namespace FarmaciaElPorvenir
             fv = null;
             detallesVenta.Clear(); // Limpia la lista de detalles
             gridControlDetalleVenta.Refresh();
-            //if (MessageBox.Show("¿Está seguro de que desea cancelar la factura?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //{
-            //    btnCancelar_Click(sender, e);
-            //}
+            ActualizarEstadoBotones(true, false, false, false, false);
 
-            //HabilitarBotones(false);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtCantidad.Text, out int cantidad) ||
-      !float.TryParse(txtSubTotal.Text, out float subTotal) ||
-      !float.TryParse(txtDescuento.Text, out float descuento) ||
-      !float.TryParse(txtIVA.Text, out float iva) ||
-      !float.TryParse(txtTotal.Text, out float total)|| !float.TryParse(txtPrecio.Text, out float precio))
+                !float.TryParse(txtSubTotal.Text, out float subTotal) ||
+                !float.TryParse(txtDescuento.Text, out float descuento) ||
+                !float.TryParse(txtIVA.Text, out float iva) ||
+                !float.TryParse(txtTotal.Text, out float total) ||
+                !float.TryParse(txtPrecio.Text, out float precio))
             {
                 MessageBox.Show("Por favor, verifica los datos ingresados.");
                 return;
             }
 
+            // Buscar el producto seleccionado
+            Producto productoSeleccionado = (Producto)searchViewProductos.GetFocusedRow();
+            if (productoSeleccionado == null)
+            {
+                MessageBox.Show("Por favor, selecciona un producto válido.");
+                return;
+            }
+
+            // Verificar que haya suficiente stock
+            if (productoSeleccionado.Stock < cantidad)
+            {
+                MessageBox.Show("No hay suficiente stock para completar la venta.");
+                return;
+            }
+
             var detalle = new Detalleventa(unitOfWork1)
             {
-                Precio =precio,
+                Precio = precio,
                 Cantidad = cantidad,
                 SubTotal = subTotal,
-                Id_Producto = (Producto)searchViewProductos.GetFocusedRow(),
+                Id_Producto = productoSeleccionado,
                 Descuento = descuento,
                 IVA = iva,
                 Total = total,
             };
 
-            // Actualiza el GridControl (asumiendo que hay una lista para la colección de detalles)
+            // Agregar el nuevo detalle a la lista de detalles de venta
             detallesVenta.Add(detalle);
             gridControlDetalleVenta.RefreshDataSource();
 
@@ -89,14 +119,21 @@ namespace FarmaciaElPorvenir
             totalFactura += detalle.Total; // Suma el total del nuevo detalle
             txtTotalFactura.Text = totalFactura.ToString("0.00"); // Asigna el nuevo total formateado
 
-
+            // Manejar la suma total del IVA
             float totalIVA = 0f;
             float.TryParse(txtTotalIVA.Text, out totalIVA); // Intenta convertir el total actual
             totalIVA += detalle.IVA; // Suma el total del nuevo detalle
             txtTotalIVA.Text = totalIVA.ToString("0.00"); // Asigna el nuevo total formateado
 
+            // Actualizar el stock del producto
+            productoSeleccionado.Stock -= cantidad; // Restar la cantidad del stock
+            productoSeleccionado.Save(); // Guarda los cambios en el producto
+
+            MessageBox.Show("Producto agregado a la venta correctamente.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ActualizarEstadoBotones(false,true, true, true, true);
 
         }
+
 
         private void txtCantidad_EditValueChanged(object sender, EventArgs e)
         {
@@ -138,11 +175,6 @@ namespace FarmaciaElPorvenir
                 return;
             }
 
-            if (searchViewEmpleados.GetFocusedRow() == null)
-            {
-                MessageBox.Show("Debe seleccionar un empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             // Verifica si hay detalles de venta antes de proceder
             if (detallesVenta.Count == 0)
@@ -150,6 +182,9 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Debe agregar al menos un detalle de venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            var empleado = unitOfWork1.Query<Empleado>()
+                             .FirstOrDefault(empleadoActual => empleadoActual.Id == us.Id_Empleado.Id);
+
 
             // Inicializa la factura
             fv = new Factura_venta(unitOfWork1)
@@ -159,7 +194,7 @@ namespace FarmaciaElPorvenir
                 Total_IVA = totalIVA,
                 Id_Cliente = (Cliente)searchViewCliente.GetFocusedRow(),
                 No_Factura = txtNoFactura.Text,
-                Id_Empleado = (Empleado)searchViewEmpleados.GetFocusedRow(),
+                Id_Empleado = empleado,
             };
 
             try
@@ -195,6 +230,10 @@ namespace FarmaciaElPorvenir
                 txtCantidad.Text = string.Empty;
                 txtPrecio.Text = string.Empty;
                 txtSubTotal.Text = string.Empty;
+                ActualizarEstadoBotones(true, false, false, false, false);
+                detallesVenta.Clear(); // Limpia la lista de detalles
+                gridControlDetalleVenta.Refresh();
+
             }
             catch (Exception ex)
             {
@@ -207,7 +246,7 @@ namespace FarmaciaElPorvenir
             fv = null;
             detallesVenta.Clear(); // Limpia la lista de detalles
             gridControlDetalleVenta.Refresh();
-            HabilitarBotones(false);
+            ActualizarEstadoBotones(true,false,false,false,false);
         }
 
 
@@ -260,7 +299,7 @@ namespace FarmaciaElPorvenir
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             GenerarNuevoNumeroFactura();
-            HabilitarBotones(true);
+            ActualizarEstadoBotones(true, false, false, false, false);
             fv = null;
             detallesVenta.Clear(); // Limpia la lista de detalles
             gridControlDetalleVenta.Refresh();

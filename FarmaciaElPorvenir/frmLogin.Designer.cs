@@ -110,6 +110,7 @@
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnAcceder;
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

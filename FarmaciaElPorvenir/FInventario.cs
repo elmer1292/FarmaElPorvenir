@@ -37,20 +37,23 @@ namespace FarmaciaElPorvenir
             txtDescuento.Enabled = camposHabilitados;
             cmbCategorias.Enabled = camposHabilitados;
             cmbProveedor.Enabled = camposHabilitados;
+            comboBoxEditLaboratorio.Enabled = camposHabilitados;    
         }
 
        
         private void Limpiar()
         {
             
-            txtDescuento.Text="";
-            cmbCategorias.Text = "";
-            cmbProveedor.Text = "";
-            searchLookUpEditMedicamento.Text = "";
+            txtDescuento.Clear();
+            cmbCategorias.Clear();
+            cmbProveedor.Clear();
+            searchLookUpEditMedicamento.Clear();
+            cmbProveedor.Clear();
+            comboBoxEditLaboratorio.Clear();    
             txtStock.Text = "";
-            txtPrecioCompra.Text = "";
-            txtPrecioVenta.Text = "";
-            txtVencimiento.Text = "";
+            txtPrecioCompra.Clear();
+            txtPrecioVenta.Clear();
+            txtVencimiento.Clear();
             searchLookUpEditMedicamento.Focus();
         }
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -236,9 +239,10 @@ namespace FarmaciaElPorvenir
             Limpiar();
         }
 
-        private void searchLookUpEditMedicamento_EditValueChanged(object sender, EventArgs e)
+        private void FInventario_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            
         }
+
     }
 }

@@ -391,6 +391,7 @@
             this.txtVencimiento.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtVencimiento.Properties.EditFormat.FormatString = "";
             this.txtVencimiento.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtVencimiento.Properties.MaskSettings.Set("mask", "d");
             this.txtVencimiento.Size = new System.Drawing.Size(1016, 20);
             this.txtVencimiento.StyleController = this.layoutControl1;
             this.txtVencimiento.TabIndex = 2;
@@ -408,11 +409,10 @@
             this.searchLookUpEditMedicamento.EditValue = "";
             this.searchLookUpEditMedicamento.Location = new System.Drawing.Point(156, 186);
             this.searchLookUpEditMedicamento.Name = "searchLookUpEditMedicamento";
-            this.searchLookUpEditMedicamento.Properties.NullText = "[EditValue is null]";
+            this.searchLookUpEditMedicamento.Properties.NullText = "seleccione un medicamento";
             this.searchLookUpEditMedicamento.Size = new System.Drawing.Size(1016, 20);
             this.searchLookUpEditMedicamento.StyleController = this.layoutControl1;
             this.searchLookUpEditMedicamento.TabIndex = 13;
-            this.searchLookUpEditMedicamento.EditValueChanged += new System.EventHandler(this.searchLookUpEditMedicamento_EditValueChanged);
             // 
             // txtDescuento
             // 
@@ -430,7 +430,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbProveedor.Properties.DataSource = this.xpProvedor;
             this.cmbProveedor.Properties.DisplayMember = "Nombre";
-            this.cmbProveedor.Properties.NullText = "";
+            this.cmbProveedor.Properties.NullText = "seleccione un proveedor";
             this.cmbProveedor.Properties.PopupSizeable = false;
             this.cmbProveedor.Properties.PopupView = this.searchLookUpEdit1ViewProveedor;
             this.cmbProveedor.Properties.ValueMember = "Id";
@@ -485,11 +485,11 @@
             this.comboBoxEditLaboratorio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEditLaboratorio.Properties.DataSource = this.xpCollectionLab;
-            this.comboBoxEditLaboratorio.Properties.DisplayMember = "nombre";
-            this.comboBoxEditLaboratorio.Properties.NullText = "";
+            this.comboBoxEditLaboratorio.Properties.DisplayMember = "Nombre";
+            this.comboBoxEditLaboratorio.Properties.NullText = "seleccione un laboratorio";
             this.comboBoxEditLaboratorio.Properties.PopupSizeable = false;
             this.comboBoxEditLaboratorio.Properties.PopupView = this.searchLookUpEditLaboratorio;
-            this.comboBoxEditLaboratorio.Properties.ValueMember = "Productos.Id_Proveedor.Productos.Id_Laboratorio.Nombre";
+            this.comboBoxEditLaboratorio.Properties.ValueMember = "Id";
             this.comboBoxEditLaboratorio.Size = new System.Drawing.Size(1016, 20);
             this.comboBoxEditLaboratorio.StyleController = this.layoutControl1;
             this.comboBoxEditLaboratorio.TabIndex = 19;
@@ -541,12 +541,12 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.FieldName = "Productos.Id_Proveedor.Nombre";
+            this.gridColumn2.FieldName = "Id_Proveedor!";
             this.gridColumn2.Name = "gridColumn2";
             // 
             // gridColumn4
             // 
-            this.gridColumn4.FieldName = "Id_Proveedor!Key";
+            this.gridColumn4.FieldName = "Productos.Id_Proveedor.Nombre";
             this.gridColumn4.Name = "gridColumn4";
             // 
             // Root
