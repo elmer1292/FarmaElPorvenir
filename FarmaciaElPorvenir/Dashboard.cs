@@ -1,6 +1,9 @@
 ﻿using DevExpress.Xpo;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Forms;
+using DevExpress.XtraReports.Design;
+using DevExpress.XtraReports.Native;
+using DevExpress.XtraReports.Wizards;
 using FarmaciaElPorvenir.Database;
 using FarmaciaElPorvenir.Reportes;
 using System;
@@ -530,5 +533,109 @@ namespace FarmaciaElPorvenir
             }
         }
 
+        private void btnInformeCompras_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                Reportes.InformeCompras formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is InformeCompras)
+                    {
+                        formularioExistente = (Reportes.InformeCompras)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    InformeCompras nuevoFormulario = new InformeCompras();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
+
+        private void btnInformeVentas_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                Reportes.InformeVentas formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is InformeVentas)
+                    {
+                        formularioExistente = (Reportes.InformeVentas)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    InformeVentas nuevoFormulario = new InformeVentas();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
+
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                InventarioDeInventario formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is InventarioDeInventario)
+                    {
+                        formularioExistente = (InventarioDeInventario)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    InventarioDeInventario nuevoFormulario = new InventarioDeInventario();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
     }
 }
