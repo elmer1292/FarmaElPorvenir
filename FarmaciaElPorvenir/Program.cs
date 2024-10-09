@@ -21,7 +21,7 @@ namespace FarmaciaElPorvenir
                 ConnectionHelper.ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Reportes.InformeCompras());
+            Application.Run(new frmLogin());
 
         }
     }

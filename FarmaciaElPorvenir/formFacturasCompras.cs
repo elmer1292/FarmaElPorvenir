@@ -41,18 +41,17 @@ namespace FarmaciaElPorvenir
             cmbProveedor.Enabled = camposHabilitados;
             cmbLab.Enabled = camposHabilitados;
             txtTotal.Enabled = camposHabilitados;
-            txtNoFac.Enabled = camposHabilitados;
         }
 
         private void Limpiar()
         {
     
-            txtCantidad.Text="";
-            txtPrecio.Text="";
+            txtCantidad.Clear();
+            txtPrecio.Clear();
             cmbLab.EditValue= -1;
-            cmbProducto.EditValue = -1;
-            cmbProveedor.EditValue = -1;
-            txtTotal.Text="";
+            cmbProducto.Clear();
+            cmbProveedor.Clear();
+            txtTotal.Clear();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -62,6 +61,8 @@ namespace FarmaciaElPorvenir
             detallesCompra.Clear(); // Limpia la lista de detalles
             gridControlDetalleCompra.Refresh();
             ActualizarEstadoBotones(false, true, false, true, true);
+            // Refrescar el control searchProducto después de que el formulario se cierre
+          xpCollectionInventario.Reload();
             Limpiar();
         }
 
@@ -108,6 +109,7 @@ namespace FarmaciaElPorvenir
             gridControlDetalleCompra.DataSource = null;
             gridControlDetalleCompra.Refresh();
             ActualizarEstadoBotones(true, false, false, false, false);
+            
             Limpiar();
         }
 
@@ -165,6 +167,7 @@ namespace FarmaciaElPorvenir
                 cmbProducto.EditValue = -1;
                 cmbLab.EditValue = -1;
                 cmbProveedor.EditValue = -1;
+                xpCollectionInventario.Reload();
             }
             catch (Exception ex)
             {
@@ -252,25 +255,39 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Por favor, verifica los datos ingresados.");
                 return;
             }
+
             // Asegurarse de que factura_Compra no sea null
             if (factura_Compra == null)
             {
                 factura_Compra = new Factura_compra(unitOfWork1); // Inicializa factura_Compra
             }
+
+            // Buscar el producto
+            Producto productoSeleccionado = (Producto)searchProducto.GetFocusedRow();
+            if (productoSeleccionado == null)
+            {
+                MessageBox.Show("Por favor, selecciona un producto válido.");
+                return;
+            }
+
             // Calcular el total del detalle
             decimal total = cantidad * precio;
 
             // Crear un nuevo objeto Detallecompra con los valores ingresados
-            Detallecompra nuevoDetalle = new Detallecompra(unitOfWork1);
+            Detallecompra nuevoDetalle = new Detallecompra(unitOfWork1)
+            {
+                Id_Producto = productoSeleccionado,
+                Cantidad = cantidad,
+                Precio = (float)precio,
+                Total = (float)total
+            };
 
-
-
-            nuevoDetalle.Id_Producto = (Producto)searchProducto.GetFocusedRow();
-            nuevoDetalle.Cantidad = cantidad;
-            nuevoDetalle.Precio = (float)precio;
-            nuevoDetalle.Total = (float)total;
-            
             nuevoDetalle.Save();
+
+            // Actualizar el stock del producto
+            productoSeleccionado.Stock += cantidad; // Sumar la cantidad al stock
+                                                    // Aquí asumo que 'Stock' es la propiedad que guarda la cantidad de productos en stock
+            productoSeleccionado.Save(); // Guarda los cambios en el producto
 
             // Agregar el nuevo detalle a la lista de detallesCompra
             detallesCompra.Add(nuevoDetalle);  // Agregar a la lista de detallesCompra
@@ -283,15 +300,15 @@ namespace FarmaciaElPorvenir
             totalFactura += (float)total;
 
             MessageBox.Show("Producto agregado correctamente.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             // Limpiar los campos después de agregar el producto
             txtCantidad.Text = string.Empty;
             txtPrecio.Text = string.Empty;
             txtTotal.Clear();
             cmbProducto.EditValue = 0;
             cmbProducto.Focus();
-
-
         }
+
 
         private void txtCantidad_EditValueChanged(object sender, EventArgs e)
         {
@@ -336,5 +353,21 @@ namespace FarmaciaElPorvenir
             }
 
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario FInventario
+            FInventario fInventario = new FInventario();
+
+            // Mostrar el formulario como diálogo modal
+            fInventario.ShowDialog();
+
+            ActualizarEstadoBotones(true, false, false, false, false);
+
+
+        }
+
+
+
     }
 }

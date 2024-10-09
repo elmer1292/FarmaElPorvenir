@@ -65,6 +65,15 @@
             this.cmbCategorias = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.xpCategoria = new DevExpress.Xpo.XPCollection(this.components);
             this.gridViewCategoria = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.comboBoxEditLaboratorio = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.xpCollectionLab = new DevExpress.Xpo.XPCollection(this.components);
+            this.searchLookUpEditLaboratorio = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colid1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colnombre = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldireccion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltelefono = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.simpleSeparator1 = new DevExpress.XtraLayout.SimpleSeparator();
@@ -84,15 +93,6 @@
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.xpCollectionLab = new DevExpress.Xpo.XPCollection(this.components);
-            this.comboBoxEditLaboratorio = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.searchLookUpEditLaboratorio = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colid1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colnombre = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coldireccion = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coltelefono = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta.Properties)).BeginInit();
@@ -114,6 +114,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbCategorias.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCategoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCategoria)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditLaboratorio.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionLab)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditLaboratorio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).BeginInit();
@@ -133,9 +136,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionLab)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditLaboratorio.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditLaboratorio)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -391,6 +391,7 @@
             this.txtVencimiento.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtVencimiento.Properties.EditFormat.FormatString = "";
             this.txtVencimiento.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtVencimiento.Properties.MaskSettings.Set("mask", "d");
             this.txtVencimiento.Size = new System.Drawing.Size(1016, 20);
             this.txtVencimiento.StyleController = this.layoutControl1;
             this.txtVencimiento.TabIndex = 2;
@@ -408,7 +409,7 @@
             this.searchLookUpEditMedicamento.EditValue = "";
             this.searchLookUpEditMedicamento.Location = new System.Drawing.Point(156, 186);
             this.searchLookUpEditMedicamento.Name = "searchLookUpEditMedicamento";
-            this.searchLookUpEditMedicamento.Properties.NullText = "[EditValue is null]";
+            this.searchLookUpEditMedicamento.Properties.NullText = "seleccione un medicamento";
             this.searchLookUpEditMedicamento.Size = new System.Drawing.Size(1016, 20);
             this.searchLookUpEditMedicamento.StyleController = this.layoutControl1;
             this.searchLookUpEditMedicamento.TabIndex = 13;
@@ -429,7 +430,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbProveedor.Properties.DataSource = this.xpProvedor;
             this.cmbProveedor.Properties.DisplayMember = "Nombre";
-            this.cmbProveedor.Properties.NullText = "";
+            this.cmbProveedor.Properties.NullText = "seleccione un proveedor";
             this.cmbProveedor.Properties.PopupSizeable = false;
             this.cmbProveedor.Properties.PopupView = this.searchLookUpEdit1ViewProveedor;
             this.cmbProveedor.Properties.ValueMember = "Id";
@@ -476,6 +477,77 @@
             this.gridViewCategoria.Name = "gridViewCategoria";
             this.gridViewCategoria.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridViewCategoria.OptionsView.ShowGroupPanel = false;
+            // 
+            // comboBoxEditLaboratorio
+            // 
+            this.comboBoxEditLaboratorio.Location = new System.Drawing.Point(156, 378);
+            this.comboBoxEditLaboratorio.Name = "comboBoxEditLaboratorio";
+            this.comboBoxEditLaboratorio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditLaboratorio.Properties.DataSource = this.xpCollectionLab;
+            this.comboBoxEditLaboratorio.Properties.DisplayMember = "Nombre";
+            this.comboBoxEditLaboratorio.Properties.NullText = "seleccione un laboratorio";
+            this.comboBoxEditLaboratorio.Properties.PopupSizeable = false;
+            this.comboBoxEditLaboratorio.Properties.PopupView = this.searchLookUpEditLaboratorio;
+            this.comboBoxEditLaboratorio.Properties.ValueMember = "Id";
+            this.comboBoxEditLaboratorio.Size = new System.Drawing.Size(1016, 20);
+            this.comboBoxEditLaboratorio.StyleController = this.layoutControl1;
+            this.comboBoxEditLaboratorio.TabIndex = 19;
+            // 
+            // xpCollectionLab
+            // 
+            this.xpCollectionLab.ObjectType = typeof(FarmaciaElPorvenir.Database.Laboratorio);
+            this.xpCollectionLab.Session = this.unitOfWork1;
+            // 
+            // searchLookUpEditLaboratorio
+            // 
+            this.searchLookUpEditLaboratorio.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colid1,
+            this.colnombre,
+            this.coldireccion,
+            this.coltelefono,
+            this.gridColumn2,
+            this.gridColumn4});
+            this.searchLookUpEditLaboratorio.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEditLaboratorio.Name = "searchLookUpEditLaboratorio";
+            this.searchLookUpEditLaboratorio.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEditLaboratorio.OptionsView.ShowGroupPanel = false;
+            // 
+            // colid1
+            // 
+            this.colid1.FieldName = "id";
+            this.colid1.Name = "colid1";
+            // 
+            // colnombre
+            // 
+            this.colnombre.FieldName = "Nombre";
+            this.colnombre.Name = "colnombre";
+            this.colnombre.Visible = true;
+            this.colnombre.VisibleIndex = 0;
+            // 
+            // coldireccion
+            // 
+            this.coldireccion.FieldName = "Direccion";
+            this.coldireccion.Name = "coldireccion";
+            this.coldireccion.Visible = true;
+            this.coldireccion.VisibleIndex = 1;
+            // 
+            // coltelefono
+            // 
+            this.coltelefono.FieldName = "Telefono";
+            this.coltelefono.Name = "coltelefono";
+            this.coltelefono.Visible = true;
+            this.coltelefono.VisibleIndex = 2;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.FieldName = "Id_Proveedor!";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.FieldName = "Productos.Id_Proveedor.Nombre";
+            this.gridColumn4.Name = "gridColumn4";
             // 
             // Root
             // 
@@ -674,77 +746,6 @@
             this.layoutControlItem15.Text = "Laboratorio:";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(132, 13);
             // 
-            // xpCollectionLab
-            // 
-            this.xpCollectionLab.ObjectType = typeof(FarmaciaElPorvenir.Database.Laboratorio);
-            this.xpCollectionLab.Session = this.unitOfWork1;
-            // 
-            // comboBoxEditLaboratorio
-            // 
-            this.comboBoxEditLaboratorio.Location = new System.Drawing.Point(156, 378);
-            this.comboBoxEditLaboratorio.Name = "comboBoxEditLaboratorio";
-            this.comboBoxEditLaboratorio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditLaboratorio.Properties.DataSource = this.xpCollectionLab;
-            this.comboBoxEditLaboratorio.Properties.DisplayMember = "nombre";
-            this.comboBoxEditLaboratorio.Properties.NullText = "";
-            this.comboBoxEditLaboratorio.Properties.PopupSizeable = false;
-            this.comboBoxEditLaboratorio.Properties.PopupView = this.searchLookUpEditLaboratorio;
-            this.comboBoxEditLaboratorio.Properties.ValueMember = "id";
-            this.comboBoxEditLaboratorio.Size = new System.Drawing.Size(1016, 20);
-            this.comboBoxEditLaboratorio.StyleController = this.layoutControl1;
-            this.comboBoxEditLaboratorio.TabIndex = 19;
-            // 
-            // searchLookUpEditLaboratorio
-            // 
-            this.searchLookUpEditLaboratorio.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colid1,
-            this.colnombre,
-            this.coldireccion,
-            this.coltelefono,
-            this.gridColumn2,
-            this.gridColumn4});
-            this.searchLookUpEditLaboratorio.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpEditLaboratorio.Name = "searchLookUpEditLaboratorio";
-            this.searchLookUpEditLaboratorio.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpEditLaboratorio.OptionsView.ShowGroupPanel = false;
-            // 
-            // colid1
-            // 
-            this.colid1.FieldName = "id";
-            this.colid1.Name = "colid1";
-            // 
-            // colnombre
-            // 
-            this.colnombre.FieldName = "nombre";
-            this.colnombre.Name = "colnombre";
-            this.colnombre.Visible = true;
-            this.colnombre.VisibleIndex = 0;
-            // 
-            // coldireccion
-            // 
-            this.coldireccion.FieldName = "direccion";
-            this.coldireccion.Name = "coldireccion";
-            this.coldireccion.Visible = true;
-            this.coldireccion.VisibleIndex = 1;
-            // 
-            // coltelefono
-            // 
-            this.coltelefono.FieldName = "telefono";
-            this.coltelefono.Name = "coltelefono";
-            this.coltelefono.Visible = true;
-            this.coltelefono.VisibleIndex = 2;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.FieldName = "Id_Proveedor!";
-            this.gridColumn2.Name = "gridColumn2";
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.FieldName = "Id_Proveedor!Key";
-            this.gridColumn4.Name = "gridColumn4";
-            // 
             // FInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -775,6 +776,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbCategorias.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCategoria)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCategoria)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditLaboratorio.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionLab)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditLaboratorio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).EndInit();
@@ -794,9 +798,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionLab)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditLaboratorio.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditLaboratorio)).EndInit();
             this.ResumeLayout(false);
 
         }
