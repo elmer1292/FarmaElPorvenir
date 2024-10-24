@@ -271,6 +271,18 @@
     <Compile Include="Reportes\InformeCompras.Designer.cs">
       <DependentUpon>InformeCompras.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\MaestroDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\MaestroDetalle.Designer.cs">
+      <DependentUpon>MaestroDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\MestroDetalleReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\MestroDetalleReport.Designer.cs">
+      <DependentUpon>MestroDetalleReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\ReporteVentasDiarias.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -347,6 +359,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ListaClientes.resx">
       <DependentUpon>ListaClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\MaestroDetalle.resx">
+      <DependentUpon>MaestroDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\MestroDetalleReport.resx">
+      <DependentUpon>MestroDetalleReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteVentasDiarias.resx">
       <DependentUpon>ReporteVentasDiarias.cs</DependentUpon>
