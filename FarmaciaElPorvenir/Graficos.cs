@@ -17,81 +17,106 @@ namespace FarmaciaElPorvenir
         public Graficos()
         {
             InitializeComponent();
+            this.FormClosing += Graficos_FormClosing; // Suscribir al evento
         }
 
-        private void GraficoVentaSemana_Click(object sender, EventArgs e)
+        private void Graficos_Load(object sender, EventArgs e)
         {
-            // Cargar datos de la base de datos
-            var productos = LoadProductsFromDatabase();
-            var vendedores = LoadVendorsFromDatabase();
 
-            // Configurar gráfico de productos más vendidos
-            GraficoVentaSemana.Series.Clear();
-            Series series = new Series("Productos Vendidos", ViewType.Bar);
-            foreach (var producto in productos)
-            {
-                series.Points.Add(new SeriesPoint(producto.Key, producto.Value));
-            }
-            GraficoVentaSemana.Series.Add(series);
-
-            // Configurar gráfico de vendedor más vendido
-            GraficoVendedorSemana.Series.Clear();
-            Series series2 = new Series("Ventas por Vendedor", ViewType.Pie);
-            foreach (var vendedor in vendedores)
-            {
-                series2.Points.Add(new SeriesPoint(vendedor.Key, vendedor.Value));
-            }
-            GraficoVendedorSemana.Series.Add(series2);
+            // Cargar y mostrar los gráficos
+            CargarGraficoVendedores();
+            CargarGraficoProductos();
         }
 
-        private Dictionary<string, int> LoadProductsFromDatabase()
+        // Método para cargar y mostrar el gráfico de ventas por vendedor
+        private void CargarGraficoVendedores()
         {
-            var productos = new Dictionary<string, int>();
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
-            string query = "SELECT NombreProducto, SUM(CantidadVendida) AS TotalVendida FROM Ventas WHERE Fecha >= DATEADD(week, -1, GETDATE()) GROUP BY NombreProducto";
+            // Ejecutar el procedimiento almacenado directamente desde el UnitOfWork
+            string queryVendedores = "CALL VendedoresYVentasTotalesUltimos7Dias()";
+            var resultVendedores = unitOfWork1.ExecuteQuery(queryVendedores);
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            // Limpiar series existentes
+            chartControlVendedores.Series.Clear();
+
+            // Crear una nueva serie para las ventas totales
+            Series seriesVendedores = new Series("Ventas Totales", ViewType.Bar);
+
+            // Recorrer las filas de resultados
+            foreach (var row in resultVendedores.ResultSet[0].Rows)
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
+                string vendedor = row.Values[0].ToString(); // Accede a la columna "Vendedor"
+                decimal totalVentas = Convert.ToDecimal(row.Values[1]); // Accede a la columna "Total_Ventas"
+                seriesVendedores.Points.Add(new SeriesPoint(vendedor, totalVentas));
+            }
 
-                using (SqlDataReader reader = command.ExecuteReader())
+            // Añadir la serie al gráfico
+            chartControlVendedores.Series.Add(seriesVendedores);
+
+            // Opciones de visualización
+            chartControlVendedores.Dock = DockStyle.Bottom;
+            chartControlVendedores.Height = 300;
+
+            // Actualizar el gráfico
+            chartControlVendedores.Refresh();
+        }
+
+
+        private void CargarGraficoProductos()
+        {
+            // Ejecutar el procedimiento almacenado directamente desde el UnitOfWork
+            string queryProductos = "CALL ProductosVendidosUltimos7Dias()";
+            var resultProductos = unitOfWork1.ExecuteQuery(queryProductos);
+
+            // Limpiar series existentes
+            chartControlProductos.Series.Clear();
+
+            // Crear un diccionario para acumular las cantidades de productos
+            Dictionary<string, decimal> productosVendidos = new Dictionary<string, decimal>();
+
+            // Recorrer las filas de resultados
+            foreach (var row in resultProductos.ResultSet[0].Rows)
+            {
+                string producto = row.Values[0].ToString(); // Accede a la columna "Producto"
+                decimal cantidadVendida = Convert.ToDecimal(row.Values[1]); // Accede a la columna "Cantidad_Vendida"
+
+                // Sumar las cantidades si el producto ya existe en el diccionario
+                if (productosVendidos.ContainsKey(producto))
                 {
-                    while (reader.Read())
-                    {
-                        string nombre = reader["NombreProducto"].ToString();
-                        int cantidadVendida = Convert.ToInt32(reader["TotalVendida"]);
-                        productos[nombre] = cantidadVendida;
-                    }
+                    productosVendidos[producto] += cantidadVendida; // Sumar la cantidad vendida
+                }
+                else
+                {
+                    productosVendidos[producto] = cantidadVendida; // Añadir nuevo producto
                 }
             }
 
-            return productos;
-        }
+            // Crear una nueva serie para los productos vendidos
+            Series seriesProductos = new Series("Productos Vendidos", ViewType.Pie);
 
-        private Dictionary<string, int> LoadVendorsFromDatabase()
-        {
-            var vendedores = new Dictionary<string, int>();
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
-            string query = "SELECT NombreVendedor, SUM(CantidadVendida) AS TotalVendida FROM Ventas WHERE Fecha >= DATEADD(week, -1, GETDATE()) GROUP BY NombreVendedor";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            // Agregar los productos al gráfico sumando cantidades
+            foreach (var producto in productosVendidos)
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string nombre = reader["NombreVendedor"].ToString();
-                        int cantidadVendida = Convert.ToInt32(reader["TotalVendida"]);
-                        vendedores[nombre] = cantidadVendida;
-                    }
-                }
+                seriesProductos.Points.Add(new SeriesPoint(producto.Key, producto.Value));
             }
 
-            return vendedores;
+            // Habilitar etiquetas para la serie
+            seriesProductos.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True; // Mostrar etiquetas
+            seriesProductos.Label.TextPattern = "{A}: {V}"; // Establecer el patrón de texto de la etiqueta
+
+            // Añadir la serie al gráfico
+            chartControlProductos.Series.Add(seriesProductos);
+
+            // Opciones de visualización
+            chartControlProductos.Dock = DockStyle.Top;
+            chartControlProductos.Height = 300;
+
+            // Actualizar el gráfico
+            chartControlProductos.Refresh();
+        }
+
+        private void Graficos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true; // Cancela el cierre del formulario
         }
     }
 }

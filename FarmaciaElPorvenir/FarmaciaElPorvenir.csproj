@@ -62,6 +62,7 @@
     <Reference Include="DevExpress.XtraBars.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v24.1.Extensions, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v24.1.UI, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v24.1.Wizard, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraDiagram.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraDialogs.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -289,12 +290,6 @@
     <Compile Include="Reportes\ReporteVentasDiarias.Designer.cs">
       <DependentUpon>ReporteVentasDiarias.cs</DependentUpon>
     </Compile>
-    <Compile Include="XtraUserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="XtraUserControl1.Designer.cs">
-      <DependentUpon>XtraUserControl1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -368,9 +363,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteVentasDiarias.resx">
       <DependentUpon>ReporteVentasDiarias.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraUserControl1.resx">
-      <DependentUpon>XtraUserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ORMDataModel1.xpo" />
     <None Include="ORMDataModel1.xpo.diagram">

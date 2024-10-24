@@ -281,6 +281,38 @@ namespace FarmaciaElPorvenir
         private void Dashboard_Load(object sender, EventArgs e)
         {
             barStaticItemUser.Caption = us.Usuario1;
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                Graficos formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is Graficos)
+                    {
+                        formularioExistente = (Graficos)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    Graficos nuevoFormulario = new Graficos();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.ControlBox = false; // Oculta el botón de cierre
+                    nuevoFormulario.Show(); // Abre el formulario como diálogo modal
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
         }
 
         private void barButtonItemVentas_ItemClick(object sender, ItemClickEventArgs e)
@@ -455,11 +487,16 @@ namespace FarmaciaElPorvenir
 
         private void BackupDatabase(string server, string user, string password, string database, string backupFilePath)
         {
+            // Ruta al ejecutable mysqldump
             string mysqldumpPath = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe";
-            string arguments = $"-h{server} -u{user} -p{password} {database}";
 
+            // Argumentos para mysqldump, incluyendo los triggers y los stored procedures
+            string arguments = $"-h{server} -u{user} -p{password} --routines --triggers {database}";
+
+            // Ejecutar el proceso para realizar el backup
             ExecuteProcess(mysqldumpPath, arguments, backupFilePath);
         }
+
 
         private void RestoreDatabase(string server, string user, string password, string database, string backupFilePath)
         {
