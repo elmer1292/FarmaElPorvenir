@@ -55,6 +55,7 @@
             this.btnInformeCompras = new DevExpress.XtraBars.BarButtonItem();
             this.btnInformeVentas = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnClientes = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHome = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupDB = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCliente = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -73,6 +74,7 @@
             this.ribbonPageGroupCompras = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageInformes = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItemListarClientes = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -83,6 +85,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
+            this.btnMaestroDetalleVentas = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -123,9 +126,11 @@
             this.barStaticItemUser,
             this.btnInformeCompras,
             this.btnInformeVentas,
-            this.barButtonItem6});
+            this.barButtonItem6,
+            this.btnClientes,
+            this.btnMaestroDetalleVentas});
             this.ribbonHome.Location = new System.Drawing.Point(0, 0);
-            this.ribbonHome.MaxItemId = 33;
+            this.ribbonHome.MaxItemId = 35;
             this.ribbonHome.Name = "ribbonHome";
             this.ribbonHome.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageHome,
@@ -312,6 +317,14 @@
             this.barButtonItem6.Name = "barButtonItem6";
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
+            // btnClientes
+            // 
+            this.btnClientes.Caption = "Clientes";
+            this.btnClientes.Id = 33;
+            this.btnClientes.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnClientes.ImageOptions.LargeImage")));
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnClientes_ItemClick);
+            // 
             // ribbonPageHome
             // 
             this.ribbonPageHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -422,7 +435,8 @@
             // ribbonPageInformes
             // 
             this.ribbonPageInformes.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
             this.ribbonPageInformes.Name = "ribbonPageInformes";
             this.ribbonPageInformes.Text = "Informes";
             // 
@@ -431,8 +445,15 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnInformeCompras);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnInformeVentas);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnMaestroDetalleVentas);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Informes";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnClientes);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Otros";
             // 
             // barButtonItemListarClientes
             // 
@@ -482,6 +503,14 @@
             this.barButtonItem3.Id = 12;
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
             this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // btnMaestroDetalleVentas
+            // 
+            this.btnMaestroDetalleVentas.Caption = "Maestro Detalle Ventas";
+            this.btnMaestroDetalleVentas.Id = 34;
+            this.btnMaestroDetalleVentas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMaestroDetalleVentas.ImageOptions.LargeImage")));
+            this.btnMaestroDetalleVentas.Name = "btnMaestroDetalleVentas";
+            this.btnMaestroDetalleVentas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMaestroDetalleVentas_ItemClick);
             // 
             // Dashboard
             // 
@@ -561,5 +590,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageInformes;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem btnClientes;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem btnMaestroDetalleVentas;
     }
 }

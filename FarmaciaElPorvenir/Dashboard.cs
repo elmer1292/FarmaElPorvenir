@@ -637,5 +637,75 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Error al abrir el formulario: " + ex.Message);
             }
         }
+
+        private void btnClientes_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                ListaClientes formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is ListaClientes)
+                    {
+                        formularioExistente = (ListaClientes)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    ListaClientes nuevoFormulario = new ListaClientes();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
+
+        private void btnMaestroDetalleVentas_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                MaestroDetalle formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is MaestroDetalle)
+                    {
+                        formularioExistente = (MaestroDetalle)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    MaestroDetalle nuevoFormulario = new MaestroDetalle ();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
     }
 }
