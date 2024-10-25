@@ -57,6 +57,7 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.btnClientes = new DevExpress.XtraBars.BarButtonItem();
             this.btnMaestroDetalleVentas = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLaboratorio = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHome = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupDB = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCliente = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -86,7 +87,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
-            this.btnLaboratorio = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -335,6 +335,14 @@
             this.btnMaestroDetalleVentas.Name = "btnMaestroDetalleVentas";
             this.btnMaestroDetalleVentas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMaestroDetalleVentas_ItemClick);
             // 
+            // btnLaboratorio
+            // 
+            this.btnLaboratorio.Caption = "Laboratorio";
+            this.btnLaboratorio.Id = 35;
+            this.btnLaboratorio.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLaboratorio.ImageOptions.LargeImage")));
+            this.btnLaboratorio.Name = "btnLaboratorio";
+            this.btnLaboratorio.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLaboratorio_ItemClick);
+            // 
             // ribbonPageHome
             // 
             this.ribbonPageHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -361,7 +369,6 @@
             // ribbonPageGroupClientes
             // 
             this.ribbonPageGroupClientes.ItemLinks.Add(this.btnAgregarCategoria);
-            this.ribbonPageGroupClientes.ItemLinks.Add(this.btnListar);
             this.ribbonPageGroupClientes.Name = "ribbonPageGroupClientes";
             // 
             // ribbonPageEmpleado
@@ -515,14 +522,6 @@
             this.barButtonItem3.Id = 12;
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
             this.barButtonItem3.Name = "barButtonItem3";
-            // 
-            // btnLaboratorio
-            // 
-            this.btnLaboratorio.Caption = "Laboratorio";
-            this.btnLaboratorio.Id = 35;
-            this.btnLaboratorio.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLaboratorio.ImageOptions.LargeImage")));
-            this.btnLaboratorio.Name = "btnLaboratorio";
-            this.btnLaboratorio.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLaboratorio_ItemClick);
             // 
             // Dashboard
             // 
