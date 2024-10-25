@@ -33,7 +33,6 @@ namespace FarmaciaElPorvenir
             txtDireccion.Enabled = camposHabilitados;
             txtNombre.Enabled = camposHabilitados;
             txtTelefono.Enabled = camposHabilitados;
-            cmbProducto.Enabled = camposHabilitados;
         }
 
         private void Limpiar()
@@ -41,7 +40,6 @@ namespace FarmaciaElPorvenir
             txtNombre.Text = "";
             txtTelefono.Text = "";
             txtDireccion.Text = "";
-            cmbProducto.Text = "";
             txtNombre.Focus();
         }
 
@@ -61,7 +59,7 @@ namespace FarmaciaElPorvenir
             // Verificar si los campos obligatorios están vacíos
             if (string.IsNullOrEmpty(txtNombre.Text) || 
                 string.IsNullOrEmpty(txtDireccion.Text) || 
-                string.IsNullOrEmpty(txtTelefono.Text)||cmbProducto.EditValue == null)
+                string.IsNullOrEmpty(txtTelefono.Text))
             {
                 MessageBox.Show("Campos Requeridos", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -106,7 +104,6 @@ namespace FarmaciaElPorvenir
                 string nombre = gridViewLabs.GetRowCellValue(e.RowHandle, "Nombre_Completo").ToString();
                 string dir = gridViewLabs.GetRowCellValue(e.RowHandle, "Direccion").ToString();
                 string tel = gridViewLabs.GetRowCellValue(e.RowHandle, "Telefono").ToString();
-                cmbProducto.EditValue = gridViewLabs.GetRowCellValue(e.RowHandle, "Id_Producto!Key");
                 txtNombre.Text = nombre;
                 txtDireccion.Text = dir;
                 txtTelefono.Text = tel;

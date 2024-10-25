@@ -42,7 +42,6 @@
             this.colDireccion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTelefono = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnEliminar = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
             this.btnActualizar = new DevExpress.XtraEditors.SimpleButton();
@@ -51,8 +50,6 @@
             this.txtTelefono = new DevExpress.XtraEditors.TextEdit();
             this.txtDireccion = new DevExpress.XtraEditors.TextEdit();
             this.txtNombre = new DevExpress.XtraEditors.TextEdit();
-            this.cmbProducto = new DevExpress.XtraEditors.LookUpEdit();
-            this.xpCollectionProducto = new DevExpress.Xpo.XPCollection(this.components);
             this.layoutControlGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.itemLabel = new DevExpress.XtraLayout.LayoutControlItem();
             this.itemGrid = new DevExpress.XtraLayout.LayoutControlItem();
@@ -64,7 +61,6 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
@@ -75,8 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTelefono.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDireccion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbProducto.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).BeginInit();
@@ -88,7 +82,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,7 +98,6 @@
             this.layoutControl.Controls.Add(this.txtTelefono);
             this.layoutControl.Controls.Add(this.txtDireccion);
             this.layoutControl.Controls.Add(this.txtNombre);
-            this.layoutControl.Controls.Add(this.cmbProducto);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
             this.layoutControl.Name = "layoutControl";
@@ -137,7 +129,7 @@
             this.gridControl.Location = new System.Drawing.Point(40, 34);
             this.gridControl.MainView = this.gridViewLabs;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(704, 216);
+            this.gridControl.Size = new System.Drawing.Size(704, 246);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLabs});
@@ -154,8 +146,7 @@
             this.colNombre,
             this.colDireccion,
             this.colTelefono,
-            this.gridColumn1,
-            this.gridColumn2});
+            this.gridColumn1});
             this.gridViewLabs.GridControl = this.gridControl;
             this.gridViewLabs.Name = "gridViewLabs";
             this.gridViewLabs.OptionsBehavior.Editable = false;
@@ -199,14 +190,6 @@
             // 
             this.gridColumn1.FieldName = "Id_Proveedor!";
             this.gridColumn1.Name = "gridColumn1";
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Producto";
-            this.gridColumn2.FieldName = "Nombre";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
             // 
             // btnEliminar
             // 
@@ -274,7 +257,7 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(111, 322);
+            this.txtTelefono.Location = new System.Drawing.Point(111, 352);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtTelefono.Properties.Appearance.Options.UseFont = true;
@@ -284,7 +267,7 @@
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(111, 292);
+            this.txtDireccion.Location = new System.Drawing.Point(111, 322);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtDireccion.Properties.Appearance.Options.UseFont = true;
@@ -294,47 +277,13 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(111, 262);
+            this.txtNombre.Location = new System.Drawing.Point(111, 292);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtNombre.Properties.Appearance.Options.UseFont = true;
             this.txtNombre.Size = new System.Drawing.Size(621, 26);
             this.txtNombre.StyleController = this.layoutControl;
             this.txtNombre.TabIndex = 20;
-            // 
-            // cmbProducto
-            // 
-            this.cmbProducto.Location = new System.Drawing.Point(111, 352);
-            this.cmbProducto.Name = "cmbProducto";
-            this.cmbProducto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.cmbProducto.Properties.Appearance.Options.UseFont = true;
-            this.cmbProducto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbProducto.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 19, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Medicamento", "Medicamento", 72, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id_Categoria!", "Id_Categoria", 72, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id_Categoria!Key", "Categoria", 72, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Precio_Compra", "Precio_Compra", 81, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Precio_Venta", "Precio_Venta", 72, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descuento", "Descuento", 60, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Stock", "Stock", 35, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Vencimiento", "Vencimiento", 66, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id_Proveedor!", "Id_Proveedor", 75, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id_Proveedor!Key", "Proveedor", 75, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.cmbProducto.Properties.DataSource = this.xpCollectionProducto;
-            this.cmbProducto.Properties.DisplayMember = "Medicamento";
-            this.cmbProducto.Properties.NullText = "";
-            this.cmbProducto.Properties.PopupSizeable = false;
-            this.cmbProducto.Properties.ValueMember = "Id";
-            this.cmbProducto.Size = new System.Drawing.Size(621, 26);
-            this.cmbProducto.StyleController = this.layoutControl;
-            this.cmbProducto.TabIndex = 19;
-            // 
-            // xpCollectionProducto
-            // 
-            this.xpCollectionProducto.ObjectType = typeof(FarmaciaElPorvenir.Database.Producto);
-            this.xpCollectionProducto.Session = this.unitOfWork1;
             // 
             // layoutControlGroup
             // 
@@ -365,7 +314,7 @@
             this.itemGrid.Location = new System.Drawing.Point(0, 34);
             this.itemGrid.Name = "itemGrid";
             this.itemGrid.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.itemGrid.Size = new System.Drawing.Size(704, 216);
+            this.itemGrid.Size = new System.Drawing.Size(704, 246);
             this.itemGrid.TextSize = new System.Drawing.Size(0, 0);
             this.itemGrid.TextVisible = false;
             // 
@@ -382,12 +331,11 @@
             this.layoutControlItem4,
             this.layoutControlItem5,
             this.layoutControlItem6,
-            this.layoutControlItem7,
             this.layoutControlItem8});
-            this.Root.Location = new System.Drawing.Point(0, 250);
+            this.Root.Location = new System.Drawing.Point(0, 280);
             this.Root.Name = "Root";
             this.Root.OptionsItemText.TextToControlDistance = 3;
-            this.Root.Size = new System.Drawing.Size(704, 311);
+            this.Root.Size = new System.Drawing.Size(704, 281);
             this.Root.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.Root.TextVisible = false;
             // 
@@ -398,7 +346,7 @@
             this.layoutControlItem2.Control = this.btnEliminar;
             this.layoutControlItem2.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem2.Location = new System.Drawing.Point(439, 177);
+            this.layoutControlItem2.Location = new System.Drawing.Point(439, 147);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(245, 57);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -411,7 +359,7 @@
             this.layoutControlItem1.Control = this.btnCancelar;
             this.layoutControlItem1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 234);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 204);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(684, 57);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -424,7 +372,7 @@
             this.layoutControlItem9.Control = this.btnActualizar;
             this.layoutControlItem9.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem9.CustomizationFormText = "layoutControlItem9";
-            this.layoutControlItem9.Location = new System.Drawing.Point(224, 177);
+            this.layoutControlItem9.Location = new System.Drawing.Point(224, 147);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(215, 57);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
@@ -437,7 +385,7 @@
             this.layoutControlItem3.Control = this.btnGuardar;
             this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem3.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 177);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 147);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(224, 57);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -448,7 +396,7 @@
             this.layoutControlItem4.Control = this.btnNuevo;
             this.layoutControlItem4.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 90);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(684, 57);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -471,15 +419,6 @@
             this.layoutControlItem6.Size = new System.Drawing.Size(684, 30);
             this.layoutControlItem6.Text = "Dirección:";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(47, 13);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.cmbProducto;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 90);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(684, 30);
-            this.layoutControlItem7.Text = "Producto:";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(47, 13);
             // 
             // layoutControlItem8
             // 
@@ -509,8 +448,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTelefono.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDireccion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbProducto.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).EndInit();
@@ -522,7 +459,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
@@ -544,7 +480,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDireccion;
         private DevExpress.XtraGrid.Columns.GridColumn colTelefono;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraEditors.SimpleButton btnEliminar;
         private DevExpress.XtraEditors.SimpleButton btnCancelar;
         private DevExpress.XtraEditors.SimpleButton btnActualizar;
@@ -561,9 +496,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.TextEdit txtNombre;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-        private DevExpress.XtraEditors.LookUpEdit cmbProducto;
-        private DevExpress.Xpo.XPCollection xpCollectionProducto;
     }
 }
