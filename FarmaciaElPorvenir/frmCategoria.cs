@@ -55,7 +55,7 @@ namespace FarmaciaElPorvenir
             if (e.RowHandle>=0)
             {
                 ActualizarEstadoBotones(false,false,true,true,true,true);
-                string nombre = gridView1.GetRowCellValue(e.RowHandle, "Nombre_Categoria").ToString();
+                string nombre = gridView1.GetRowCellValue(e.RowHandle, "Categorias").ToString();
                 string d = gridView1.GetRowCellValue(e.RowHandle, "Descripcion").ToString();
                
                 txtCategoria.Text = nombre;
@@ -65,7 +65,7 @@ namespace FarmaciaElPorvenir
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Cliente c = (Cliente)gridView1.GetFocusedRow();
+            Categoria c = (Categoria)gridView1.GetFocusedRow();
             if (c != null)
             {
                 DialogResult r = MessageBox.Show("¿Desea Eliminar Registro?", "Información del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
