@@ -746,15 +746,6 @@ namespace FarmaciaElPorvenir
             }
         }
 
-        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Ocultar el formulario login en lugar de cerrarlo
-            this.Hide();
-
-            // Mostrar el formulario de inicio de sesión
-            frmLogin loginForm = new frmLogin();
-            loginForm.ShowDialog(); // Usar ShowDialog para esperar hasta que se cierre el formulario de inicio de sesión
-        }
 
         private void btnLaboratorio_ItemClick(object sender, ItemClickEventArgs e)
         {
