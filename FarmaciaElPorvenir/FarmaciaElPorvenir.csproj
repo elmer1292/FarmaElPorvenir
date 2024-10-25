@@ -185,6 +185,12 @@
     <Compile Include="Graficos.Designer.cs">
       <DependentUpon>Graficos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmVentasVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmVentasVendedor.Designer.cs">
+      <DependentUpon>frmVentasVendedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\InformeInventario.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -290,6 +296,12 @@
     <Compile Include="Reportes\ReporteVentasDiarias.Designer.cs">
       <DependentUpon>ReporteVentasDiarias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\VentasVendedor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\VentasVendedor.Designer.cs">
+      <DependentUpon>VentasVendedor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,6 +341,9 @@
     <EmbeddedResource Include="Graficos.resx">
       <DependentUpon>Graficos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmVentasVendedor.resx">
+      <DependentUpon>frmVentasVendedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\InformeInventario.resx">
       <DependentUpon>InformeInventario.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteVentasDiarias.resx">
       <DependentUpon>ReporteVentasDiarias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\VentasVendedor.resx">
+      <DependentUpon>VentasVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ORMDataModel1.xpo" />
     <None Include="ORMDataModel1.xpo.diagram">

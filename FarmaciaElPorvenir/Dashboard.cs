@@ -781,5 +781,40 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Error al abrir el formulario: " + ex.Message);
             }
         }
+
+        private void btnVentasVendedor_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                frmVentasVendedor formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is frmVentasVendedor)
+                    {
+                        formularioExistente = (frmVentasVendedor)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    frmVentasVendedor nuevoFormulario = new frmVentasVendedor();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
     }
 }
