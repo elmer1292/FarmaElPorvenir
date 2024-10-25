@@ -59,6 +59,8 @@ namespace FarmaciaElPorvenir
             txtTotalFactura.Clear();
             txtTotal.Clear();
             searchProducto.Clear();
+            detallesVenta.Clear(); // Limpia la lista de detalles
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -129,7 +131,6 @@ namespace FarmaciaElPorvenir
             productoSeleccionado.Stock -= cantidad; // Restar la cantidad del stock
             productoSeleccionado.Save(); // Guarda los cambios en el producto
 
-            MessageBox.Show("Producto agregado a la venta correctamente.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ActualizarEstadoBotones(false,true, true, true, true);
 
         }
@@ -155,6 +156,7 @@ namespace FarmaciaElPorvenir
             searchViewCliente.Columns[0].Visible = false;
         }
 
+        public Graficos formularioGraficosGlobal;
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (!DateTime.TryParse(dateFecha.Text, out DateTime fecha) ||
@@ -225,15 +227,21 @@ namespace FarmaciaElPorvenir
 
                 // Limpiar campos de la interfaz
                 txtNoFactura.Text = GenerarNuevoNumeroFactura(); // Podrías generar un nuevo número automáticamente
-                txtTotalFactura.Text = "0.00";
-                txtTotalIVA.Text = "0.00";
-                txtCantidad.Text = string.Empty;
-                txtPrecio.Text = string.Empty;
-                txtSubTotal.Text = string.Empty;
-                ActualizarEstadoBotones(true, false, false, false, false);
+                Limpiar();
+
+                // Reinicia la interfaz
+                fv = null;
                 detallesVenta.Clear(); // Limpia la lista de detalles
                 gridControlDetalleVenta.Refresh();
+                ActualizarEstadoBotones(true, false, false, false, false);
+                // Intenta encontrar el formulario de gráficos ya abierto
+                var formularioGraficos = Application.OpenForms.OfType<Graficos>().FirstOrDefault();
 
+                if (formularioGraficos != null)
+                {
+                    formularioGraficos.CargarGraficoProductos();
+                    formularioGraficos.CargarGraficoVendedores();
+                }
             }
             catch (Exception ex)
             {
@@ -241,12 +249,6 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Error: " + ex.Message, "Sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // Reinicia la interfaz
-            fv = null;
-            detallesVenta.Clear(); // Limpia la lista de detalles
-            gridControlDetalleVenta.Refresh();
-            ActualizarEstadoBotones(true,false,false,false,false);
         }
 
 

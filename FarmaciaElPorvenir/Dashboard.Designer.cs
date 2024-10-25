@@ -56,6 +56,7 @@
             this.btnInformeVentas = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.btnClientes = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMaestroDetalleVentas = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHome = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupDB = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCliente = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -85,7 +86,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
-            this.btnMaestroDetalleVentas = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -325,6 +325,14 @@
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnClientes_ItemClick);
             // 
+            // btnMaestroDetalleVentas
+            // 
+            this.btnMaestroDetalleVentas.Caption = "Maestro Detalle Ventas";
+            this.btnMaestroDetalleVentas.Id = 34;
+            this.btnMaestroDetalleVentas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMaestroDetalleVentas.ImageOptions.LargeImage")));
+            this.btnMaestroDetalleVentas.Name = "btnMaestroDetalleVentas";
+            this.btnMaestroDetalleVentas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMaestroDetalleVentas_ItemClick);
+            // 
             // ribbonPageHome
             // 
             this.ribbonPageHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -371,9 +379,9 @@
             // ribbonPageInventario
             // 
             this.ribbonPageInventario.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupInventario,
             this.ribbonPageGroupCategoria,
-            this.ribbonPageGroupProveedor});
+            this.ribbonPageGroupProveedor,
+            this.ribbonPageGroupInventario});
             this.ribbonPageInventario.Name = "ribbonPageInventario";
             this.ribbonPageInventario.Text = "Inventario";
             this.ribbonPageInventario.Visible = false;
@@ -439,6 +447,7 @@
             this.ribbonPageGroup2});
             this.ribbonPageInformes.Name = "ribbonPageInformes";
             this.ribbonPageInformes.Text = "Informes";
+            this.ribbonPageInformes.Visible = false;
             // 
             // ribbonPageGroup1
             // 
@@ -503,14 +512,6 @@
             this.barButtonItem3.Id = 12;
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
             this.barButtonItem3.Name = "barButtonItem3";
-            // 
-            // btnMaestroDetalleVentas
-            // 
-            this.btnMaestroDetalleVentas.Caption = "Maestro Detalle Ventas";
-            this.btnMaestroDetalleVentas.Id = 34;
-            this.btnMaestroDetalleVentas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMaestroDetalleVentas.ImageOptions.LargeImage")));
-            this.btnMaestroDetalleVentas.Name = "btnMaestroDetalleVentas";
-            this.btnMaestroDetalleVentas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMaestroDetalleVentas_ItemClick);
             // 
             // Dashboard
             // 

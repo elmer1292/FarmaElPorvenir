@@ -339,7 +339,6 @@
             this.txtTel.Name = "txtTel";
             this.txtTel.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtTel.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtTel.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txtTel.Size = new System.Drawing.Size(759, 20);
             this.txtTel.StyleController = this.layoutControl1;
             this.txtTel.TabIndex = 9;
