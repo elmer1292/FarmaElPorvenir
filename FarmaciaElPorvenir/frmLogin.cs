@@ -29,12 +29,13 @@ namespace FarmaciaElPorvenir
                     us.Pass.Equals(txtPwd.Text))
                 {
                     Dashboard fp = new Dashboard(us, us.Id_Rol);
-                    this.Hide();
-                    fp.ShowDialog();
-                    this.Close();
+                    this.Hide(); // Oculta el formulario sin cerrarlo
+                    fp.ShowDialog(); // Muestra el Dashboard y espera a que se cierre
+                    this.Show(); // Vuelve a mostrar el formulario si el Dashboard se cierra
                     txtUser.Clear();
                     txtPwd.Clear();
                     usr = true;
+                    break; // Sale del ciclo para evitar que continúe verificando usuarios
                 }
             }
 
@@ -43,11 +44,6 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Usuario o contraseña incorrecta.",
                     "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Close();
         }
     }
 }
