@@ -269,6 +269,7 @@ namespace FarmaciaElPorvenir
                         ribbonPageFacturas.Visible = true;
                         ribbonPageUsuario.Visible=true;
                         ribbonPageInventario.Visible=true;
+                        ribbonPageInformes.Visible=true;
                     }
                 }
             }
