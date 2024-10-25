@@ -105,23 +105,23 @@ namespace FarmaciaElPorvenir
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Verificar si los campos obligatorios están vacíos
-            if (string.IsNullOrEmpty(txtPrecioCompra.Text)|| 
-                string.IsNullOrEmpty(txtPrecioVenta.Text)||
-                string.IsNullOrEmpty(txtStock.Text)||
-                string.IsNullOrEmpty(searchLookUpEditMedicamento.Text)||
-                string.IsNullOrEmpty(txtDescuento.Text)||
-                string.IsNullOrEmpty(cmbCategorias.Text)||
-                string.IsNullOrEmpty(cmbProveedor.Text)|| string.IsNullOrEmpty(comboBoxEditLaboratorio.Text))
+            if (string.IsNullOrEmpty(txtPrecioCompra.Text) ||
+                string.IsNullOrEmpty(txtPrecioVenta.Text) ||
+                string.IsNullOrEmpty(txtStock.Text) ||
+                string.IsNullOrEmpty(searchLookUpEditMedicamento.Text) ||
+                string.IsNullOrEmpty(txtDescuento.Text) ||
+                string.IsNullOrEmpty(cmbCategorias.Text) ||
+                string.IsNullOrEmpty(cmbProveedor.Text) || string.IsNullOrEmpty(comboBoxEditLaboratorio.Text))
             {
                 MessageBox.Show("Campos Requeridos", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             try
-            {        
+            {
                 Producto producto = new Producto(unitOfWork1);
 
                 // Asignar los valores a las propiedades del rol
-                producto.Vencimiento =txtVencimiento.DateTime;
+                producto.Vencimiento = txtVencimiento.DateTime;
                 producto.Precio_Compra = float.Parse(txtPrecioCompra.Text);
                 producto.Precio_Venta = float.Parse(txtPrecioVenta.Text);
                 producto.Stock = int.Parse(txtStock.Text);
@@ -142,7 +142,7 @@ namespace FarmaciaElPorvenir
 
                 // Recargar la colección de roles para reflejar los cambios
                 xpCollection1.Reload();
-                ActualizarEstadoBotones(true, false, false, false,  false,false);
+                ActualizarEstadoBotones(true, false, false, false, false, false);
 
             }
             catch (Exception ex)

@@ -29,7 +29,7 @@ namespace FarmaciaElPorvenir
         }
 
         // Método para cargar y mostrar el gráfico de ventas por vendedor
-        private void CargarGraficoVendedores()
+        public void CargarGraficoVendedores()
         {
             // Ejecutar el procedimiento almacenado directamente desde el UnitOfWork
             string queryVendedores = "CALL VendedoresYVentasTotalesUltimos7Dias()";
@@ -61,7 +61,7 @@ namespace FarmaciaElPorvenir
         }
 
 
-        private void CargarGraficoProductos()
+        public void CargarGraficoProductos()
         {
             // Ejecutar el procedimiento almacenado directamente desde el UnitOfWork
             string queryProductos = "CALL ProductosVendidosUltimos7Dias()";
