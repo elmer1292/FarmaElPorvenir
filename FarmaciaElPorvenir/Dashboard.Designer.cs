@@ -87,6 +87,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
+            this.btnVentasVendedor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -130,9 +131,10 @@
             this.barButtonItem6,
             this.btnClientes,
             this.btnMaestroDetalleVentas,
-            this.btnLaboratorio});
+            this.btnLaboratorio,
+            this.btnVentasVendedor});
             this.ribbonHome.Location = new System.Drawing.Point(0, 0);
-            this.ribbonHome.MaxItemId = 36;
+            this.ribbonHome.MaxItemId = 37;
             this.ribbonHome.Name = "ribbonHome";
             this.ribbonHome.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageHome,
@@ -471,6 +473,7 @@
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.btnClientes);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnVentasVendedor);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Otros";
             // 
@@ -522,6 +525,14 @@
             this.barButtonItem3.Id = 12;
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
             this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // btnVentasVendedor
+            // 
+            this.btnVentasVendedor.Caption = "Ventas por Vendedor";
+            this.btnVentasVendedor.Id = 36;
+            this.btnVentasVendedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnVentasVendedor.ImageOptions.LargeImage")));
+            this.btnVentasVendedor.Name = "btnVentasVendedor";
+            this.btnVentasVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVentasVendedor_ItemClick);
             // 
             // Dashboard
             // 
@@ -605,5 +616,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem btnMaestroDetalleVentas;
         private DevExpress.XtraBars.BarButtonItem btnLaboratorio;
+        private DevExpress.XtraBars.BarButtonItem btnVentasVendedor;
     }
 }
