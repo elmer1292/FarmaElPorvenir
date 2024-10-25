@@ -21,22 +21,7 @@ namespace FarmaciaElPorvenir
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-           // bool usr = false;
-           // foreach (Usuario usuario in xpCollectionUsuario)
-            //{
-            //    if (usuario.Usuario1.Equals(txtUser.Text) &&
-            //        usuario.Pass.Equals(txtPwd.Text))
-            //    {
-            //        Dashboard fp = new Dashboard(usuario, usuario.Id_Rol);
-            //        this.Visible = false;
-            //        fp.ShowDialog();
-            //        this.Visible = true;
-            //        txtPwd.Text = "";
-            //        txtUser.Text = "";
-            //        usr = true;
-            //    }
-            //}
-
+          
             bool usr = false;
             foreach (Usuario us in xpCollectionUsuario)
             {
@@ -44,9 +29,9 @@ namespace FarmaciaElPorvenir
                     us.Pass.Equals(txtPwd.Text))
                 {
                     Dashboard fp = new Dashboard(us, us.Id_Rol);
-                    this.Visible = false;
+                    this.Hide();
                     fp.ShowDialog();
-                    this.Visible = true;
+                    this.Close();
                     txtUser.Clear();
                     txtPwd.Clear();
                     usr = true;
@@ -58,6 +43,11 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Usuario o contraseña incorrecta.",
                     "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Close();
         }
     }
 }

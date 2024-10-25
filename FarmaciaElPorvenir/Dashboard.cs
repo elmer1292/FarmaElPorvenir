@@ -269,6 +269,7 @@ namespace FarmaciaElPorvenir
                         ribbonPageFacturas.Visible = true;
                         ribbonPageUsuario.Visible=true;
                         ribbonPageInventario.Visible=true;
+                        ribbonPageInformes.Visible=true;
                     }
                 }
             }
@@ -729,6 +730,51 @@ namespace FarmaciaElPorvenir
                 if (formularioExistente == null)
                 {
                     MaestroDetalle nuevoFormulario = new MaestroDetalle ();
+                    nuevoFormulario.MdiParent = this;
+                    nuevoFormulario.Show();
+                }
+                else
+                {
+                    // Si el formulario ya está abierto, lo traemos al frente
+                    formularioExistente.BringToFront();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
+            }
+        }
+
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Ocultar el formulario login en lugar de cerrarlo
+            this.Hide();
+
+            // Mostrar el formulario de inicio de sesión
+            frmLogin loginForm = new frmLogin();
+            loginForm.ShowDialog(); // Usar ShowDialog para esperar hasta que se cierre el formulario de inicio de sesión
+        }
+
+        private void btnLaboratorio_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                // Verifica si el formulario ya está abierto
+                frmLaboratorio formularioExistente = null;
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is frmLaboratorio)
+                    {
+                        formularioExistente = (frmLaboratorio)form;
+                        break;
+                    }
+                }
+
+                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
+                if (formularioExistente == null)
+                {
+                    frmLaboratorio nuevoFormulario = new frmLaboratorio();
                     nuevoFormulario.MdiParent = this;
                     nuevoFormulario.Show();
                 }
