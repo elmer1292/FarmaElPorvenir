@@ -30,21 +30,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.labelControl = new DevExpress.XtraEditors.LabelControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.xpCollectionClientes = new DevExpress.Xpo.XPCollection(this.components);
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNombre_Completo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDireccion = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTelefono = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.itemLabel = new DevExpress.XtraLayout.LayoutControlItem();
             this.itemGrid = new DevExpress.XtraLayout.LayoutControlItem();
             this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFecha = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNo_Factura = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotal_Factura = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotal_IVA = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -84,7 +89,7 @@
             this.labelControl.Size = new System.Drawing.Size(704, 34);
             this.labelControl.StyleController = this.layoutControl;
             this.labelControl.TabIndex = 4;
-            this.labelControl.Text = "Clientes";
+            this.labelControl.Text = "Ventas por Cliente";
             // 
             // gridControl
             // 
@@ -99,16 +104,21 @@
             // 
             // xpCollectionClientes
             // 
-            this.xpCollectionClientes.ObjectType = typeof(FarmaciaElPorvenir.Database.Cliente);
+            this.xpCollectionClientes.ObjectType = typeof(FarmaciaElPorvenir.Database.Factura_venta);
             this.xpCollectionClientes.Session = this.unitOfWork1;
             // 
             // gridView
             // 
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
-            this.colNombre_Completo,
-            this.colDireccion,
-            this.colTelefono});
+            this.gridColumn1,
+            this.gridColumn2,
+            this.colFecha,
+            this.colNo_Factura,
+            this.gridColumn4,
+            this.gridColumn3,
+            this.colTotal_Factura,
+            this.colTotal_IVA});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
@@ -122,32 +132,6 @@
             this.gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.OptionsView.ShowIndicator = false;
-            // 
-            // colId
-            // 
-            this.colId.FieldName = "Id";
-            this.colId.Name = "colId";
-            // 
-            // colNombre_Completo
-            // 
-            this.colNombre_Completo.FieldName = "Nombre_Completo";
-            this.colNombre_Completo.Name = "colNombre_Completo";
-            this.colNombre_Completo.Visible = true;
-            this.colNombre_Completo.VisibleIndex = 0;
-            // 
-            // colDireccion
-            // 
-            this.colDireccion.FieldName = "Direccion";
-            this.colDireccion.Name = "colDireccion";
-            this.colDireccion.Visible = true;
-            this.colDireccion.VisibleIndex = 1;
-            // 
-            // colTelefono
-            // 
-            this.colTelefono.FieldName = "Telefono";
-            this.colTelefono.Name = "colTelefono";
-            this.colTelefono.Visible = true;
-            this.colTelefono.VisibleIndex = 2;
             // 
             // layoutControlGroup
             // 
@@ -198,9 +182,9 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions1.ImageUri.Uri = "Preview;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions2.ImageUri.Uri = "Preview;Size32x32;GrayScaled";
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -214,6 +198,62 @@
             this.windowsUIButtonPanel.Text = "windowsUIButtonPanel";
             this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
             this.windowsUIButtonPanel.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanel_ButtonClick);
+            // 
+            // colId
+            // 
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.FieldName = "Id_Empleado!";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.FieldName = "Id_Empleado!Key";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // colFecha
+            // 
+            this.colFecha.FieldName = "Fecha";
+            this.colFecha.Name = "colFecha";
+            this.colFecha.Visible = true;
+            this.colFecha.VisibleIndex = 0;
+            // 
+            // colNo_Factura
+            // 
+            this.colNo_Factura.FieldName = "No_Factura";
+            this.colNo_Factura.Name = "colNo_Factura";
+            this.colNo_Factura.Visible = true;
+            this.colNo_Factura.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.FieldName = "Id_Cliente!";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Cliente";
+            this.gridColumn4.FieldName = "Id_Cliente.Nombre_Completo";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 2;
+            // 
+            // colTotal_Factura
+            // 
+            this.colTotal_Factura.FieldName = "Total_Factura";
+            this.colTotal_Factura.Name = "colTotal_Factura";
+            this.colTotal_Factura.Visible = true;
+            this.colTotal_Factura.VisibleIndex = 3;
+            // 
+            // colTotal_IVA
+            // 
+            this.colTotal_IVA.FieldName = "Total_IVA";
+            this.colTotal_IVA.Name = "colTotal_IVA";
+            this.colTotal_IVA.Visible = true;
+            this.colTotal_IVA.VisibleIndex = 4;
             // 
             // ListaClientes
             // 
@@ -255,8 +295,13 @@
         private DevExpress.Xpo.UnitOfWork unitOfWork1;
         private DevExpress.Xpo.XPCollection xpCollectionClientes;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colNombre_Completo;
-        private DevExpress.XtraGrid.Columns.GridColumn colDireccion;
-        private DevExpress.XtraGrid.Columns.GridColumn colTelefono;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn colFecha;
+        private DevExpress.XtraGrid.Columns.GridColumn colNo_Factura;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotal_Factura;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotal_IVA;
     }
 }
