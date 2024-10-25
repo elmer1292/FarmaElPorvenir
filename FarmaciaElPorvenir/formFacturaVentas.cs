@@ -276,7 +276,7 @@ namespace FarmaciaElPorvenir
             // Si no hay facturas previas, empezar con un número base
             if (ultimaFactura == null)
             {
-                return "000001"; // Primer número de factura si no hay ninguna
+                return (1).ToString(); // Primer número de factura si no hay ninguna
             }
 
             // Obtener el último número de factura y convertirlo a entero
@@ -290,11 +290,11 @@ namespace FarmaciaElPorvenir
                 numeroFacturaInt++;
 
                 // Devolver el nuevo número con el mismo formato, por ejemplo, 000001, 000002, etc.
-                return numeroFacturaInt.ToString("D6");
+                return numeroFacturaInt.ToString();
             }
 
             // Si por alguna razón el número de factura no es un entero válido, devuelve un valor por defecto
-            return "000001";
+            return (1).ToString();
         }
 
 
