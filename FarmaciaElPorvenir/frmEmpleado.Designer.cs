@@ -158,6 +158,9 @@
             this.txtCargo.Location = new System.Drawing.Point(113, 256);
             this.txtCargo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCargo.Name = "txtCargo";
+            this.txtCargo.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtCargo.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
+            this.txtCargo.Properties.MaskSettings.Set("mask", "\\p{L}+");
             this.txtCargo.Size = new System.Drawing.Size(796, 20);
             this.txtCargo.StyleController = this.layoutControl1;
             this.txtCargo.TabIndex = 10;
@@ -167,6 +170,9 @@
             this.txtNombre.Location = new System.Drawing.Point(113, 232);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtNombre.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
+            this.txtNombre.Properties.MaskSettings.Set("mask", "\\p{L}+");
             this.txtNombre.Size = new System.Drawing.Size(796, 20);
             this.txtNombre.StyleController = this.layoutControl1;
             this.txtNombre.TabIndex = 11;

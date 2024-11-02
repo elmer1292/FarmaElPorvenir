@@ -339,6 +339,8 @@
             this.txtTel.Name = "txtTel";
             this.txtTel.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtTel.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTel.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txtTel.Properties.MaskSettings.Set("mask", "d");
             this.txtTel.Size = new System.Drawing.Size(759, 20);
             this.txtTel.StyleController = this.layoutControl1;
             this.txtTel.TabIndex = 9;
@@ -354,9 +356,13 @@
             // 
             // txtNombre
             // 
+            this.txtNombre.EditValue = "";
             this.txtNombre.Location = new System.Drawing.Point(113, 284);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtNombre.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
+            this.txtNombre.Properties.MaskSettings.Set("mask", "\\p{L}+");
             this.txtNombre.Size = new System.Drawing.Size(759, 20);
             this.txtNombre.StyleController = this.layoutControl1;
             this.txtNombre.TabIndex = 11;

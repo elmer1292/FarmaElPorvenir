@@ -261,6 +261,8 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtTelefono.Properties.Appearance.Options.UseFont = true;
+            this.txtTelefono.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txtTelefono.Properties.MaskSettings.Set("mask", "d");
             this.txtTelefono.Size = new System.Drawing.Size(621, 26);
             this.txtTelefono.StyleController = this.layoutControl;
             this.txtTelefono.TabIndex = 17;
@@ -281,6 +283,9 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtNombre.Properties.Appearance.Options.UseFont = true;
+            this.txtNombre.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtNombre.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
+            this.txtNombre.Properties.MaskSettings.Set("mask", "\\p{L}+");
             this.txtNombre.Size = new System.Drawing.Size(621, 26);
             this.txtNombre.StyleController = this.layoutControl;
             this.txtNombre.TabIndex = 20;

@@ -305,18 +305,26 @@
             // 
             // txtDescripcion
             // 
+            this.txtDescripcion.EditValue = "";
             this.txtDescripcion.Location = new System.Drawing.Point(82, 332);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtDescripcion.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
+            this.txtDescripcion.Properties.MaskSettings.Set("mask", "\\p{L}+");
             this.txtDescripcion.Size = new System.Drawing.Size(790, 20);
             this.txtDescripcion.StyleController = this.layoutControl1;
             this.txtDescripcion.TabIndex = 10;
             // 
             // txtCategoria
             // 
+            this.txtCategoria.EditValue = "";
             this.txtCategoria.Location = new System.Drawing.Point(82, 308);
             this.txtCategoria.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtCategoria.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
+            this.txtCategoria.Properties.MaskSettings.Set("mask", "\\p{L}+");
             this.txtCategoria.Size = new System.Drawing.Size(790, 20);
             this.txtCategoria.StyleController = this.layoutControl1;
             this.txtCategoria.TabIndex = 11;

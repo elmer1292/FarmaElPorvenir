@@ -315,6 +315,9 @@
             this.txtNombre.Location = new System.Drawing.Point(74, 308);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtNombre.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
+            this.txtNombre.Properties.MaskSettings.Set("mask", "\\p{L}+");
             this.txtNombre.Size = new System.Drawing.Size(798, 20);
             this.txtNombre.StyleController = this.layoutControl1;
             this.txtNombre.TabIndex = 11;
@@ -428,6 +431,7 @@
             // 
             // frmProveedor
             // 
+            this.AcceptButton = this.btnGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 561);

@@ -311,6 +311,8 @@
             // 
             this.txtCantidad.Location = new System.Drawing.Point(695, 12);
             this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txtCantidad.Properties.MaskSettings.Set("mask", "d");
             this.txtCantidad.Size = new System.Drawing.Size(142, 20);
             this.txtCantidad.StyleController = this.layoutControl1;
             this.txtCantidad.TabIndex = 5;
@@ -321,6 +323,8 @@
             this.txtPrecio.Enabled = false;
             this.txtPrecio.Location = new System.Drawing.Point(488, 12);
             this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txtPrecio.Properties.MaskSettings.Set("mask", "f");
             this.txtPrecio.Size = new System.Drawing.Size(141, 20);
             this.txtPrecio.StyleController = this.layoutControl1;
             this.txtPrecio.TabIndex = 6;
