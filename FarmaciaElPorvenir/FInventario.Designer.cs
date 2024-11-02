@@ -82,17 +82,17 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta.Properties)).BeginInit();
@@ -125,17 +125,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -644,19 +644,6 @@
             this.layoutControlItem9.Text = "Precio de Compra:";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(132, 19);
             // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.layoutControlItem10.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem10.Control = this.txtPrecioVenta;
-            this.layoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem10.CustomizationFormText = "Stock:";
-            this.layoutControlItem10.Location = new System.Drawing.Point(582, 318);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(582, 24);
-            this.layoutControlItem10.Text = "Precio de Venta:";
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(132, 19);
-            // 
             // layoutControlItem11
             // 
             this.layoutControlItem11.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -670,15 +657,6 @@
             this.layoutControlItem11.Text = "Vencimiento:";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(132, 19);
             // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.txtStock;
-            this.layoutControlItem8.Location = new System.Drawing.Point(582, 294);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(291, 24);
-            this.layoutControlItem8.Text = "Stock:";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(132, 13);
-            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.searchLookUpEditMedicamento;
@@ -687,24 +665,6 @@
             this.layoutControlItem6.Size = new System.Drawing.Size(582, 24);
             this.layoutControlItem6.Text = "Medicamento";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(132, 13);
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.cmbCategorias;
-            this.layoutControlItem12.Location = new System.Drawing.Point(873, 294);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(291, 24);
-            this.layoutControlItem12.Text = "Categoria";
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(132, 13);
-            // 
-            // layoutControlItem13
-            // 
-            this.layoutControlItem13.Control = this.txtDescuento;
-            this.layoutControlItem13.Location = new System.Drawing.Point(0, 342);
-            this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(582, 24);
-            this.layoutControlItem13.Text = "Descuento";
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(132, 13);
             // 
             // layoutControlItem14
             // 
@@ -751,6 +711,46 @@
             this.layoutControlItem15.Text = "Laboratorio:";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(132, 13);
             // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem10.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem10.Control = this.txtPrecioVenta;
+            this.layoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem10.CustomizationFormText = "Stock:";
+            this.layoutControlItem10.Location = new System.Drawing.Point(582, 318);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(582, 24);
+            this.layoutControlItem10.Text = "Precio de Venta:";
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(132, 19);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.cmbCategorias;
+            this.layoutControlItem12.Location = new System.Drawing.Point(873, 294);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(291, 24);
+            this.layoutControlItem12.Text = "Categoria";
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(132, 13);
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.txtDescuento;
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 342);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(582, 24);
+            this.layoutControlItem13.Text = "Descuento";
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(132, 13);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.txtStock;
+            this.layoutControlItem8.Location = new System.Drawing.Point(582, 294);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(291, 24);
+            this.layoutControlItem8.Text = "Stock:";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(132, 13);
+            // 
             // FInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -792,17 +792,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -836,7 +836,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.Xpo.UnitOfWork unitOfWork1;
-        private DevExpress.Xpo.XPCollection xpCollection1;
         private DevExpress.XtraEditors.TextEdit searchLookUpEditMedicamento;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private DevExpress.XtraEditors.TextEdit txtDescuento;
@@ -872,5 +871,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn coltelefono;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        public DevExpress.Xpo.XPCollection xpCollection1;
     }
 }

@@ -58,6 +58,8 @@
             this.btnClientes = new DevExpress.XtraBars.BarButtonItem();
             this.btnMaestroDetalleVentas = new DevExpress.XtraBars.BarButtonItem();
             this.btnLaboratorio = new DevExpress.XtraBars.BarButtonItem();
+            this.btnVentasVendedor = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStock = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHome = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupDB = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCliente = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -87,7 +89,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
-            this.btnVentasVendedor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -96,10 +97,10 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 649);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 647);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonHome;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1033, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1033, 24);
             // 
             // ribbonHome
             // 
@@ -132,9 +133,10 @@
             this.btnClientes,
             this.btnMaestroDetalleVentas,
             this.btnLaboratorio,
-            this.btnVentasVendedor});
+            this.btnVentasVendedor,
+            this.btnStock});
             this.ribbonHome.Location = new System.Drawing.Point(0, 0);
-            this.ribbonHome.MaxItemId = 37;
+            this.ribbonHome.MaxItemId = 38;
             this.ribbonHome.Name = "ribbonHome";
             this.ribbonHome.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageHome,
@@ -345,6 +347,24 @@
             this.btnLaboratorio.Name = "btnLaboratorio";
             this.btnLaboratorio.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLaboratorio_ItemClick);
             // 
+            // btnVentasVendedor
+            // 
+            this.btnVentasVendedor.Caption = "Ventas por Vendedor";
+            this.btnVentasVendedor.Id = 36;
+            this.btnVentasVendedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnVentasVendedor.ImageOptions.LargeImage")));
+            this.btnVentasVendedor.Name = "btnVentasVendedor";
+            this.btnVentasVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVentasVendedor_ItemClick);
+            // 
+            // btnStock
+            // 
+            this.btnStock.Caption = "Stock bajo";
+            this.btnStock.Id = 37;
+            this.btnStock.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnStock.ImageOptions.LargeImage")));
+            this.btnStock.ItemAppearance.Normal.Options.UseTextOptions = true;
+            this.btnStock.ItemAppearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.btnStock.Name = "btnStock";
+            this.btnStock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStock_ItemClick);
+            // 
             // ribbonPageHome
             // 
             this.ribbonPageHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -467,6 +487,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnInformeVentas);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem6);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnMaestroDetalleVentas);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnStock);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Informes";
             // 
@@ -525,14 +546,6 @@
             this.barButtonItem3.Id = 12;
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
             this.barButtonItem3.Name = "barButtonItem3";
-            // 
-            // btnVentasVendedor
-            // 
-            this.btnVentasVendedor.Caption = "Ventas por Vendedor";
-            this.btnVentasVendedor.Id = 36;
-            this.btnVentasVendedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnVentasVendedor.ImageOptions.LargeImage")));
-            this.btnVentasVendedor.Name = "btnVentasVendedor";
-            this.btnVentasVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVentasVendedor_ItemClick);
             // 
             // Dashboard
             // 
@@ -617,5 +630,6 @@
         private DevExpress.XtraBars.BarButtonItem btnMaestroDetalleVentas;
         private DevExpress.XtraBars.BarButtonItem btnLaboratorio;
         private DevExpress.XtraBars.BarButtonItem btnVentasVendedor;
+        private DevExpress.XtraBars.BarButtonItem btnStock;
     }
 }
