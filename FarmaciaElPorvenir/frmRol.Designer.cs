@@ -207,6 +207,9 @@
             this.txtRol.Name = "txtRol";
             this.txtRol.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtRol.Properties.Appearance.Options.UseFont = true;
+            this.txtRol.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtRol.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
+            this.txtRol.Properties.MaskSettings.Set("mask", "\\p{L}+");
             this.txtRol.Size = new System.Drawing.Size(871, 30);
             this.txtRol.StyleController = this.layoutControl1;
             this.txtRol.TabIndex = 2;

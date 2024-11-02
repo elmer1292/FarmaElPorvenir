@@ -100,12 +100,21 @@ namespace FarmaciaElPorvenir
                 return;
             }
 
+            // Mostrar advertencia si el stock es bajo
+            if (productoSeleccionado.Stock <= 10)
+            {
+                MessageBox.Show($"El producto '{productoSeleccionado.Medicamento}' tiene un stock bajo ({productoSeleccionado.Stock} unidades).",
+                                "Advertencia de Stock",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
+
             var detalle = new Detalleventa(unitOfWork1)
             {
                 Precio = precio,
                 Cantidad = cantidad,
                 SubTotal = subTotal,
-                Id_Producto = productoSeleccionado,
+                Id_Producto = productoSeleccionado, // Asegúrate de que esto sea solo el objeto Producto
                 Descuento = descuento,
                 IVA = iva,
                 Total = total,
@@ -131,9 +140,9 @@ namespace FarmaciaElPorvenir
             productoSeleccionado.Stock -= cantidad; // Restar la cantidad del stock
             productoSeleccionado.Save(); // Guarda los cambios en el producto
 
-            ActualizarEstadoBotones(false,true, true, true, true);
-
+            ActualizarEstadoBotones(false, true, true, true, true);
         }
+
 
 
         private void txtCantidad_EditValueChanged(object sender, EventArgs e)
@@ -177,7 +186,6 @@ namespace FarmaciaElPorvenir
                 return;
             }
 
-
             // Verifica si hay detalles de venta antes de proceder
             if (detallesVenta.Count == 0)
             {
@@ -186,7 +194,6 @@ namespace FarmaciaElPorvenir
             }
             var empleado = unitOfWork1.Query<Empleado>()
                              .FirstOrDefault(empleadoActual => empleadoActual.Id == us.Id_Empleado.Id);
-
 
             // Inicializa la factura
             fv = new Factura_venta(unitOfWork1)
@@ -234,6 +241,7 @@ namespace FarmaciaElPorvenir
                 detallesVenta.Clear(); // Limpia la lista de detalles
                 gridControlDetalleVenta.Refresh();
                 ActualizarEstadoBotones(true, false, false, false, false);
+
                 // Intenta encontrar el formulario de gráficos ya abierto
                 var formularioGraficos = Application.OpenForms.OfType<Graficos>().FirstOrDefault();
 
@@ -250,6 +258,7 @@ namespace FarmaciaElPorvenir
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void searchViewProductos_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)

@@ -185,6 +185,12 @@
     <Compile Include="Graficos.Designer.cs">
       <DependentUpon>Graficos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmStokBajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmStokBajo.Designer.cs">
+      <DependentUpon>frmStokBajo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frmVentasVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +302,12 @@
     <Compile Include="Reportes\ReporteVentasDiarias.Designer.cs">
       <DependentUpon>ReporteVentasDiarias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\StockBajo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\StockBajo.Designer.cs">
+      <DependentUpon>StockBajo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\VentasVendedor.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -341,6 +353,9 @@
     <EmbeddedResource Include="Graficos.resx">
       <DependentUpon>Graficos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmStokBajo.resx">
+      <DependentUpon>frmStokBajo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmVentasVendedor.resx">
       <DependentUpon>frmVentasVendedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -378,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteVentasDiarias.resx">
       <DependentUpon>ReporteVentasDiarias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\StockBajo.resx">
+      <DependentUpon>StockBajo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\VentasVendedor.resx">
       <DependentUpon>VentasVendedor.cs</DependentUpon>
