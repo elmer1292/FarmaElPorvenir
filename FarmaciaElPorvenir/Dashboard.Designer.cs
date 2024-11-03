@@ -97,10 +97,10 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 647);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 649);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonHome;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1033, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1033, 22);
             // 
             // ribbonHome
             // 
@@ -140,10 +140,10 @@
             this.ribbonHome.Name = "ribbonHome";
             this.ribbonHome.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageHome,
-            this.ribbonPageCliente,
             this.ribbonPageEmpleado,
-            this.ribbonPageInventario,
+            this.ribbonPageCliente,
             this.ribbonPageUsuario,
+            this.ribbonPageInventario,
             this.ribbonPageFacturas,
             this.ribbonPageInformes});
             this.ribbonHome.QuickToolbarItemLinks.Add(this.barStaticItemUser);

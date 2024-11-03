@@ -1,15 +1,18 @@
 ﻿using DevExpress.Xpo;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Forms;
+using DevExpress.XtraEditors;
 using DevExpress.XtraReports.Design;
 using DevExpress.XtraReports.Native;
 using DevExpress.XtraReports.Wizards;
+using DevExpress.XtraSplashScreen;
 using FarmaciaElPorvenir.Database;
 using FarmaciaElPorvenir.Reportes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -17,6 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySqlConnector;
 
 namespace FarmaciaElPorvenir
 {
@@ -24,6 +28,8 @@ namespace FarmaciaElPorvenir
     {
         private Usuario us;
         private Rol rols;
+        private MySqlBackup.importProgressChange mb_ImportProgressChanged;
+
         //public Dashboard(Usuario u, Rol id_Rol)
         //{
         //    InitializeComponent();
@@ -473,15 +479,59 @@ namespace FarmaciaElPorvenir
 
         private void barButtonItemRestaurar_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "SQL Files (*.sql)|*.sql";
-                openFileDialog.Title = "Open Backup File";
+            //using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            //{
+            //    openFileDialog.Filter = "SQL Files (*.sql)|*.sql";
+            //    openFileDialog.Title = "Open Backup File";
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //    if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        string backupFilePath = openFileDialog.FileName;
+            //        RestoreDatabase("localhost", "root", "root123", "el_porvenirdb", backupFilePath);
+            //    }
+            //}
+            MySqlConnectionStringBuilder sb = new MySqlConnectionStringBuilder
+            {
+                Server = "localhost",//la IP o dominio de tu servidor
+                Database = "el_porvenirdb",//el nombre te la base de datos
+                UserID = "root",//el usuario de la base de datos
+                Password = "root123"//la contraseña de la base de datos
+            };
+
+            OpenFileDialog open = new OpenFileDialog
+            {
+                Title = "Restaurar Base de Datos",
+                Filter = "Respaldo SQL|*.sql"
+            };
+            if (open.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            //SplashScreenManager.ShowForm(this, typeof(WaitFormRestaurar), true, true, false); //Mostramos el formulario de espera                                                                                                             
+           // SplashScreenManager.Default.SetWaitFormDescription("Restaurando Base de Datos ...");
+
+            using (MySqlConnection conn = new MySqlConnection(sb.ToString()))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
                 {
-                    string backupFilePath = openFileDialog.FileName;
-                    RestoreDatabase("localhost", "root", "root123", "el_porvenirdb", backupFilePath);
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ImportProgressChanged += mb_ImportProgressChanged; //evento que se producira cada vez que exista cambio en el proceso de importacion de cada byte del archivo de la base de datos
+                        mb.ImportFromFile(open.FileName);
+                        conn.Close();
+                        SplashScreenManager.CloseForm(false); //cerramos el formulario de espera
+                        if (mb.LastError == null)
+                        {
+                            XtraMessageBox.Show("Se ha Restaurado Correctamente la Base de Datos", "Restaurada", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("El proceso se ha completado con error(es)." + Environment.NewLine + Environment.NewLine + mb.LastError.ToString(), "Fallo al Restaurar", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                        }
+                    }
                 }
             }
         }
