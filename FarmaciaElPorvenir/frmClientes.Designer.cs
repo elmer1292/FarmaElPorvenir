@@ -362,7 +362,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
             this.txtNombre.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtNombre.Properties.MaskSettings.Set("mask", "\\p{L}+");
+            this.txtNombre.Properties.MaskSettings.Set("mask", ".+");
             this.txtNombre.Size = new System.Drawing.Size(759, 20);
             this.txtNombre.StyleController = this.layoutControl1;
             this.txtNombre.TabIndex = 11;

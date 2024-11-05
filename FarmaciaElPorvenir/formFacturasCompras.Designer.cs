@@ -81,12 +81,14 @@
             this.txtCantidad = new DevExpress.XtraEditors.TextEdit();
             this.txtTotal = new DevExpress.XtraEditors.TextEdit();
             this.txtPrecio = new DevExpress.XtraEditors.TextEdit();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridControlDetalleCompra = new DevExpress.XtraGrid.GridControl();
             this.xpCollectionDetalleCompras = new DevExpress.Xpo.XPCollection(this.components);
             this.gridViewDetalleCompras = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -111,8 +113,6 @@
             this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn52 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoFac.Properties)).BeginInit();
@@ -149,13 +149,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDetalleCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalleCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbLab2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -331,7 +331,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbProveedor.Properties.DataSource = this.xpCollectionProveedor;
             this.cmbProveedor.Properties.DisplayMember = "Nombre";
-            this.cmbProveedor.Properties.NullText = "Seleccione un Medicamento";
+            this.cmbProveedor.Properties.NullText = "Seleccione un  Proveedor";
             this.cmbProveedor.Properties.PopupView = this.searchProveedor;
             this.cmbProveedor.Properties.ValueMember = "Id";
             this.cmbProveedor.Size = new System.Drawing.Size(557, 20);
@@ -654,6 +654,16 @@
             this.txtPrecio.TabIndex = 31;
             this.txtPrecio.EditValueChanged += new System.EventHandler(this.txtPrecio_EditValueChanged_1);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(641, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(62, 22);
+            this.btnAdd.StyleController = this.layoutControl2;
+            this.btnAdd.TabIndex = 32;
+            this.btnAdd.Text = "+ producto";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -719,6 +729,15 @@
             this.layoutControlItem10.Size = new System.Drawing.Size(1260, 24);
             this.layoutControlItem10.Text = "Precio:";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(43, 13);
+            // 
+            // layoutControlItem15
+            // 
+            this.layoutControlItem15.Control = this.btnAdd;
+            this.layoutControlItem15.Location = new System.Drawing.Point(629, 0);
+            this.layoutControlItem15.Name = "layoutControlItem15";
+            this.layoutControlItem15.Size = new System.Drawing.Size(66, 26);
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem15.TextVisible = false;
             // 
             // gridControlDetalleCompra
             // 
@@ -903,25 +922,6 @@
             this.layoutControlItem11.Text = "Laboratorio";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(69, 13);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(641, 12);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(62, 22);
-            this.btnAdd.StyleController = this.layoutControl2;
-            this.btnAdd.TabIndex = 32;
-            this.btnAdd.Text = "+ producto";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // layoutControlItem15
-            // 
-            this.layoutControlItem15.Control = this.btnAdd;
-            this.layoutControlItem15.Location = new System.Drawing.Point(629, 0);
-            this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(66, 26);
-            this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem15.TextVisible = false;
-            // 
             // formFacturasCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -969,13 +969,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDetalleCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalleCompras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDetalleCompras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbLab2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
-            this.xpCollection = new DevExpress.Xpo.XPCollection(this.components);
-            this.unitOfWork = new DevExpress.Xpo.UnitOfWork(this.components);
+            this.xpCollectionEmp = new DevExpress.Xpo.XPCollection(this.components);
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControlClientes = new DevExpress.XtraGrid.GridControl();
             this.gridViewEmpleados = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -45,6 +45,7 @@
             this.btnActualizar = new DevExpress.XtraEditors.SimpleButton();
             this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.btnNuevo = new DevExpress.XtraEditors.SimpleButton();
+            this.btnImprimir = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.simpleSeparator1 = new DevExpress.XtraLayout.SimpleSeparator();
@@ -58,8 +59,9 @@
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork)).BeginInit();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionEmp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlClientes)).BeginInit();
@@ -79,12 +81,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
-            // xpCollection
+            // xpCollectionEmp
             // 
-            this.xpCollection.ObjectType = typeof(FarmaciaElPorvenir.Database.Empleado);
-            this.xpCollection.Session = this.unitOfWork;
+            this.xpCollectionEmp.ObjectType = typeof(FarmaciaElPorvenir.Database.Empleado);
+            this.xpCollectionEmp.Session = this.unitOfWork1;
             // 
             // layoutControl1
             // 
@@ -96,6 +99,7 @@
             this.layoutControl1.Controls.Add(this.btnActualizar);
             this.layoutControl1.Controls.Add(this.btnGuardar);
             this.layoutControl1.Controls.Add(this.btnNuevo);
+            this.layoutControl1.Controls.Add(this.btnImprimir);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -108,13 +112,13 @@
             // 
             // gridControlClientes
             // 
-            this.gridControlClientes.DataSource = this.xpCollection;
+            this.gridControlClientes.DataSource = this.xpCollectionEmp;
             this.gridControlClientes.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gridControlClientes.Location = new System.Drawing.Point(12, 30);
+            this.gridControlClientes.Location = new System.Drawing.Point(12, 56);
             this.gridControlClientes.MainView = this.gridViewEmpleados;
             this.gridControlClientes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gridControlClientes.Name = "gridControlClientes";
-            this.gridControlClientes.Size = new System.Drawing.Size(897, 198);
+            this.gridControlClientes.Size = new System.Drawing.Size(897, 172);
             this.gridControlClientes.TabIndex = 8;
             this.gridControlClientes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewEmpleados});
@@ -141,6 +145,7 @@
             // 
             // colNombre_Completo
             // 
+            this.colNombre_Completo.Caption = "Nombre Completo";
             this.colNombre_Completo.FieldName = "Nombre_Completo";
             this.colNombre_Completo.Name = "colNombre_Completo";
             this.colNombre_Completo.Visible = true;
@@ -241,6 +246,16 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(12, 12);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(897, 22);
+            this.btnImprimir.StyleController = this.layoutControl1;
+            this.btnImprimir.TabIndex = 17;
+            this.btnImprimir.Text = "Imprimir Lista Empleados";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -252,7 +267,8 @@
             this.layoutControlItem5,
             this.layoutControlItem7,
             this.layoutControlItem8,
-            this.Root1});
+            this.Root1,
+            this.layoutControlItem6});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(921, 480);
             this.Root.TextVisible = false;
@@ -260,7 +276,7 @@
             // simpleLabelItem1
             // 
             this.simpleLabelItem1.AllowHotTrack = false;
-            this.simpleLabelItem1.Location = new System.Drawing.Point(0, 0);
+            this.simpleLabelItem1.Location = new System.Drawing.Point(0, 26);
             this.simpleLabelItem1.Name = "simpleLabelItem1";
             this.simpleLabelItem1.Size = new System.Drawing.Size(901, 17);
             this.simpleLabelItem1.Text = "Empleados";
@@ -269,7 +285,7 @@
             // simpleSeparator1
             // 
             this.simpleSeparator1.AllowHotTrack = false;
-            this.simpleSeparator1.Location = new System.Drawing.Point(0, 17);
+            this.simpleSeparator1.Location = new System.Drawing.Point(0, 43);
             this.simpleSeparator1.Name = "simpleSeparator1";
             this.simpleSeparator1.Size = new System.Drawing.Size(901, 1);
             // 
@@ -283,9 +299,9 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.gridControlClientes;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 18);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 44);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(901, 202);
+            this.layoutControlItem5.Size = new System.Drawing.Size(901, 176);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -389,6 +405,15 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.btnImprimir;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(901, 26);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -401,8 +426,8 @@
             this.Text = "Registro de Empleados";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmClientes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionEmp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlClientes)).EndInit();
@@ -422,13 +447,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private DevExpress.Xpo.XPCollection xpCollection;
-        private DevExpress.Xpo.UnitOfWork unitOfWork;
+        private DevExpress.Xpo.XPCollection xpCollectionEmp;
+        private DevExpress.Xpo.UnitOfWork unitOfWork1;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem1;
@@ -455,5 +481,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraEditors.SimpleButton btnImprimir;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

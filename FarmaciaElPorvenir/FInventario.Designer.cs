@@ -405,6 +405,8 @@
             // 
             this.txtStock.Location = new System.Drawing.Point(738, 306);
             this.txtStock.Name = "txtStock";
+            this.txtStock.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txtStock.Properties.MaskSettings.Set("mask", "d");
             this.txtStock.Size = new System.Drawing.Size(143, 20);
             this.txtStock.StyleController = this.layoutControl1;
             this.txtStock.TabIndex = 12;
@@ -423,6 +425,8 @@
             // 
             this.txtDescuento.Location = new System.Drawing.Point(156, 354);
             this.txtDescuento.Name = "txtDescuento";
+            this.txtDescuento.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txtDescuento.Properties.MaskSettings.Set("mask", "P");
             this.txtDescuento.Size = new System.Drawing.Size(434, 20);
             this.txtDescuento.StyleController = this.layoutControl1;
             this.txtDescuento.TabIndex = 16;

@@ -375,7 +375,7 @@ namespace FarmaciaElPorvenir
                 // Si el formulario no está abierto, crea una nueva instancia y muéstrala
                 if (formularioExistente == null)
                 {
-                    formFacturasCompras nuevoFormulario = new formFacturasCompras();
+                    formFacturasCompras nuevoFormulario = new formFacturasCompras(us);
                     nuevoFormulario.MdiParent = this;
                     nuevoFormulario.Show();
                 }
@@ -900,6 +900,11 @@ namespace FarmaciaElPorvenir
             {
                 MessageBox.Show("Error al abrir el formulario: " + ex.Message);
             }
+        }
+
+        private void btnListarEmpleado_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

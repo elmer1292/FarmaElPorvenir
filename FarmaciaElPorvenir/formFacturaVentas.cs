@@ -238,7 +238,7 @@ namespace FarmaciaElPorvenir
 
                 // Reinicia la interfaz
                 fv = null;
-                detallesVenta.Clear(); // Limpia la lista de detalles
+                gridControlDetalleVenta.DataSource = null;
                 gridControlDetalleVenta.Refresh();
                 ActualizarEstadoBotones(true, false, false, false, false);
 

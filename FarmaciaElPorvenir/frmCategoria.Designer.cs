@@ -311,7 +311,7 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
             this.txtDescripcion.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtDescripcion.Properties.MaskSettings.Set("mask", "\\p{L}+");
+            this.txtDescripcion.Properties.MaskSettings.Set("mask", ".+");
             this.txtDescripcion.Size = new System.Drawing.Size(790, 20);
             this.txtDescripcion.StyleController = this.layoutControl1;
             this.txtDescripcion.TabIndex = 10;
@@ -324,7 +324,7 @@
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
             this.txtCategoria.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtCategoria.Properties.MaskSettings.Set("mask", "\\p{L}+");
+            this.txtCategoria.Properties.MaskSettings.Set("mask", ".+");
             this.txtCategoria.Size = new System.Drawing.Size(790, 20);
             this.txtCategoria.StyleController = this.layoutControl1;
             this.txtCategoria.TabIndex = 11;

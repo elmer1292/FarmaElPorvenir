@@ -1,4 +1,5 @@
 ﻿using DevExpress.Utils.DirectXPaint;
+using DevExpress.XtraGrid;
 using FarmaciaElPorvenir.Database;
 using System;
 using System.Collections.Generic;
@@ -69,9 +70,9 @@ namespace FarmaciaElPorvenir
 
                 if (r == DialogResult.Yes)
                 {
-                    unitOfWork.Delete(c);
-                    unitOfWork.CommitChanges();
-                    xpCollection.Reload();
+                    unitOfWork1.Delete(c);
+                    unitOfWork1.CommitChanges();
+                    xpCollectionEmp.Reload();
                     Limpiar();
                     ActualizarEstadoBotones(true, false, false, false, false, false);
                 }
@@ -93,7 +94,7 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Crear o buscar el rol en la base de datos
-                Empleado empleado = new Empleado(unitOfWork);
+                Empleado empleado = new Empleado(unitOfWork1);
 
 
                 // Asignar los valores a las propiedades del rol
@@ -102,7 +103,7 @@ namespace FarmaciaElPorvenir
 
                 // Guardar los cambios
                 empleado.Save();
-                unitOfWork.CommitChanges();
+                unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
                 Limpiar();
@@ -111,7 +112,7 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Guardado Exitoso", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Recargar la colección de roles para reflejar los cambios
-                xpCollection.Reload();
+                xpCollectionEmp.Reload();
                 ActualizarEstadoBotones(true, false, false, false, false, false);
 
             }
@@ -149,7 +150,7 @@ namespace FarmaciaElPorvenir
             try
             {
                 // Buscar el rol en la base de datos
-                Empleado empleado = unitOfWork.GetObjectByKey<Empleado>(id);
+                Empleado empleado = unitOfWork1.GetObjectByKey<Empleado>(id);
                 if (empleado == null)
                 {
                     MessageBox.Show("Rol no encontrado", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -162,7 +163,7 @@ namespace FarmaciaElPorvenir
 
                 // Guardar los cambios
                 empleado.Save();
-                unitOfWork.CommitChanges();
+                unitOfWork1.CommitChanges();
 
                 // Limpiar los controles del formulario
                 Limpiar();
@@ -171,13 +172,18 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Actualización Exitosa", "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Recargar la colección de roles para reflejar los cambios
-                xpCollection.Reload();
+                xpCollectionEmp.Reload();
                 ActualizarEstadoBotones(true, false, false, false, false, false);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Información del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            gridControlClientes.ShowRibbonPrintPreview();
         }
     }
 }

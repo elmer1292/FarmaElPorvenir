@@ -34,6 +34,7 @@ namespace FarmaciaElPorvenir
                     this.Show(); // Vuelve a mostrar el formulario si el Dashboard se cierra
                     txtUser.Clear();
                     txtPwd.Clear();
+                    xpCollectionUsuario.Reload();
                     usr = true;
                     break; // Sale del ciclo para evitar que continúe verificando usuarios
                 }

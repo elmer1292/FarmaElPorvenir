@@ -101,7 +101,7 @@ namespace FarmaciaElPorvenir
             if (e.RowHandle >= 0)
             {
                 ActualizarEstadoBotones(false, false, true, true, true, true);
-                string nombre = gridViewLabs.GetRowCellValue(e.RowHandle, "Nombre_Completo").ToString();
+                string nombre = gridViewLabs.GetRowCellValue(e.RowHandle, "Nombre").ToString();
                 string dir = gridViewLabs.GetRowCellValue(e.RowHandle, "Direccion").ToString();
                 string tel = gridViewLabs.GetRowCellValue(e.RowHandle, "Telefono").ToString();
                 txtNombre.Text = nombre;

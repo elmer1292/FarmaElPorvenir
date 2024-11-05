@@ -285,7 +285,7 @@
             this.txtNombre.Properties.Appearance.Options.UseFont = true;
             this.txtNombre.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
             this.txtNombre.Properties.MaskSettings.Set("MaskManagerSignature", "isOptimistic=False");
-            this.txtNombre.Properties.MaskSettings.Set("mask", "\\p{L}+");
+            this.txtNombre.Properties.MaskSettings.Set("mask", ".+");
             this.txtNombre.Size = new System.Drawing.Size(621, 26);
             this.txtNombre.StyleController = this.layoutControl;
             this.txtNombre.TabIndex = 20;

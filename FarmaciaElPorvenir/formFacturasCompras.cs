@@ -18,12 +18,14 @@ namespace FarmaciaElPorvenir
     {
         Factura_compra factura_Compra;
         List<Detallecompra> detallesCompra;
-
+        Usuario us;
         private float totalFactura;
-        public formFacturasCompras()
+        public formFacturasCompras(Usuario us)
         {
             InitializeComponent();
             detallesCompra = new List<Detallecompra>();
+            this.us = us;
+
         }
 
         private void ActualizarEstadoBotones(bool nuevo, bool guardar, bool eliminar, bool cancelar, bool camposHabilitados)
@@ -143,10 +145,12 @@ namespace FarmaciaElPorvenir
                 return;
             }
 
-            Empleado em = new Empleado(unitOfWork1);
-            em.Id = 1; // Asigna el empleado (puedes ajustar según sea necesario)
+           
+            var empleado = unitOfWork1.Query<Empleado>()
+                             .FirstOrDefault(empleadoActual => empleadoActual.Id == us.Id_Empleado.Id);
 
-            factura_Compra.Id_Empleado = em;
+
+            factura_Compra.Id_Empleado = empleado;
             factura_Compra.Fecha = fecha;
             factura_Compra.Total = totalFactura; // Asigna el total calculado
             factura_Compra.Id_Proveedor = (Proveedor)searchProveedor.GetFocusedRow();
