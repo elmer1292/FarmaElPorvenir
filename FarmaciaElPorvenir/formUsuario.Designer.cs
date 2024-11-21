@@ -52,6 +52,7 @@
             this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.btnNuevo = new DevExpress.XtraEditors.SimpleButton();
             this.btnActualizar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAgregarNuevoEmpleado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.xpUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -74,6 +75,7 @@
             // 
             this.txtPass.Location = new System.Drawing.Point(87, 45);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(121, 20);
             this.txtPass.TabIndex = 1;
             // 
@@ -120,8 +122,6 @@
             // 
             this.colPass.FieldName = "Pass";
             this.colPass.Name = "colPass";
-            this.colPass.Visible = true;
-            this.colPass.VisibleIndex = 2;
             // 
             // gridColumn1
             // 
@@ -129,7 +129,7 @@
             this.gridColumn1.FieldName = "Id_Empleado.Nombre_Completo";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
+            this.gridColumn1.VisibleIndex = 2;
             // 
             // nameRol
             // 
@@ -137,7 +137,7 @@
             this.nameRol.FieldName = "Id_Rol.Nombre_Rol";
             this.nameRol.Name = "nameRol";
             this.nameRol.Visible = true;
-            this.nameRol.VisibleIndex = 4;
+            this.nameRol.VisibleIndex = 3;
             // 
             // label2
             // 
@@ -250,11 +250,23 @@
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
+            // btnAgregarNuevoEmpleado
+            // 
+            this.btnAgregarNuevoEmpleado.AutoSize = true;
+            this.btnAgregarNuevoEmpleado.Location = new System.Drawing.Point(314, 271);
+            this.btnAgregarNuevoEmpleado.Name = "btnAgregarNuevoEmpleado";
+            this.btnAgregarNuevoEmpleado.Size = new System.Drawing.Size(139, 23);
+            this.btnAgregarNuevoEmpleado.TabIndex = 16;
+            this.btnAgregarNuevoEmpleado.Text = "Agregar Nuevo Empleado";
+            this.btnAgregarNuevoEmpleado.UseVisualStyleBackColor = true;
+            this.btnAgregarNuevoEmpleado.Click += new System.EventHandler(this.btnAgregarNuevoEmpleado_Click);
+            // 
             // formUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAgregarNuevoEmpleado);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
@@ -270,7 +282,7 @@
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUsuario);
             this.Name = "formUsuario";
-            this.Text = "formUsuario";
+            this.Text = "Registro de Usuarios";
             this.Load += new System.EventHandler(this.formUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xpUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
@@ -305,5 +317,6 @@
         private DevExpress.XtraEditors.SimpleButton btnGuardar;
         private DevExpress.XtraEditors.SimpleButton btnNuevo;
         private DevExpress.XtraEditors.SimpleButton btnActualizar;
+        private System.Windows.Forms.Button btnAgregarNuevoEmpleado;
     }
 }

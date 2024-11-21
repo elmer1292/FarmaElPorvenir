@@ -27,13 +27,16 @@ namespace FarmaciaElPorvenir
 
         private void formFacturaVentas_Load(object sender, EventArgs e)
         {
-            searchEmpleado.EditValue = us.Id_Empleado.Id;
+            var cliente = unitOfWork1.Query<Cliente>()
+                         .FirstOrDefault(f => f.Id == 25);
+
+            searchCliente.EditValue = cliente;
 
             dateFecha.Text = DateTime.Now.ToString("d/MM/yyyy");
             gridControlDetalleVenta.DataSource = detallesVenta; // Asigna la lista como DataSource
+            ActualizarEstadoBotones(true, false, false, false, false);
 
-           txtNoFactura.Text= GenerarNuevoNumeroFactura();
-            //HabilitarBotones(false);
+            txtNoFactura.Text= GenerarNuevoNumeroFactura();
         }
 
         private void ActualizarEstadoBotones(bool nuevo, bool guardar, bool eliminar, bool cancelar, bool camposHabilitados)
@@ -45,6 +48,11 @@ namespace FarmaciaElPorvenir
 
             // Habilitar o deshabilitar los campos
             txtCantidad.Enabled = camposHabilitados;
+            searchCliente.Enabled = camposHabilitados;
+            txtDescuento.Enabled = camposHabilitados;
+            searchProducto.Enabled = camposHabilitados;
+            btnAgregarNuevoCliente.Enabled = camposHabilitados;
+            btnAgregar.Enabled = camposHabilitados;
         }
 
         private void Limpiar()
@@ -62,6 +70,16 @@ namespace FarmaciaElPorvenir
             detallesVenta.Clear(); // Limpia la lista de detalles
 
         }
+        private void LimpiarCamposDetalle()
+        {
+            txtCantidad.Clear();
+            txtPrecio.Clear();
+            txtDescuento.Clear();
+            txtIVA.Clear();
+            txtSubTotal.Clear();
+            txtTotal.Clear();
+            searchProducto.Clear();
+        }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -74,7 +92,7 @@ namespace FarmaciaElPorvenir
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtCantidad.Text, out int cantidad) ||
+            if (!int.TryParse(txtCantidad.Text, out int cantidad) || cantidad <= 0 ||
                 !float.TryParse(txtSubTotal.Text, out float subTotal) ||
                 !float.TryParse(txtDescuento.Text, out float descuento) ||
                 !float.TryParse(txtIVA.Text, out float iva) ||
@@ -124,22 +142,10 @@ namespace FarmaciaElPorvenir
             detallesVenta.Add(detalle);
             gridControlDetalleVenta.RefreshDataSource();
 
-            // Manejar la suma total de la factura
-            float totalFactura = 0f;
-            float.TryParse(txtTotalFactura.Text, out totalFactura); // Intenta convertir el total actual
-            totalFactura += detalle.Total; // Suma el total del nuevo detalle
-            txtTotalFactura.Text = totalFactura.ToString("0.00"); // Asigna el nuevo total formateado
-
-            // Manejar la suma total del IVA
-            float totalIVA = 0f;
-            float.TryParse(txtTotalIVA.Text, out totalIVA); // Intenta convertir el total actual
-            totalIVA += detalle.IVA; // Suma el total del nuevo detalle
-            txtTotalIVA.Text = totalIVA.ToString("0.00"); // Asigna el nuevo total formateado
-
-            // Actualizar el stock del producto
-            productoSeleccionado.Stock -= cantidad; // Restar la cantidad del stock
+            RecalcularTotalFactura();
+            LimpiarCamposDetalle();
+            productoSeleccionado.Stock -= cantidad;
             productoSeleccionado.Save(); // Guarda los cambios en el producto
-
             ActualizarEstadoBotones(false, true, true, true, true);
         }
 
@@ -274,6 +280,9 @@ namespace FarmaciaElPorvenir
         {
             float totalFactura = detallesVenta.Sum(d => d.Total);
             txtTotalFactura.Text = totalFactura.ToString("0.00");
+            // Manejar la suma total del IVA
+            float totalIVA = detallesVenta.Sum(d => d.IVA); ;
+            txtTotalIVA.Text = totalIVA.ToString("0.00"); // Asigna el nuevo total formateado
         }
         private string GenerarNuevoNumeroFactura()
         {
@@ -310,12 +319,52 @@ namespace FarmaciaElPorvenir
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             GenerarNuevoNumeroFactura();
-            ActualizarEstadoBotones(true, false, false, false, false);
+            ActualizarEstadoBotones(false, true, true, true, true);
             fv = null;
             detallesVenta.Clear(); // Limpia la lista de detalles
             gridControlDetalleVenta.Refresh();
         }
 
-         
+        private void btnAgregarNuevoCliente_Click(object sender, EventArgs e)
+        {
+            frmClientes frm = new frmClientes();
+            frm.ShowDialog();
+            xpCollectionClientes.Reload();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            // Verifica si hay un detalle seleccionado en el grid
+            searchViewCliente.RefreshData();
+            var filaSeleccionada = gridViewDetalleVenta.GetSelectedRows();
+            
+            if (filaSeleccionada.Length == 0)
+            {
+                MessageBox.Show("Por favor, selecciona un detalle de venta para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Obtiene el detalle de venta seleccionado (asumiendo que 'detallesVenta' es la lista de detalles)
+            int rowHandle = filaSeleccionada[0];
+            Detalleventa detalleSeleccionado = (Detalleventa)gridViewDetalleVenta.GetRow(rowHandle);
+
+            if (detalleSeleccionado != null)
+            { 
+                // Eliminar el detalle de la lista de detalles
+                detallesVenta.Remove(detalleSeleccionado);
+
+                // Actualiza el DataSource del gridControl
+                gridControlDetalleVenta.RefreshDataSource();
+                // Recalcular el total de la factura después de la eliminación
+                RecalcularTotalFactura();
+
+                // Actualizar el estado de los botones (si es necesario)
+                ActualizarEstadoBotones(false, detallesVenta.Count > 0, detallesVenta.Count > 0, true, true);
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado un detalle válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

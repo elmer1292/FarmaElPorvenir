@@ -262,7 +262,6 @@
             this.btnAgregarRol.Id = 23;
             this.btnAgregarRol.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarRol.ImageOptions.LargeImage")));
             this.btnAgregarRol.Name = "btnAgregarRol";
-            this.btnAgregarRol.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAgregarR_ItemClick);
             // 
             // btnAgregarProducto
             // 
@@ -554,6 +553,7 @@
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Dashboard_FormClosed);
             this.Load += new System.EventHandler(this.Dashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonHome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();

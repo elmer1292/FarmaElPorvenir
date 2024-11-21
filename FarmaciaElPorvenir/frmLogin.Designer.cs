@@ -35,11 +35,11 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnAcceder = new DevExpress.XtraEditors.SimpleButton();
             this.unitOfWorkBD = new DevExpress.Xpo.UnitOfWork(this.components);
-            this.xpCollectionUsuario = new DevExpress.Xpo.XPCollection(this.components);
+            this.xpUsuario = new DevExpress.Xpo.XPCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPwd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWorkBD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUser
@@ -96,17 +96,15 @@
             this.btnAcceder.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnAcceder.Location = new System.Drawing.Point(0, 256);
             this.btnAcceder.Name = "btnAcceder";
-            this.btnAcceder.Size = new System.Drawing.Size(431, 59);
+            this.btnAcceder.Size = new System.Drawing.Size(410, 59);
             this.btnAcceder.TabIndex = 3;
             this.btnAcceder.Text = "Acceder";
             this.btnAcceder.Click += new System.EventHandler(this.btnAcceder_Click);
             // 
-            // xpCollectionUsuario
+            // xpUsuario
             // 
-            this.xpCollectionUsuario.DisplayableProperties = "This;Id;Usuario;Pass;Id_Empleado!;Id_Empleado!Key;Id_Empleado;Id_Rol!;Id_Rol!Key;" +
-    "Id_Rol";
-            this.xpCollectionUsuario.ObjectType = typeof(FarmaciaElPorvenir.Database.Usuario);
-            this.xpCollectionUsuario.Session = this.unitOfWorkBD;
+            this.xpUsuario.ObjectType = typeof(FarmaciaElPorvenir.Database.Usuario);
+            this.xpUsuario.Session = this.unitOfWorkBD;
             // 
             // frmLogin
             // 
@@ -117,7 +115,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Stretch;
             this.BackgroundImageStore = global::FarmaciaElPorvenir.Properties.Resources.fondo_abstracto_textura;
-            this.ClientSize = new System.Drawing.Size(431, 315);
+            this.ClientSize = new System.Drawing.Size(410, 315);
             this.Controls.Add(this.btnAcceder);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
@@ -132,7 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPwd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWorkBD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,6 +144,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton btnAcceder;
         private DevExpress.Xpo.UnitOfWork unitOfWorkBD;
-        private DevExpress.Xpo.XPCollection xpCollectionUsuario;
+        public DevExpress.Xpo.XPCollection xpUsuario;
     }
 }

@@ -26,16 +26,14 @@ namespace FarmaciaElPorvenir
 {
     public partial class Dashboard : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        private Usuario us;
-        private Rol rols;
-        private MySqlBackup.importProgressChange mb_ImportProgressChanged;
-
+        private readonly Usuario us;
+        private readonly Rol rols;
+        private readonly MySqlBackup.importProgressChange mb_ImportProgressChanged;
         //public Dashboard(Usuario u, Rol id_Rol)
         //{
         //    InitializeComponent();
 
         //}
-
         public Dashboard(Usuario us, Rol rol)
         {
             this.us = us;
@@ -225,7 +223,7 @@ namespace FarmaciaElPorvenir
                 frmProveedor formularioExistente = null;
                 foreach (Form form in this.MdiChildren)
                 {
-                    if (form is formFacturaVentas)
+                    if (form is frmProveedor)
                     {
                         formularioExistente = (frmProveedor)form;
                         break;
@@ -427,40 +425,6 @@ namespace FarmaciaElPorvenir
             }
         }
 
-        private void btnAgregarR_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            try
-            {
-                // Verifica si el formulario ya está abierto
-                frmRol formularioExistente = null;
-                foreach (Form form in this.MdiChildren)
-                {
-                    if (form is frmRol)
-                    {
-                        formularioExistente = (frmRol)form;
-                        break;
-                    }
-                }
-
-                // Si el formulario no está abierto, crea una nueva instancia y muéstrala
-                if (formularioExistente == null)
-                {
-                    frmRol nuevoFormulario = new frmRol();
-                    nuevoFormulario.MdiParent = this;
-                    nuevoFormulario.Show();
-                }
-                else
-                {
-                    // Si el formulario ya está abierto, lo traemos al frente
-                    formularioExistente.BringToFront();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al abrir el formulario: " + ex.Message);
-            }
-        }
 
         private void barButtonItemRespaldo_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -905,6 +869,11 @@ namespace FarmaciaElPorvenir
         private void btnListarEmpleado_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

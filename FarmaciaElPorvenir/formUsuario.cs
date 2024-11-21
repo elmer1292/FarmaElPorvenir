@@ -1,5 +1,6 @@
 ﻿using DevExpress.Xpo;
 using FarmaciaElPorvenir.Database;
+using FarmaciaElPorvenir.utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -109,7 +110,7 @@ namespace FarmaciaElPorvenir
 
                 // Asignar los valores a las propiedades del rol
                 usuario.Usuario1 = txtUsuario.Text;
-                usuario.Pass = txtPass.Text;
+                usuario.Pass =BcryptPasswordHasher.HashPassword(txtPass.Text);
                 usuario.Id_Empleado = (Empleado)cmbEmpleado.SelectedItem;
                 usuario.Id_Rol = (Rol)cmbRol.SelectedItem;
 
@@ -172,7 +173,7 @@ namespace FarmaciaElPorvenir
 
                 // Asignar los valores a las propiedades del rol
                 usuario.Usuario1 = txtUsuario.Text;
-                usuario.Pass = txtPass.Text;
+                usuario.Pass = BcryptPasswordHasher.HashPassword(txtPass.Text);
                 usuario.Id_Empleado = (Empleado)cmbEmpleado.SelectedItem;
                 usuario.Id_Rol = (Rol)cmbRol.SelectedItem;
                 // Guardar los cambios
@@ -207,6 +208,13 @@ namespace FarmaciaElPorvenir
                 cmbEmpleado.Text = gridView1.GetRowCellValue(e.RowHandle,"Id_Empleado.Nombre_Completo").ToString();
                 cmbRol.Text = gridView1.GetRowCellValue(e.RowHandle, "Id_Rol.Nombre_Rol").ToString();
             }
+        }
+
+        private void btnAgregarNuevoEmpleado_Click(object sender, EventArgs e)
+        {
+            frmEmpleado frm = new frmEmpleado();
+            frm.ShowDialog();
+            CargarCombos();
         }
     }
 }

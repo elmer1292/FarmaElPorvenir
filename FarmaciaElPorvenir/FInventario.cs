@@ -162,8 +162,9 @@ namespace FarmaciaElPorvenir
                 txtPrecioCompra.Text = gridViewProducto.GetRowCellValue(e.RowHandle, "Precio_Compra").ToString();
                 txtPrecioVenta.Text = gridViewProducto.GetRowCellValue(e.RowHandle, "Precio_Venta").ToString();
                 txtVencimiento.Text = gridViewProducto.GetRowCellValue(e.RowHandle, "Vencimiento").ToString();
-                cmbCategorias.EditValue = gridViewProducto.GetRowCellValue(e.RowHandle, "Id_Categoria!Key").ToString();
-                cmbProveedor.EditValue = gridViewProducto.GetRowCellValue(e.RowHandle, "Id_Proveedor!Key").ToString();
+                cmbCategorias.EditValue = gridViewProducto.GetRowCellValue(e.RowHandle, "Id_Categoria!Key");
+                cmbProveedor.EditValue = gridViewProducto.GetRowCellValue(e.RowHandle, "Id_Proveedor!Key");
+                comboBoxEditLaboratorio.EditValue = gridViewProducto.GetRowCellValue(e.RowHandle, "Id_Laboratorio!Key");
 
                 ActualizarEstadoBotones(false, false, true, true, true,true);
 

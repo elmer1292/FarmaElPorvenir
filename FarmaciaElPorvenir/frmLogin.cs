@@ -1,5 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.XtraCharts;
+using DevExpress.XtraEditors;
 using FarmaciaElPorvenir.Database;
+using FarmaciaElPorvenir.utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,33 +20,52 @@ namespace FarmaciaElPorvenir
         {
             InitializeComponent();
         }
-
+        private void Limpiar()
+        {
+            txtUser.Clear();
+            txtPwd.Clear();
+            txtUser.Focus();
+        }
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-          
-            bool usr = false;
-            foreach (Usuario us in xpCollectionUsuario)
+            // Comprobar si la colección tiene elementos
+            if (xpUsuario.Count == 0)
             {
-                if (us.Usuario1.Equals(txtUser.Text) &&
-                    us.Pass.Equals(txtPwd.Text))
-                {
-                    Dashboard fp = new Dashboard(us, us.Id_Rol);
-                    this.Hide(); // Oculta el formulario sin cerrarlo
-                    fp.ShowDialog(); // Muestra el Dashboard y espera a que se cierre
-                    this.Show(); // Vuelve a mostrar el formulario si el Dashboard se cierra
-                    txtUser.Clear();
-                    txtPwd.Clear();
-                    xpCollectionUsuario.Reload();
-                    usr = true;
-                    break; // Sale del ciclo para evitar que continúe verificando usuarios
-                }
+                MessageBox.Show("No se encontraron usuarios registrados.");
+                return;
             }
 
-            if (!usr)
+            string login = txtUser.Text.Trim();
+            string clave = txtPwd.Text.Trim();
+
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(clave))
             {
-                MessageBox.Show("Usuario o contraseña incorrecta.",
-                    "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, ingrese su nombre de usuario y contraseña.");
+                return;
             }
+
+            Usuario us;
+            foreach (Usuario item in xpUsuario)
+            {
+                us = item;
+                if (us.Usuario1 == login && BcryptPasswordHasher.VerifyPassword(clave, us.Pass))
+                {
+                    // Crear instancia del formulario Dashboard y mostrarlo
+                    Dashboard frm = new Dashboard(us, us.Id_Rol);
+                    frm.FormClosed += (s, args) => this.Show(); // Muestra el login cuando se cierra el dashboard
+
+                    // Recargar los datos de la colección de usuarios antes de proceder
+                    xpUsuario.Reload();
+
+                    // Ocultar el formulario de login
+                    this.Hide();
+
+                    // Mostrar el Dashboard
+                    frm.Show();
+                    return;
+                }
+            }
+            MessageBox.Show("Datos incorrectos.");
         }
     }
 }
