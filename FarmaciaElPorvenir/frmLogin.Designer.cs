@@ -127,6 +127,7 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de Sesión";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPwd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWorkBD)).EndInit();
@@ -144,6 +145,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton btnAcceder;
         private DevExpress.Xpo.UnitOfWork unitOfWorkBD;
-        public DevExpress.Xpo.XPCollection xpUsuario;
+        private DevExpress.Xpo.XPCollection xpUsuario;
     }
 }
