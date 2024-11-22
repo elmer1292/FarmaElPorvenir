@@ -873,7 +873,8 @@ namespace FarmaciaElPorvenir
 
         private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Close();
+            // Establecer el DialogResult como OK cuando se cierra el Dashboard
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

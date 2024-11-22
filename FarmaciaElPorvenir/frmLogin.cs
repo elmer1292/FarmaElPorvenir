@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraCharts;
+﻿using DevExpress.Xpo;
+using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 using FarmaciaElPorvenir.Database;
 using FarmaciaElPorvenir.utilidades;
@@ -24,17 +25,11 @@ namespace FarmaciaElPorvenir
         {
             txtUser.Clear();
             txtPwd.Clear();
-            txtUser.Focus();
+            txtUser.Select();
         }
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            // Comprobar si la colección tiene elementos
-            if (xpUsuario.Count == 0)
-            {
-                MessageBox.Show("No se encontraron usuarios registrados.");
-                return;
-            }
-
+            xpUsuario.Reload();
             string login = txtUser.Text.Trim();
             string clave = txtPwd.Text.Trim();
 
@@ -43,29 +38,45 @@ namespace FarmaciaElPorvenir
                 MessageBox.Show("Por favor, ingrese su nombre de usuario y contraseña.");
                 return;
             }
+            
 
-            Usuario us;
-            foreach (Usuario item in xpUsuario)
+            Usuario us = null;
+            foreach (Usuario usuario in xpUsuario)
             {
-                us = item;
-                if (us.Usuario1 == login && BcryptPasswordHasher.VerifyPassword(clave, us.Pass))
+                if (usuario.Usuario1 == login)
                 {
-                    // Crear instancia del formulario Dashboard y mostrarlo
-                    Dashboard frm = new Dashboard(us, us.Id_Rol);
-                    frm.FormClosed += (s, args) => this.Show(); // Muestra el login cuando se cierra el dashboard
-
-                    // Recargar los datos de la colección de usuarios antes de proceder
-                    xpUsuario.Reload();
-
-                    // Ocultar el formulario de login
-                    this.Hide();
-
-                    // Mostrar el Dashboard
-                    frm.Show();
-                    return;
+                    us = usuario;
+                    break;
                 }
             }
-            MessageBox.Show("Datos incorrectos.");
+            string passHashed = us.Pass;
+
+            bool verificado = BcryptPasswordHasher.VerifyPassword(clave, passHashed);
+
+            if (us != null && verificado)
+            {
+                // Crear instancia del formulario Dashboard y mostrarlo
+                Dashboard frm = new Dashboard(us, us.Id_Rol);
+                frm.FormClosed += (s, args) =>
+                {
+                    // Al cerrar el Dashboard, instanciar de nuevo el formulario de login
+                    frmLogin newLoginForm = new frmLogin();
+                    newLoginForm.Show();
+                };
+
+                this.Hide(); // Oculta el formulario de login
+                frm.ShowDialog(); // Muestra el Dashboard
+                
+            }
+            else
+            {
+                MessageBox.Show("Datos incorrectos.");
+            }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            xpUsuario.Reload();
         }
     }
 }

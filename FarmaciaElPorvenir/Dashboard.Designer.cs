@@ -550,6 +550,7 @@
             this.IsMdiContainer = true;
             this.Name = "Dashboard";
             this.Ribbon = this.ribbonHome;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
